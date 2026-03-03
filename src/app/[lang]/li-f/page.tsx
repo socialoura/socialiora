@@ -38,23 +38,6 @@ export default function LinkedInFollowersLandingPage({ params }: PageProps) {
 
   const t = content[lang];
 
-  const trackCtaAndNavigate = (href: string) => {
-    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
-    if (!gtag) {
-      router.push(href);
-      return;
-    }
-
-    gtag('event', 'conversion', {
-      send_to: 'AW-17985942356/o6JlCPTc6oEcENTmroBD',
-      value: 1.0,
-      currency: 'EUR',
-      event_callback: () => router.push(href),
-    });
-
-    window.setTimeout(() => router.push(href), 600);
-  };
-
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-gray-950 to-sky-900/20" />
@@ -94,7 +77,7 @@ export default function LinkedInFollowersLandingPage({ params }: PageProps) {
             className="group relative"
             onClick={(e) => {
               e.preventDefault();
-              trackCtaAndNavigate(`/${lang}/linkedin-f`);
+              router.push(`/${lang}/linkedin-f`);
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[#0A66C2] via-blue-500 to-sky-400 rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-300" />

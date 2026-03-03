@@ -34,23 +34,6 @@ export default function InstagramLikesSelectPage({ params }: PageProps) {
 
   const t = content[lang];
 
-  const trackCtaAndNavigate = (href: string) => {
-    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
-    if (!gtag) {
-      router.push(href);
-      return;
-    }
-
-    gtag('event', 'conversion', {
-      send_to: 'AW-17985942356/o6JlCPTc6oEcENTmroBD',
-      value: 1.0,
-      currency: 'EUR',
-      event_callback: () => router.push(href),
-    });
-
-    window.setTimeout(() => router.push(href), 600);
-  };
-
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center relative overflow-hidden">
       {/* Background Effects */}
@@ -86,7 +69,7 @@ export default function InstagramLikesSelectPage({ params }: PageProps) {
             className="group relative"
             onClick={(e) => {
               e.preventDefault();
-              trackCtaAndNavigate(`/${lang}/il`);
+              router.push(`/${lang}/il`);
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-red-500 via-pink-500 to-red-400 rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-300" />

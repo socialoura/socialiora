@@ -37,23 +37,6 @@ export default function SelectPlatformPage({ params }: PageProps) {
 
   const t = content[lang];
 
-  const trackCtaAndNavigate = (href: string) => {
-    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
-    if (!gtag) {
-      router.push(href);
-      return;
-    }
-
-    gtag('event', 'conversion', {
-      send_to: 'AW-17985942356/o6JlCPTc6oEcENTmroBD',
-      value: 1.0,
-      currency: 'EUR',
-      event_callback: () => router.push(href),
-    });
-
-    window.setTimeout(() => router.push(href), 600);
-  };
-
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center relative overflow-hidden">
       {/* Background Effects */}
@@ -79,7 +62,7 @@ export default function SelectPlatformPage({ params }: PageProps) {
             className="group relative"
             onClick={(e) => {
               e.preventDefault();
-              trackCtaAndNavigate(`/${lang}/i`);
+              router.push(`/${lang}/i`);
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
@@ -97,7 +80,7 @@ export default function SelectPlatformPage({ params }: PageProps) {
             className="group relative"
             onClick={(e) => {
               e.preventDefault();
-              trackCtaAndNavigate(`/${lang}/t`);
+              router.push(`/${lang}/t`);
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-300" />

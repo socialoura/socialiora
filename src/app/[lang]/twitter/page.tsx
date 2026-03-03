@@ -33,23 +33,6 @@ export default function TwitterSelectPage({ params }: PageProps) {
 
   const t = content[lang];
 
-  const trackCtaAndNavigate = (href: string) => {
-    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
-    if (!gtag) {
-      router.push(href);
-      return;
-    }
-
-    gtag('event', 'conversion', {
-      send_to: 'AW-17985942356/o6JlCPTc6oEcENTmroBD',
-      value: 1.0,
-      currency: 'EUR',
-      event_callback: () => router.push(href),
-    });
-
-    window.setTimeout(() => router.push(href), 600);
-  };
-
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center relative overflow-hidden">
       {/* Background Effects */}
@@ -75,7 +58,7 @@ export default function TwitterSelectPage({ params }: PageProps) {
             className="group relative"
             onClick={(e) => {
               e.preventDefault();
-              trackCtaAndNavigate(`/${lang}/x`);
+              router.push(`/${lang}/x`);
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-br from-gray-600 via-gray-800 to-black rounded-3xl blur-xl opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
