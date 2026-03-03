@@ -43,11 +43,10 @@ export async function GET(request: Request) {
 
     try {
       console.log('[scraper] Step 5: Calling Apify actor apify/instagram-profile-scraper');
-      console.log('[scraper] Actor input:', { usernames: [cleanUsername], resultsLimit: 12 });
+      console.log('[scraper] Actor input:', { usernames: [cleanUsername] });
       
       const run = await client.actor('apify/instagram-profile-scraper').call({
         usernames: [cleanUsername],
-        resultsLimit: 12,
       });
       
       console.log('[scraper] Apify run completed successfully');
@@ -58,6 +57,7 @@ export async function GET(request: Request) {
       console.log('[scraper] Step 6: Fetching results from dataset');
       const { items } = await client.dataset(run.defaultDatasetId).listItems();
       console.log('[scraper] Items fetched. Count:', items?.length || 0);
+      console.log('Données Apify brutes:', items);
 
       if (!items || items.length === 0) {
         console.log('[scraper] ERROR: No items found in dataset');
@@ -127,7 +127,7 @@ export async function GET(request: Request) {
       console.log('[scraper] - posts count:', response.posts.length);
       
       return NextResponse.json(response);
-    } catch (apifyError) {
+    } catch (apifyError: any) {
       console.error('Erreur Apify:', apifyError);
       console.error('[scraper] ❌ APIFY ERROR CAUGHT:');
       console.error('[scraper] Error type:', apifyError instanceof Error ? apifyError.constructor.name : typeof apifyError);
@@ -139,11 +139,11 @@ export async function GET(request: Request) {
       }
       
       return NextResponse.json(
-        { error: 'Failed to fetch Instagram profile from Apify' },
+        { error: 'Failed to fetch', details: apifyError.message || apifyError.toString() },
         { status: 500 }
       );
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error('Erreur Apify:', error);
     console.error('[scraper] ❌ OUTER ERROR CAUGHT:');
     console.error('[scraper] Error type:', error instanceof Error ? error.constructor.name : typeof error);
@@ -155,7 +155,7 @@ export async function GET(request: Request) {
     }
     
     return NextResponse.json(
-      { error: 'Failed to fetch Instagram profile' },
+      { error: 'Failed to fetch', details: error.message || error.toString() },
       { status: 500 }
     );
   }
