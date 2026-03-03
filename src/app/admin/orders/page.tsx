@@ -3,16 +3,20 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Package, TrendingUp, Calendar, DollarSign, User, Hash, Instagram, Music, Loader2 } from 'lucide-react';
+import CustomerLoyaltyBadge from '@/components/CustomerLoyaltyBadge';
 
 interface Order {
   id: number;
   username: string;
+  email: string;
   platform: string;
   followers: number;
   amount: number;
   payment_id: string;
   status: string;
   created_at: string;
+  customer_total_orders: number;
+  customer_order_number: number;
 }
 
 export default function OrdersPage() {
@@ -176,7 +180,7 @@ export default function OrdersPage() {
                     Order ID
                   </th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
-                    Username
+                    Client
                   </th>
                   <th className="px-6 py-4 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">
                     Platform
@@ -216,10 +220,21 @@ export default function OrdersPage() {
                           {order.id}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center text-white">
-                          <User className="w-4 h-4 mr-2 text-gray-400" />
-                          @{order.username}
+                      <td className="px-6 py-4">
+                        <div className="flex flex-col gap-1">
+                          <div className="flex items-center text-white">
+                            <User className="w-4 h-4 mr-2 text-gray-400" />
+                            @{order.username}
+                          </div>
+                          {order.email && (
+                            <div className="text-xs text-gray-400 ml-6">{order.email}</div>
+                          )}
+                          <div className="ml-6">
+                            <CustomerLoyaltyBadge
+                              customerOrderNumber={order.customer_order_number}
+                              customerTotalOrders={order.customer_total_orders}
+                            />
+                          </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">

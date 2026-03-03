@@ -25,9 +25,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
     }
 
-    // Fetch all orders
+    // Fetch all orders with customer order count (optimized via window function)
     const result = await sql`
-      SELECT id, username, platform, followers, amount, payment_id, status, created_at 
+      SELECT id, username, email, platform, followers, amount, payment_id, status, created_at,
+        COUNT(*) OVER (PARTITION BY email) AS customer_total_orders,
+        ROW_NUMBER() OVER (PARTITION BY email ORDER BY created_at ASC) AS customer_order_number
       FROM orders 
       ORDER BY created_at DESC
     `;

@@ -41,7 +41,7 @@ export default function TwitterSelectPage({ params }: PageProps) {
     }
 
     gtag('event', 'conversion', {
-      send_to: 'AW-17898687645/IwwNCPiBzfUbEJ2Z4dZC',
+      send_to: 'AW-17985942356/mF8GCIbql4EcENTmroBD',
       value: 1.0,
       currency: 'EUR',
       event_callback: () => router.push(href),
