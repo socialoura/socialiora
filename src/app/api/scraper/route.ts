@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import { ApifyClient } from 'apify-client';
 
 export async function GET(request: Request) {
   console.log('[scraper] ========== NEW REQUEST ==========');
@@ -36,36 +35,44 @@ export async function GET(request: Request) {
       );
     }
 
-    // Use Apify
-    console.log('[scraper] Step 4: Creating Apify client');
-    const client = new ApifyClient({ token: apiToken });
-    console.log('[scraper] Apify client created successfully');
-
     try {
-      console.log('[scraper] Step 5: Calling Apify actor apify/instagram-profile-scraper');
-      console.log('[scraper] Actor input:', { usernames: [cleanUsername] });
+      console.log('[scraper] Step 4: Calling Apify REST API (run-sync)');
+      const apifyUrl = `https://api.apify.com/v2/acts/apify~instagram-profile-scraper/run-sync-get-dataset-items?token=${apiToken}`;
+      console.log('[scraper] Apify URL:', apifyUrl.replace(apiToken, '[REDACTED]'));
+      console.log('[scraper] Request body:', { usernames: [cleanUsername] });
       
-      const run = await client.actor('apify/instagram-profile-scraper').call({
-        usernames: [cleanUsername],
+      const apifyResponse = await fetch(apifyUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          usernames: [cleanUsername],
+        }),
       });
-      
-      console.log('[scraper] Apify run completed successfully');
-      console.log('[scraper] Run ID:', run.id);
-      console.log('[scraper] Run status:', run.status);
-      console.log('[scraper] Default dataset ID:', run.defaultDatasetId);
 
-      console.log('[scraper] Step 6: Fetching results from dataset');
-      const { items } = await client.dataset(run.defaultDatasetId).listItems();
-      console.log('[scraper] Items fetched. Count:', items?.length || 0);
-      console.log('Données Apify brutes:', items);
+      console.log('[scraper] Apify response status:', apifyResponse.status);
+      console.log('[scraper] Apify response statusText:', apifyResponse.statusText);
 
-      if (!items || items.length === 0) {
-        console.log('[scraper] ERROR: No items found in dataset');
+      if (!apifyResponse.ok) {
+        const errorText = await apifyResponse.text();
+        console.error('[scraper] Apify API error response:', errorText);
+        throw new Error(`Apify API returned ${apifyResponse.status}: ${errorText}`);
+      }
+
+      const data = await apifyResponse.json();
+      console.log('[scraper] Step 5: Apify response received');
+      console.log('[scraper] Response is array:', Array.isArray(data));
+      console.log('[scraper] Response length:', Array.isArray(data) ? data.length : 'N/A');
+      console.log('Données Apify brutes:', data);
+
+      if (!Array.isArray(data) || data.length === 0) {
+        console.log('[scraper] ERROR: No items found in response');
         return NextResponse.json({ error: 'Profile not found' }, { status: 404 });
       }
 
-      const profile = items[0] as Record<string, unknown>;
-      console.log('[scraper] Step 7: Processing profile data');
+      const profile = data[0] as Record<string, unknown>;
+      console.log('[scraper] Step 6: Processing profile data');
       console.log('[scraper] Profile keys:', Object.keys(profile));
       console.log('[scraper] Profile username:', profile.username);
       console.log('[scraper] Profile fullName:', profile.fullName);
@@ -104,7 +111,7 @@ export async function GET(request: Request) {
         };
       });
       
-      console.log('[scraper] Step 8: Extracted posts count:', latestPosts.length);
+      console.log('[scraper] Step 7: Extracted posts count:', latestPosts.length);
 
       const avatarUrl = (profile.profilePicUrlHD as string) || 
                        (profile.profilePicUrl as string) || 
@@ -118,7 +125,7 @@ export async function GET(request: Request) {
         posts: latestPosts,
       };
       
-      console.log('[scraper] Step 9: Returning Apify response');
+      console.log('[scraper] Step 8: Returning Apify response');
       console.log('[scraper] Response summary:');
       console.log('[scraper] - username:', response.username);
       console.log('[scraper] - fullName:', response.fullName);
