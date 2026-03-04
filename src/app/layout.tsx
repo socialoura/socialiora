@@ -35,27 +35,24 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://api.stripe.com" />
-        {/* Google Ads Global Site Tag — ID from NEXT_PUBLIC_GA_AW_ID */}
-        {GA_AW_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_AW_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script
-              id="google-ads-gtag"
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${GA_AW_ID}');
-                `,
-              }}
-            />
-          </>
-        )}
+        {/* Google Ads Global Site Tag */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_AW_ID || 'AW-17979730701'}`}
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-ads-gtag"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              ${GA_AW_ID ? `gtag('config', '${GA_AW_ID}');` : ''}
+              gtag('config', 'AW-17979730701');
+            `,
+          }}
+        />
         <Script
           id="theme-init"
           strategy="beforeInteractive"

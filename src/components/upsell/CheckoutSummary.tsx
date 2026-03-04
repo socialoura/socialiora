@@ -6,7 +6,9 @@ import { Mail, Loader2, Lock, ArrowLeft, CheckCircle2, ShieldCheck } from 'lucid
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import StripeProvider from '@/components/StripeProvider';
 import useUpsellStore from '@/store/useUpsellStore';
-import { trackGoogleAdsPurchase } from '@/lib/gtag';
+import { trackFunnelPurchase } from '@/lib/gtag';
+import { type Language } from '@/i18n/config';
+import { getUpsellTranslations } from '@/i18n/upsell';
 
 interface CheckoutPaymentFormProps {
   amount: number;
@@ -15,9 +17,16 @@ interface CheckoutPaymentFormProps {
   acceptedTerms: boolean;
   onSuccess?: () => void;
   onPaymentIntentId?: (id: string) => void;
+  i18n: {
+    paymentError: string;
+    secureConnect: string;
+    processing: string;
+    pay: string;
+    encryptedPayment: string;
+  };
 }
 
-function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymentIntentId }: CheckoutPaymentFormProps) {
+function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymentIntentId, i18n }: CheckoutPaymentFormProps) {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -41,7 +50,7 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
     });
 
     if (error) {
-      setPaymentError(error.message || 'Une erreur est survenue lors du paiement.');
+      setPaymentError(error.message || i18n.paymentError);
       setIsProcessing(false);
       return;
     }
@@ -60,7 +69,7 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
           <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-gray-900 z-10">
             <div className="text-center flex flex-col items-center">
               <Loader2 className="animate-spin h-8 w-8 text-pink-500 mb-3" />
-              <p className="text-sm text-gray-400 font-medium">Connexion sécurisée en cours...</p>
+              <p className="text-sm text-gray-400 font-medium">{i18n.secureConnect}</p>
             </div>
           </div>
         )}
@@ -92,12 +101,12 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
         {isProcessing ? (
           <>
             <Loader2 className="w-6 h-6 animate-spin relative z-10" />
-            <span className="relative z-10">Traitement en cours...</span>
+            <span className="relative z-10">{i18n.processing}</span>
           </>
         ) : (
           <>
             <Lock className="w-5 h-5 relative z-10 group-hover:-translate-y-0.5 transition-transform" />
-            <span className="relative z-10">Payer {(amount / 100).toFixed(2)} €</span>
+            <span className="relative z-10">{i18n.pay.replace('{amount}', (amount / 100).toFixed(2))}</span>
           </>
         )}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -105,13 +114,18 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
 
       <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
         <ShieldCheck className="w-4 h-4 text-emerald-500" />
-        <span>Paiement chiffré et sécurisé par Stripe</span>
+        <span>{i18n.encryptedPayment}</span>
       </div>
     </form>
   );
 }
 
-export default function CheckoutSummary() {
+interface CheckoutSummaryProps {
+  lang: Language;
+}
+
+export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
+  const t = getUpsellTranslations(lang);
   const {
     selectedServices,
     selectedPostsByService,
@@ -134,12 +148,7 @@ export default function CheckoutSummary() {
   const [orderSaved, setOrderSaved] = useState(false);
   const paymentIntentIdRef = useRef<string | null>(null);
 
-  const serviceLabelMap: Record<string, string> = {
-    followers: 'abonnés',
-    likes: 'likes',
-    views: 'vues',
-    'story-views': 'vues de story',
-  };
+  const serviceLabelMap = t.checkout.serviceLabels;
 
   const services = Object.values(selectedServices || {});
   const fallbackServices = selectedService
@@ -168,12 +177,12 @@ export default function CheckoutSummary() {
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(data.error || 'Impossible de créer le paiement Stripe');
+          throw new Error(data.error || t.checkout.stripeError);
         }
 
         setClientSecret(data.clientSecret);
       } catch (error) {
-        const message = error instanceof Error ? error.message : 'Erreur de paiement Stripe';
+        const message = error instanceof Error ? error.message : t.checkout.stripeError;
         setPaymentInitError(message);
       } finally {
         setIsPaymentLoading(false);
@@ -192,7 +201,7 @@ export default function CheckoutSummary() {
         className="inline-flex items-center gap-2 text-gray-400 hover:text-pink-400 mb-8 transition-colors duration-200 text-sm font-medium"
       >
         <ArrowLeft className="w-4 h-4" />
-        Retour à la sélection
+        {t.checkout.backToSelection}
       </button>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -212,7 +221,7 @@ export default function CheckoutSummary() {
                 />
               </div>
               <div>
-                <p className="text-sm text-gray-400 font-medium">Commande pour</p>
+                <p className="text-sm text-gray-400 font-medium">{t.checkout.orderFor}</p>
                 <div className="flex items-center gap-1.5 mt-0.5">
                   <h3 className="text-xl font-bold text-white tracking-tight">@{username}</h3>
                   <CheckCircle2 className="w-5 h-5 text-pink-500" />
@@ -221,7 +230,7 @@ export default function CheckoutSummary() {
             </div>
 
             <div className="p-6 space-y-4">
-              <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Détail des services</h4>
+              <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">{t.checkout.serviceDetails}</h4>
               
               {activeServices.map((service) => {
                 const label = serviceLabelMap[service.type];
@@ -234,7 +243,7 @@ export default function CheckoutSummary() {
                       <span className="font-bold text-white text-lg block">{service.quantity.toLocaleString()} {label}</span>
                       {isDistributable && selectedPosts.length > 0 && (
                         <span className="text-xs font-medium text-pink-400 mt-1 inline-block bg-pink-500/10 px-2 py-0.5 rounded-full">
-                          Sur {selectedPosts.length} publication{selectedPosts.length > 1 ? 's' : ''}
+                          {t.checkout.onPosts.replace('{count}', String(selectedPosts.length))}
                         </span>
                       )}
                     </div>
@@ -247,7 +256,7 @@ export default function CheckoutSummary() {
             <div className="p-6 bg-gradient-to-br from-gray-900 to-gray-950 border-t border-gray-800">
               <div className="flex justify-between items-end">
                 <div>
-                  <p className="text-sm text-gray-400 font-medium mb-1">Montant total</p>
+                  <p className="text-sm text-gray-400 font-medium mb-1">{t.checkout.totalAmount}</p>
                   <p className="text-sm text-gray-500 line-through">{oldPrice} €</p>
                 </div>
                 <div className="text-right">
@@ -260,15 +269,10 @@ export default function CheckoutSummary() {
           <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 shadow-2xl">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-pink-500" />
-              Garanties incluses
+              {t.checkout.guarantees}
             </h4>
             <ul className="space-y-3">
-              {[
-                "Livraison 100% sécurisée",
-                "Comptes réels et actifs",
-                "Aucun mot de passe requis",
-                "Support client 24/7"
-              ].map((text, i) => (
+              {t.checkout.guaranteesList.map((text, i) => (
                 <li key={i} className="flex items-center gap-3 text-sm text-gray-300 font-medium">
                   <div className="w-5 h-5 rounded-full bg-pink-500/20 flex items-center justify-center shrink-0">
                     <CheckCircle2 className="w-3.5 h-3.5 text-pink-400" />
@@ -285,12 +289,12 @@ export default function CheckoutSummary() {
           <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500/5 rounded-full blur-3xl" />
             
-            <h2 className="text-2xl font-black text-white tracking-tight mb-8 relative z-10">Paiement sécurisé</h2>
+            <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-6 sm:mb-8 relative z-10">{t.checkout.securePayment}</h2>
 
             <div className="space-y-8 relative z-10">
               {/* Email input */}
               <div>
-                <label className="block text-sm font-bold text-gray-300 mb-3 uppercase tracking-wider">Adresse e-mail pour le reçu</label>
+                <label className="block text-sm font-bold text-gray-300 mb-3 uppercase tracking-wider">{t.checkout.emailLabel}</label>
                 <div className="relative group">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Mail className="h-5 w-5 text-gray-500 group-focus-within:text-pink-500 transition-colors" />
@@ -299,7 +303,7 @@ export default function CheckoutSummary() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="votre@email.com"
+                    placeholder={t.checkout.emailPlaceholder}
                     className="block w-full pl-12 pr-4 py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-pink-500/50 focus:border-pink-500 transition-all text-lg font-medium"
                   />
                 </div>
@@ -309,7 +313,7 @@ export default function CheckoutSummary() {
 
               {/* Stripe Elements */}
               <div>
-                <label className="block text-sm font-bold text-gray-300 mb-4 uppercase tracking-wider">Informations de carte</label>
+                <label className="block text-sm font-bold text-gray-300 mb-4 uppercase tracking-wider">{t.checkout.cardInfo}</label>
                 
                 {paymentInitError && (
                   <div className="bg-red-900/20 border border-red-500/30 rounded-xl p-4 mb-4">
@@ -320,7 +324,7 @@ export default function CheckoutSummary() {
                 {isPaymentLoading && (
                   <div className="flex flex-col items-center justify-center py-12 gap-4">
                     <Loader2 className="w-8 h-8 animate-spin text-pink-500" />
-                    <p className="text-gray-400 font-medium">Préparation de l&apos;environnement sécurisé...</p>
+                    <p className="text-gray-400 font-medium">{t.checkout.securePrepare}</p>
                   </div>
                 )}
 
@@ -332,6 +336,13 @@ export default function CheckoutSummary() {
                         currency="eur"
                         email={email}
                         acceptedTerms={acceptedTerms}
+                        i18n={{
+                          paymentError: t.checkout.paymentError,
+                          secureConnect: t.checkout.secureConnect,
+                          processing: t.checkout.processing,
+                          pay: t.checkout.pay,
+                          encryptedPayment: t.checkout.encryptedPayment,
+                        }}
                         onPaymentIntentId={(id) => { paymentIntentIdRef.current = id; }}
                         onSuccess={async () => {
                           if (orderSaved) return;
@@ -402,7 +413,7 @@ export default function CheckoutSummary() {
                               console.error('Failed to send Discord notification:', discordErr);
                             }
 
-                            trackGoogleAdsPurchase({
+                            trackFunnelPurchase({
                               value: totalPrice,
                               currency: 'EUR',
                               transactionId: String(orderResult.orderId || paymentIntentIdRef.current || 'unknown'),
@@ -426,10 +437,10 @@ export default function CheckoutSummary() {
                   className="mt-0.5 h-5 w-5 text-pink-500 focus:ring-pink-500/50 border-gray-600 rounded bg-gray-900 shrink-0"
                 />
                 <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors leading-relaxed">
-                  J&apos;accepte les{' '}
-                  <a href="#" className="text-white hover:text-pink-400 underline decoration-gray-600 hover:decoration-pink-400 transition-all font-medium">conditions générales de vente</a>{' '}
-                  et la{' '}
-                  <a href="#" className="text-white hover:text-pink-400 underline decoration-gray-600 hover:decoration-pink-400 transition-all font-medium">politique de confidentialité</a>.
+                  {t.checkout.termsAccept}{' '}
+                  <a href="#" className="text-white hover:text-pink-400 underline decoration-gray-600 hover:decoration-pink-400 transition-all font-medium">{t.checkout.termsLink}</a>{' '}
+                  {t.checkout.andThe}{' '}
+                  <a href="#" className="text-white hover:text-pink-400 underline decoration-gray-600 hover:decoration-pink-400 transition-all font-medium">{t.checkout.privacyLink}</a>.
                 </span>
               </label>
 

@@ -172,6 +172,16 @@ export default function AdminDashboard() {
   const [funnelMessage, setFunnelMessage] = useState('');
   const [updatingOrderId, setUpdatingOrderId] = useState<number | null>(null);
 
+  // Funnel defaults states
+  const [funnelDefaults, setFunnelDefaults] = useState<Record<string, number>>({
+    followers: 1,
+    likes: 1,
+    views: 0,
+    'story-views': 0,
+  });
+  const [isSavingDefaults, setIsSavingDefaults] = useState(false);
+  const [defaultsMessage, setDefaultsMessage] = useState('');
+
   // Promo codes states
   const [promoCodes, setPromoCodes] = useState<PromoCode[]>([]);
   const [showPromoForm, setShowPromoForm] = useState(false);
@@ -248,6 +258,7 @@ export default function AdminDashboard() {
       fetchPromoBarConfig();
     } else if (activeTab === 'funnel') {
       fetchFunnelPricing();
+      fetchFunnelDefaults();
     } else {
       setIsLoading(false);
     }
@@ -420,6 +431,51 @@ export default function AdminDashboard() {
       console.error('Error fetching funnel pricing:', error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const fetchFunnelDefaults = async () => {
+    setIsLoading(true);
+    try {
+      const token = localStorage.getItem('adminToken');
+      const response = await fetch('/api/admin/funnel-defaults', {
+        headers: { 'Authorization': `Bearer ${token}` },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setFunnelDefaults(data);
+      }
+    } catch (error) {
+      console.error('Error fetching funnel defaults:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const saveFunnelDefaults = async () => {
+    setIsSavingDefaults(true);
+    setDefaultsMessage('');
+    try {
+      const token = localStorage.getItem('adminToken');
+      const response = await fetch('/api/admin/funnel-defaults', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(funnelDefaults),
+      });
+      if (response.ok) {
+        setDefaultsMessage('Sélections par défaut enregistrées avec succès !');
+      } else {
+        setDefaultsMessage('Échec de l\'enregistrement.');
+      }
+    } catch (error) {
+      console.error('Error saving funnel defaults:', error);
+      setDefaultsMessage('Erreur lors de l\'enregistrement.');
+    } finally {
+      setIsSavingDefaults(false);
+      setTimeout(() => setDefaultsMessage(''), 3000);
     }
   };
 
@@ -3238,6 +3294,111 @@ export default function AdminDashboard() {
                 })}
               </div>
             )}
+
+            {/* Default Selections Section */}
+            <div className="mt-8 bg-gradient-to-br from-purple-50 to-fuchsia-50 dark:from-purple-900/10 dark:to-fuchsia-900/10 rounded-2xl p-8 border border-purple-200 dark:border-purple-800">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-gradient-to-br from-purple-500 to-fuchsia-600 rounded-xl shadow-lg">
+                    <Settings className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Sélections par défaut</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-0.5">Configurez quel pack est sélectionné par défaut pour chaque service</p>
+                  </div>
+                </div>
+                <button
+                  onClick={saveFunnelDefaults}
+                  disabled={isSavingDefaults}
+                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white rounded-xl hover:from-purple-700 hover:to-fuchsia-700 disabled:opacity-50 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <Save className="w-5 h-5" />
+                  {isSavingDefaults ? 'Enregistrement...' : 'Enregistrer'}
+                </button>
+              </div>
+
+              {defaultsMessage && (
+                <div className={`mb-6 p-3 rounded-xl text-sm font-medium ${defaultsMessage.includes('succès') ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-800'}`}>
+                  {defaultsMessage}
+                </div>
+              )}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {['followers', 'likes', 'views', 'story-views'].map((serviceType) => {
+                  const labels: Record<string, string> = { 
+                    followers: 'Abonnés', 
+                    likes: 'Likes', 
+                    views: 'Vues', 
+                    'story-views': 'Vues de story' 
+                  };
+                  const tiers = funnelPricing[serviceType] || [];
+                  const currentDefault = funnelDefaults[serviceType] || 0;
+
+                  return (
+                    <div key={serviceType} className="bg-white dark:bg-gray-800 rounded-xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
+                      <h4 className="text-base font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-gradient-to-r from-purple-500 to-fuchsia-500"></div>
+                        {labels[serviceType] || serviceType}
+                      </h4>
+                      
+                      <div className="space-y-2">
+                        <label className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
+                          <input
+                            type="radio"
+                            name={`default-${serviceType}`}
+                            checked={currentDefault === 0}
+                            onChange={() => setFunnelDefaults(prev => ({ ...prev, [serviceType]: 0 }))}
+                            className="w-4 h-4 text-purple-600 focus:ring-purple-500"
+                          />
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                            Aucune sélection (0)
+                          </span>
+                        </label>
+
+                        {tiers.map((tier, idx) => (
+                          <label key={idx} className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700/50 cursor-pointer transition-colors">
+                            <input
+                              type="radio"
+                              name={`default-${serviceType}`}
+                              checked={currentDefault === idx + 1}
+                              onChange={() => setFunnelDefaults(prev => ({ ...prev, [serviceType]: idx + 1 }))}
+                              className="w-4 h-4 text-purple-600 focus:ring-purple-500"
+                            />
+                            <div className="flex-1 flex items-center justify-between">
+                              <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                Pack {idx + 1}: {tier.qty.toLocaleString()} {labels[serviceType]?.toLowerCase()}
+                              </span>
+                              <span className="text-sm font-bold text-purple-600 dark:text-purple-400">
+                                {tier.price.toFixed(2)} €
+                              </span>
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+
+                      {tiers.length === 0 && (
+                        <p className="text-xs text-gray-400 italic mt-2">
+                          Configurez d&apos;abord les tiers de pricing ci-dessus
+                        </p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl">
+                <div className="flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mt-0.5" />
+                  <div className="text-sm text-blue-800 dark:text-blue-300">
+                    <p className="font-semibold mb-1">Comment ça marche ?</p>
+                    <p className="text-blue-700 dark:text-blue-400">
+                      L&apos;indice sélectionné correspond au tier qui sera pré-sélectionné quand le client arrive sur l&apos;étape 2 du tunnel. 
+                      <strong> 0 = aucune sélection</strong>, <strong>1 = premier pack</strong>, <strong>2 = deuxième pack</strong>, etc.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
 

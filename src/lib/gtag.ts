@@ -43,3 +43,30 @@ export function trackGoogleAdsPurchase(orderData: {
     transaction_id: orderData.transactionId,
   });
 }
+
+// ─── Tunnel-specific Google Ads conversion (route /instagram) ───
+// Hardcoded IDs — isolated from classic product pages
+const FUNNEL_AW_ID = 'AW-17979730701';
+const FUNNEL_CONVERSION_LABEL = 'CWbfCKyT4oIcEI3Ws_1C';
+
+/**
+ * Track a Google Ads Purchase conversion event for the /instagram funnel ONLY.
+ * Uses dedicated AW-ID and label so it never interferes with other product tracking.
+ */
+export function trackFunnelPurchase(orderData: {
+  value: number;
+  currency: string;
+  transactionId: string;
+}) {
+  if (typeof window === 'undefined' || !window.gtag) {
+    console.warn('[gtag] gtag not loaded — skipping funnel conversion tracking.');
+    return;
+  }
+
+  window.gtag('event', 'conversion', {
+    send_to: `${FUNNEL_AW_ID}/${FUNNEL_CONVERSION_LABEL}`,
+    value: orderData.value,
+    currency: orderData.currency.toUpperCase(),
+    transaction_id: orderData.transactionId,
+  });
+}

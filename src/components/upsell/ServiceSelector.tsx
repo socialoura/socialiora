@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { X, UserPlus, Heart, Eye, Tv, Sparkles, ArrowRight } from 'lucide-react';
 import useUpsellStore, { ServiceType } from '@/store/useUpsellStore';
+import { type Language } from '@/i18n/config';
+import { getUpsellTranslations } from '@/i18n/upsell';
 
 type PricingTier = {
   qty: number;
@@ -51,16 +53,21 @@ type ServiceConfig = {
   pricing: PricingTier[];
 };
 
-function buildServices(pricingData: Record<string, PricingTier[]>): ServiceConfig[] {
+function buildServices(pricingData: Record<string, PricingTier[]>, svcT: { followers: string; likes: string; views: string; storyViews: string }): ServiceConfig[] {
   return [
-    { type: 'followers', label: 'Abonnés', icon: UserPlus, pricing: pricingData.followers || DEFAULT_PRICING.followers },
-    { type: 'likes', label: 'Likes', icon: Heart, pricing: pricingData.likes || DEFAULT_PRICING.likes },
-    { type: 'views', label: 'Vues', icon: Eye, pricing: pricingData.views || DEFAULT_PRICING.views },
-    { type: 'story-views', label: 'Vues de story', icon: Tv, pricing: pricingData['story-views'] || DEFAULT_PRICING['story-views'] },
+    { type: 'followers', label: svcT.followers, icon: UserPlus, pricing: pricingData.followers || DEFAULT_PRICING.followers },
+    { type: 'likes', label: svcT.likes, icon: Heart, pricing: pricingData.likes || DEFAULT_PRICING.likes },
+    { type: 'views', label: svcT.views, icon: Eye, pricing: pricingData.views || DEFAULT_PRICING.views },
+    { type: 'story-views', label: svcT.storyViews, icon: Tv, pricing: pricingData['story-views'] || DEFAULT_PRICING['story-views'] },
   ];
 }
 
-export default function ServiceSelector() {
+interface ServiceSelectorProps {
+  lang: Language;
+}
+
+export default function ServiceSelector({ lang }: ServiceSelectorProps) {
+  const t = getUpsellTranslations(lang);
   const {
     username,
     avatarUrl,
@@ -71,25 +78,9 @@ export default function ServiceSelector() {
     resetProfile,
   } = useUpsellStore();
 
-  const [SERVICES, setServices] = useState<ServiceConfig[]>(() => buildServices(DEFAULT_PRICING));
+  const [SERVICES, setServices] = useState<ServiceConfig[]>(() => buildServices(DEFAULT_PRICING, t.service));
   const [, setPricingLoaded] = useState(false);
-
-  useEffect(() => {
-    const fetchPricing = async () => {
-      try {
-        const res = await fetch('/api/funnel-pricing');
-        if (res.ok) {
-          const data = await res.json();
-          setServices(buildServices(data));
-        }
-      } catch (err) {
-        console.error('Failed to fetch funnel pricing, using defaults:', err);
-      } finally {
-        setPricingLoaded(true);
-      }
-    };
-    fetchPricing();
-  }, []);
+  const [defaultsLoaded, setDefaultsLoaded] = useState(false);
 
   const [sliderValues, setSliderValues] = useState<Record<string, number>>({
     followers: 1,
@@ -97,6 +88,55 @@ export default function ServiceSelector() {
     views: 0,
     'story-views': 0,
   });
+
+  useEffect(() => {
+    const fetchPricingAndDefaults = async () => {
+      try {
+        // Fetch pricing
+        const pricingRes = await fetch('/api/funnel-pricing');
+        let pricingData = DEFAULT_PRICING;
+        if (pricingRes.ok) {
+          pricingData = await pricingRes.json();
+          setServices(buildServices(pricingData, t.service));
+        }
+
+        // Fetch defaults
+        const defaultsRes = await fetch('/api/funnel-defaults');
+        if (defaultsRes.ok) {
+          const defaultsData = await defaultsRes.json();
+          setSliderValues(defaultsData);
+          setDefaultsLoaded(true);
+
+          // Auto-add services to cart based on defaults
+          const { addServiceToCart } = useUpsellStore.getState();
+          const builtServices = buildServices(pricingData, t.service);
+          
+          Object.entries(defaultsData).forEach(([serviceType, tierIndex]) => {
+            if (typeof tierIndex === 'number' && tierIndex > 0) {
+              const service = builtServices.find(s => s.type === serviceType);
+              if (service && service.pricing[tierIndex]) {
+                const tier = service.pricing[tierIndex];
+                addServiceToCart(serviceType, tier.qty, tier.price);
+                
+                // Set primary service (not story-views)
+                if (serviceType !== 'story-views') {
+                  setSelectedService(serviceType as ServiceType);
+                  setQuantity(tier.qty);
+                  setPrice(tier.price);
+                }
+              }
+            }
+          });
+        }
+      } catch (err) {
+        console.error('Failed to fetch funnel config:', err);
+      } finally {
+        setPricingLoaded(true);
+        if (!defaultsLoaded) setDefaultsLoaded(true);
+      }
+    };
+    fetchPricingAndDefaults();
+  }, []);
 
   const handleSliderChange = (service: ServiceConfig, index: number) => {
     const tier = service.pricing[index];
@@ -162,17 +202,17 @@ export default function ServiceSelector() {
           className="text-sm font-medium text-gray-400 hover:text-pink-400 transition-colors flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-pink-500/10"
         >
           <X className="w-4 h-4" />
-          Changer de profil
+          {t.service.changeProfile}
         </button>
       </div>
 
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-black text-white tracking-tight mb-2">Sélectionnez vos services</h2>
-        <p className="text-gray-400">Ajustez les curseurs pour composer votre pack sur-mesure</p>
+        <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight mb-1 sm:mb-2">{t.service.selectServices}</h2>
+        <p className="text-sm sm:text-base text-gray-400">{t.service.selectServicesDesc}</p>
       </div>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pb-28 sm:pb-32">
         {SERVICES.map((service, i) => {
           const tier = getCurrentTier(service);
           const sliderIndex = sliderValues[service.type];
@@ -186,7 +226,7 @@ export default function ServiceSelector() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
-              className={`relative overflow-hidden rounded-2xl p-6 sm:p-8 transition-all duration-500 ${
+              className={`relative overflow-hidden rounded-2xl p-4 sm:p-8 transition-all duration-500 ${
                 isActive
                   ? 'bg-gray-800/80 backdrop-blur-xl border border-pink-500/50 shadow-2xl shadow-pink-500/10'
                   : 'bg-gray-900/50 backdrop-blur-xl border border-gray-800 hover:border-gray-700'
@@ -212,7 +252,7 @@ export default function ServiceSelector() {
                         {service.label}
                       </h3>
                       <p className={`text-sm font-medium transition-colors duration-300 ${isActive ? 'text-pink-400' : 'text-gray-500'}`}>
-                        {tier.qty.toLocaleString()} sélectionnés
+                        {tier.qty.toLocaleString()} {t.service.selected}
                       </p>
                     </div>
                   </div>
@@ -232,7 +272,7 @@ export default function ServiceSelector() {
                 {isActive && tier.bonus > 0 && (
                   <div className="inline-flex items-center self-start gap-1.5 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs font-bold text-green-400">
                     <Sparkles className="w-3.5 h-3.5" />
-                    +{tier.bonus.toLocaleString()} bonus offerts
+                    +{tier.bonus.toLocaleString()} {t.service.bonusFree}
                   </div>
                 )}
 
@@ -284,10 +324,10 @@ export default function ServiceSelector() {
 
       {/* Solid Sticky Footer */}
       <div className="fixed bottom-0 left-0 right-0 bg-gray-900 bg-opacity-100 border-t border-gray-800 z-50">
-        <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3">
           <div className="flex items-center gap-6 w-full sm:w-auto">
             <div>
-              <p className="text-sm font-medium text-gray-400 mb-0.5">Total de votre commande</p>
+              <p className="text-xs sm:text-sm font-medium text-gray-400 mb-0.5">{t.service.orderTotal}</p>
               <div className="flex items-baseline gap-3">
                 <span className="text-2xl font-black text-white tracking-tight">{totalPrice.toFixed(2)} €</span>
                 {savings > 0 && (
@@ -317,7 +357,7 @@ export default function ServiceSelector() {
             }}
             className="w-full sm:w-auto relative overflow-hidden rounded-xl bg-gradient-to-r from-yellow-500 via-pink-500 to-purple-600 px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/40 transition-all duration-300 uppercase tracking-wide group disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            <span className="relative z-10">Continuer l&apos;achat</span>
+            <span className="relative z-10">{t.service.continueOrder}</span>
             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>

@@ -1,11 +1,14 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import useUpsellStore from '@/store/useUpsellStore';
 import ProfileSearchInput from '@/components/upsell/ProfileSearchInput';
 import ServiceSelector from '@/components/upsell/ServiceSelector';
 import PostGrid from '@/components/upsell/PostGrid';
 import CheckoutSummary from '@/components/upsell/CheckoutSummary';
+import { type Language } from '@/i18n/config';
+import { getUpsellTranslations } from '@/i18n/upsell';
 
 const stepVariants = {
   initial: { opacity: 0, y: 20 },
@@ -13,15 +16,18 @@ const stepVariants = {
   exit: { opacity: 0, y: -20 },
 };
 
-const steps = [
-  { id: 0, title: 'Profil' },
-  { id: 1, title: 'Services' },
-  { id: 2, title: 'Publications' },
-  { id: 3, title: 'Paiement' },
-];
-
 export default function UpsellPage() {
+  const params = useParams();
+  const lang = (params?.lang as Language) || 'fr';
+  const t = getUpsellTranslations(lang);
   const { currentStep } = useUpsellStore();
+
+  const steps = [
+    { id: 0, title: t.steps.profile },
+    { id: 1, title: t.steps.services },
+    { id: 2, title: t.steps.posts },
+    { id: 3, title: t.steps.payment },
+  ];
 
   return (
     <div className="relative isolate min-h-full bg-gray-950 font-sans selection:bg-pink-500/30">
@@ -35,7 +41,7 @@ export default function UpsellPage() {
 
       {/* Progress Header */}
       <header className="sticky top-0 z-40 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/60">
-        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-center">
           <div className="hidden sm:flex items-center gap-3">
             {steps.map((step, index) => (
               <div key={step.id} className="flex items-center gap-3">
@@ -65,35 +71,35 @@ export default function UpsellPage() {
           {/* Mobile Progress */}
           <div className="flex sm:hidden items-center justify-between w-full">
             <span className="text-sm font-medium text-white">{steps[currentStep]?.title}</span>
-            <span className="text-xs font-medium text-gray-500">Étape {currentStep + 1}/4</span>
+            <span className="text-xs font-medium text-gray-500">{t.stepOf.replace('{current}', String(currentStep + 1))}</span>
           </div>
         </div>
       </header>
 
       {/* Main Content Area */}
-      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20 min-h-[calc(100vh-64px)] flex flex-col">
+      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-20 min-h-[calc(100vh-64px)] flex flex-col">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div key="step-0" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
-              <ProfileSearchInput />
+              <ProfileSearchInput lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 1 && (
             <motion.div key="step-1" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
-              <ServiceSelector />
+              <ServiceSelector lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 2 && (
             <motion.div key="step-2" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
-              <PostGrid />
+              <PostGrid lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 3 && (
             <motion.div key="step-3" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
-              <CheckoutSummary />
+              <CheckoutSummary lang={lang} />
             </motion.div>
           )}
         </AnimatePresence>

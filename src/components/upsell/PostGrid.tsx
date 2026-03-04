@@ -4,8 +4,15 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, ArrowLeft, ArrowRight, Heart, Eye } from 'lucide-react';
 import useUpsellStore from '@/store/useUpsellStore';
+import { type Language } from '@/i18n/config';
+import { getUpsellTranslations } from '@/i18n/upsell';
 
-export default function PostGrid() {
+interface PostGridProps {
+  lang: Language;
+}
+
+export default function PostGrid({ lang }: PostGridProps) {
+  const t = getUpsellTranslations(lang);
   const {
     posts,
     selectedPostsByService,
@@ -24,13 +31,13 @@ export default function PostGrid() {
 
   if (!currentServiceData) return null;
 
-  const serviceLabel = currentDistributionService === 'likes' ? 'Likes' : 'Vues';
+  const serviceLabel = currentDistributionService === 'likes' ? t.service.likes : t.service.views;
   const ServiceIcon = currentDistributionService === 'likes' ? Heart : Eye;
   const currentSelectedPosts = selectedPostsByService[currentDistributionService] || [];
   const hasSelectedPosts = currentSelectedPosts.length > 0;
 
   return (
-    <div className="w-full max-w-5xl mx-auto flex flex-col h-full pb-32">
+    <div className="w-full max-w-5xl mx-auto flex flex-col h-full pb-28 sm:pb-32">
       {/* Header Area */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
         <div>
@@ -39,14 +46,14 @@ export default function PostGrid() {
             className="inline-flex items-center gap-2 text-gray-400 hover:text-pink-400 mb-4 transition-colors duration-200 text-sm font-medium"
           >
             <ArrowLeft className="w-4 h-4" />
-            Retour aux services
+            {t.grid.backToServices}
           </button>
           
-          <h2 className="text-3xl font-black text-white tracking-tight mb-2 flex items-center gap-3">
-            Où envoyer vos {serviceLabel.toLowerCase()} ?
+          <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight mb-1 sm:mb-2 flex items-center gap-3">
+            {t.grid.whereToSend.replace('{service}', serviceLabel.toLowerCase())}
           </h2>
-          <p className="text-gray-400">
-            Sélectionnez les publications sur lesquelles répartir votre commande
+          <p className="text-sm sm:text-base text-gray-400">
+            {t.grid.selectPosts}
           </p>
         </div>
 
@@ -55,7 +62,7 @@ export default function PostGrid() {
             <ServiceIcon className="w-6 h-6 text-white" />
           </div>
           <div>
-            <p className="text-sm text-gray-400 font-medium">À répartir</p>
+            <p className="text-xs sm:text-sm text-gray-400 font-medium">{t.grid.toDistribute}</p>
             <p className="text-xl font-bold text-white tracking-tight">
               {currentServiceData.quantity.toLocaleString()} <span className="text-pink-400">{serviceLabel}</span>
             </p>
@@ -66,7 +73,7 @@ export default function PostGrid() {
       {/* Grid Status Bar */}
       <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-800/50">
         <p className="text-sm font-medium text-gray-300">
-          <span className="text-white font-bold">{posts.length}</span> publications disponibles
+          <span className="text-white font-bold">{posts.length}</span> {t.grid.postsAvailable}
         </p>
         <AnimatePresence mode="popLayout">
           {hasSelectedPosts && (
@@ -77,14 +84,14 @@ export default function PostGrid() {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-sm font-semibold"
             >
               <CheckCircle className="w-4 h-4" />
-              {currentSelectedPosts.length} sélectionnée{currentSelectedPosts.length > 1 ? 's' : ''}
+              {t.grid.selectedCount.replace('{count}', String(currentSelectedPosts.length))}
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
       {/* Posts Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4 md:gap-6">
         {posts.map((post, index) => {
           const isSelected = currentSelectedPosts.includes(post.id);
           const dist = distribution.find((d) => d.postId === post.id);
@@ -153,7 +160,7 @@ export default function PostGrid() {
                     className="absolute bottom-3 left-3 right-3"
                   >
                     <div className="bg-gray-900/90 backdrop-blur-md rounded-xl py-2 px-3 text-center border border-gray-700/50 shadow-lg">
-                      <span className="text-pink-400 text-sm font-black tracking-tight">
+                      <span className="text-pink-400 text-[11px] sm:text-sm font-black tracking-tight">
                         +{dist.amount} {serviceLabel}
                       </span>
                     </div>
@@ -173,14 +180,14 @@ export default function PostGrid() {
               <ServiceIcon className={`w-6 h-6 ${hasSelectedPosts ? 'text-pink-400' : 'text-gray-500'}`} />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-400 mb-0.5">Répartition automatique</p>
+              <p className="text-xs sm:text-sm font-medium text-gray-400 mb-0.5">{t.grid.autoDistribution}</p>
               {hasSelectedPosts ? (
-                <p className="text-lg font-bold text-white">
-                  {Math.floor(currentServiceData.quantity / currentSelectedPosts.length).toLocaleString()} {serviceLabel} / post
+                <p className="text-base sm:text-lg font-bold text-white">
+                  {t.grid.perPost.replace('{amount}', Math.floor(currentServiceData.quantity / currentSelectedPosts.length).toLocaleString()).replace('{service}', serviceLabel)}
                 </p>
               ) : (
-                <p className="text-lg font-medium text-gray-500">
-                  Sélectionnez au moins 1 publication
+                <p className="text-sm sm:text-lg font-medium text-gray-500">
+                  {t.grid.selectAtLeast}
                 </p>
               )}
             </div>
@@ -191,7 +198,7 @@ export default function PostGrid() {
             onClick={() => hasSelectedPosts && nextStep()}
             className="w-full sm:w-auto relative overflow-hidden rounded-xl bg-gradient-to-r from-yellow-500 via-pink-500 to-purple-600 px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/40 transition-all duration-300 uppercase tracking-wide group disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            <span className="relative z-10">Valider la sélection</span>
+            <span className="relative z-10">{t.grid.validateSelection}</span>
             <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </button>
