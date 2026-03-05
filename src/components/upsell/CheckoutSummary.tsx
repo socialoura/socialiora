@@ -17,8 +17,10 @@ interface CheckoutPaymentFormProps {
   currency: string;
   email: string;
   acceptedTerms: boolean;
+  lang: string;
   onSuccess?: () => void;
   onPaymentIntentId?: (id: string) => void;
+  onBeforePayment?: () => void;
   i18n: {
     paymentError: string;
     secureConnect: string;
@@ -28,7 +30,7 @@ interface CheckoutPaymentFormProps {
   };
 }
 
-function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymentIntentId, i18n }: CheckoutPaymentFormProps) {
+function CheckoutPaymentForm({ amount, email, acceptedTerms, lang, onSuccess, onPaymentIntentId, onBeforePayment, i18n }: CheckoutPaymentFormProps) {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -43,11 +45,12 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
     setPaymentError(null);
 
     posthog.capture('step4_payment_attempted', { payment_method_type: 'card' });
+    onBeforePayment?.();
 
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/payment-success`,
+        return_url: `${window.location.origin}/${lang}/payment-success`,
         receipt_email: email,
       },
       redirect: 'if_required',
@@ -74,11 +77,12 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
   const handleExpressConfirm = async () => {
     if (!stripe || !elements) return;
     posthog.capture('step4_payment_attempted', { payment_method_type: 'express' });
+    onBeforePayment?.();
 
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `${window.location.origin}/payment-success`,
+        return_url: `${window.location.origin}/${lang}/payment-success`,
         receipt_email: email,
       },
       redirect: 'if_required',
@@ -231,7 +235,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
         const response = await fetch('/api/create-payment-intent', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ amount: amountInCents, currency: 'eur' }),
+          body: JSON.stringify({ amount: amountInCents, currency: 'eur', email: email || undefined }),
         });
 
         const data = await response.json();
@@ -397,6 +401,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                         currency="eur"
                         email={email}
                         acceptedTerms={acceptedTerms}
+                        lang={lang}
                         i18n={{
                           paymentError: t.checkout.paymentError,
                           secureConnect: t.checkout.secureConnect,
@@ -405,6 +410,34 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                           encryptedPayment: t.checkout.encryptedPayment,
                         }}
                         onPaymentIntentId={(id) => { paymentIntentIdRef.current = id; }}
+                        onBeforePayment={() => {
+                          // Save order data to sessionStorage for redirect fallback (Apple Pay)
+                          try {
+                            const { posts, selectedPostsByService: spbs } = useUpsellStore.getState();
+                            const postsMap = Object.fromEntries(posts.map(p => [p.id, p]));
+                            const funnelServices = activeServices.map((svc) => {
+                              const isD = svc.type === 'likes' || svc.type === 'views';
+                              const pIds = spbs[svc.type] || [];
+                              const per = pIds.length > 0 ? Math.floor(svc.quantity / pIds.length) : 0;
+                              const rem = pIds.length > 0 ? svc.quantity % pIds.length : 0;
+                              return {
+                                type: svc.type, quantity: svc.quantity, price: svc.price,
+                                ...(isD && pIds.length > 0 ? {
+                                  distribution: pIds.map((pid, i) => ({
+                                    postId: pid, shortcode: postsMap[pid]?.shortCode || '',
+                                    imageUrl: postsMap[pid]?.imageUrl || '',
+                                    quantityAllocated: per + (i < rem ? 1 : 0),
+                                  })),
+                                } : {}),
+                              };
+                            });
+                            sessionStorage.setItem('pendingOrder', JSON.stringify({
+                              username, email, avatarUrl, totalPrice, lang,
+                              funnelData: { username, avatarUrl, services: funnelServices },
+                              funnelServices,
+                            }));
+                          } catch (e) { console.error('Failed to save pending order:', e); }
+                        }}
                         onSuccess={async () => {
                           if (orderSaved) return;
                           setOrderSaved(true);
@@ -494,6 +527,9 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                           } catch (err) {
                             console.error('Failed to save order:', err);
                           }
+
+                          // Redirect to success page
+                          window.location.href = `/${lang}/payment-success`;
                         }}
                       />
                     </StripeProvider>

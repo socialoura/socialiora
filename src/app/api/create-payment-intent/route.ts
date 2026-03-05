@@ -24,6 +24,7 @@ async function getStripeInstance(): Promise<Stripe> {
 interface CreatePaymentIntentRequest {
   amount: number;
   currency: string;
+  email?: string;
 }
 
 export async function POST(request: NextRequest) {
@@ -79,6 +80,8 @@ export async function POST(request: NextRequest) {
       currency: body.currency.toLowerCase(),
       // Use only payment_method_types to specify card (which includes Apple Pay and Google Pay)
       payment_method_types: ['card'],
+      // Send Stripe receipt to customer email
+      ...(body.email ? { receipt_email: body.email } : {}),
       // Add metadata for tracking (optional)
       metadata: {
         integration_source: 'socialoura',
