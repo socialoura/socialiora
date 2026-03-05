@@ -176,7 +176,7 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Username is required' }, { status: 400 });
     }
 
-    const cleanUsername = username.replace('@', '').trim();
+    const cleanUsername = username.replace('@', '').trim().toLowerCase();
 
     // ── Check cache ──
     const cached = getCached(cleanUsername);
