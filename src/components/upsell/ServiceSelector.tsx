@@ -159,7 +159,12 @@ export default function ServiceSelector({ lang }: ServiceSelectorProps) {
   };
 
   const getCurrentTier = (service: ServiceConfig) => {
-    return service.pricing[sliderValues[service.type]];
+    const index = sliderValues[service.type];
+    // When slider is at 0, return a virtual tier with 0 values
+    if (index === 0) {
+      return { qty: 0, price: 0, oldPrice: 0, bonus: 0 };
+    }
+    return service.pricing[index];
   };
 
   const calculateTotal = () => {
@@ -256,14 +261,14 @@ export default function ServiceSelector({ lang }: ServiceSelectorProps) {
                         {service.label}
                       </h3>
                       <p className={`text-sm font-medium transition-colors duration-300 ${isActive ? 'text-pink-400' : 'text-gray-500'}`}>
-                        {tier.qty.toLocaleString()} {t.service.selected}
+                        {isActive ? `${tier.qty.toLocaleString()} ${t.service.selected}` : '0 ' + t.service.selected}
                       </p>
                     </div>
                   </div>
                   
                   <div className="text-right">
                     <div className={`text-2xl font-black tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-500'}`}>
-                      {tier.price.toFixed(2)} €
+                      {isActive ? tier.price.toFixed(2) : '0.00'} €
                     </div>
                     {isActive && tier.oldPrice > tier.price && (
                       <div className="text-sm font-medium text-gray-500 line-through">
