@@ -37,7 +37,7 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!stripe || !elements || isProcessing || !acceptedTerms) return;
+    if (!stripe || !elements || isProcessing || !acceptedTerms || !email || !email.includes('@')) return;
 
     setIsProcessing(true);
     setPaymentError(null);
@@ -100,7 +100,7 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, onSuccess, onPaymen
 
       <button
         type="submit"
-        disabled={!stripe || !elements || isProcessing || !elementsReady || !acceptedTerms}
+        disabled={!stripe || !elements || isProcessing || !elementsReady || !acceptedTerms || !email || !email.includes('@')}
         className="w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-yellow-500 via-pink-500 to-purple-600 px-8 py-4 text-lg font-black text-white shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/40 transition-all duration-300 uppercase tracking-wide group disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
       >
         {isProcessing ? (
@@ -315,6 +315,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={t.checkout.emailPlaceholder}
+                    required
                     className="block w-full pl-12 pr-4 py-4 bg-gray-900 border border-gray-700 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-pink-500/50 focus:border-pink-500 transition-all text-lg font-medium"
                   />
                 </div>
