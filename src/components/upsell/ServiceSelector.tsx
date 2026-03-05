@@ -286,7 +286,14 @@ export default function ServiceSelector({ lang }: ServiceSelectorProps) {
                 )}
 
                 {/* Slider */}
-                <div className="mt-2">
+                <div 
+                  className="mt-2 select-none touch-none py-4"
+                  style={{ 
+                    WebkitUserSelect: 'none',
+                    WebkitTouchCallout: 'none',
+                    touchAction: 'none'
+                  }}
+                >
                   <div className="relative w-full h-3 bg-gray-800 rounded-full overflow-visible flex items-center">
                     <input
                       type="range"
@@ -295,7 +302,14 @@ export default function ServiceSelector({ lang }: ServiceSelectorProps) {
                       step="1"
                       value={sliderIndex}
                       onChange={(e) => handleSliderChange(service, parseInt(e.target.value))}
-                      className="absolute w-full h-11 -top-4 opacity-0 cursor-pointer z-20 touch-none"
+                      draggable={false}
+                      className="absolute w-full opacity-0 cursor-pointer z-20 touch-none select-none"
+                      style={{ 
+                        touchAction: 'none',
+                        height: '44px',
+                        top: '50%',
+                        transform: 'translateY(-50%)'
+                      }}
                     />
                     {/* Track fill */}
                     <div 
