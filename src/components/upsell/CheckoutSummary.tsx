@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Image from 'next/image';
 import { Mail, Loader2, Lock, ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
 import { PaymentElement, ExpressCheckoutElement, useElements, useStripe } from '@stripe/react-stripe-js';
@@ -18,6 +18,7 @@ interface CheckoutPaymentFormProps {
   email: string;
   acceptedTerms: boolean;
   lang: string;
+  emailInputRef: React.RefObject<HTMLInputElement>;
   onSuccess?: () => void;
   onPaymentIntentId?: (id: string) => void;
   onBeforePayment?: () => void;
@@ -30,7 +31,7 @@ interface CheckoutPaymentFormProps {
   };
 }
 
-function CheckoutPaymentForm({ amount, email, acceptedTerms, lang, onSuccess, onPaymentIntentId, onBeforePayment, i18n }: CheckoutPaymentFormProps) {
+function CheckoutPaymentForm({ amount, email, acceptedTerms, lang, emailInputRef, onSuccess, onPaymentIntentId, onBeforePayment, i18n }: CheckoutPaymentFormProps) {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -72,18 +73,33 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, lang, onSuccess, on
     setIsProcessing(false);
   };
 
-  const handleExpressCheckout = (event: { resolve: () => void; reject?: () => void }) => {
-    if (!isEmailValid || !acceptedTerms) {
-      setPaymentError('Veuillez saisir un email valide et accepter les conditions.');
+  const handleExpressCheckout = useCallback((event: { resolve: () => void; reject?: () => void }) => {
+    if (!isEmailValid) {
+      setPaymentError('Veuillez saisir une adresse email valide pour continuer.');
+      
+      // Auto-scroll to email input and focus
+      setTimeout(() => {
+        emailInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        emailInputRef.current?.focus();
+      }, 100);
+      
       if (event.reject) event.reject();
       return;
     }
+    setPaymentError(null);
     event.resolve();
-  };
+  }, [isEmailValid]);
 
   const handleExpressConfirm = async () => {
-    if (!stripe || !elements || !isEmailValid || !acceptedTerms) {
-      setPaymentError('Veuillez saisir un email valide et accepter les conditions.');
+    if (!stripe || !elements || !isEmailValid) {
+      setPaymentError('Veuillez saisir une adresse email valide pour continuer.');
+      
+      // Auto-scroll to email input and focus
+      setTimeout(() => {
+        emailInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        emailInputRef.current?.focus();
+      }, 100);
+      
       return;
     }
     posthog.capture('step4_payment_attempted', { payment_method_type: 'express' });
@@ -215,6 +231,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
   const [paymentInitError, setPaymentInitError] = useState<string | null>(null);
   const [orderSaved, setOrderSaved] = useState(false);
   const paymentIntentIdRef = useRef<string | null>(null);
+  const emailInputRef = useRef<HTMLInputElement>(null);
 
   const serviceLabelMap = t.checkout.serviceLabels;
 
@@ -376,6 +393,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                     <Mail className={`h-5 w-5 transition-colors ${email && !email.includes('@') ? 'text-red-400' : 'text-gray-500 group-focus-within:text-pink-500'}`} />
                   </div>
                   <input
+                    ref={emailInputRef}
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -421,6 +439,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                         email={email}
                         acceptedTerms={acceptedTerms}
                         lang={lang}
+                        emailInputRef={emailInputRef}
                         i18n={{
                           paymentError: t.checkout.paymentError,
                           secureConnect: t.checkout.secureConnect,
