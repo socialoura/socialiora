@@ -87,7 +87,6 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, lang, onSuccess, on
             onReady={() => setElementsReady(true)}
             options={{
               layout: 'tabs',
-              wallets: { applePay: 'never', googlePay: 'never' },
             }}
           />
         </div>
