@@ -7,7 +7,7 @@ import { PaymentElement, ExpressCheckoutElement, useElements, useStripe } from '
 import StripeProvider from '@/components/StripeProvider';
 import useTiktokUpsellStore from '@/store/useTiktokUpsellStore';
 import posthog from 'posthog-js';
-import { trackFunnelPurchase } from '@/lib/gtag';
+import { trackTiktokFunnelPurchase } from '@/lib/gtag';
 import { proxyImageUrl } from '@/lib/image-proxy';
 import { type Language } from '@/i18n/config';
 import { getTiktokUpsellTranslations } from '@/i18n/tiktok-upsell';
@@ -539,7 +539,7 @@ export default function TiktokCheckoutSummary({ lang }: CheckoutSummaryProps) {
                               console.error('Failed to send confirmation email:', emailErr);
                             }
 
-                            trackFunnelPurchase({
+                            trackTiktokFunnelPurchase({
                               value: totalPrice,
                               currency: 'EUR',
                               transactionId: String(orderResult.orderId || paymentIntentIdRef.current || 'unknown'),

@@ -7,7 +7,7 @@ import { PaymentElement, ExpressCheckoutElement, useElements, useStripe } from '
 import StripeProvider from '@/components/StripeProvider';
 import useUpsellStore from '@/store/useUpsellStore';
 import posthog from 'posthog-js';
-import { trackFunnelPurchase } from '@/lib/gtag';
+import { trackInstaFunnelPurchase } from '@/lib/gtag';
 import { proxyImageUrl } from '@/lib/image-proxy';
 import { type Language } from '@/i18n/config';
 import { getUpsellTranslations } from '@/i18n/upsell';
@@ -538,7 +538,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                               console.error('Failed to send confirmation email:', emailErr);
                             }
 
-                            trackFunnelPurchase({
+                            trackInstaFunnelPurchase({
                               value: totalPrice,
                               currency: 'EUR',
                               transactionId: String(orderResult.orderId || paymentIntentIdRef.current || 'unknown'),

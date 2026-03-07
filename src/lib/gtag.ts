@@ -44,29 +44,104 @@ export function trackGoogleAdsPurchase(orderData: {
   });
 }
 
-// ─── Tunnel-specific Google Ads conversion (route /instagram) ───
-// Hardcoded IDs — isolated from classic product pages
-const FUNNEL_AW_ID = 'AW-17998329725';
-const FUNNEL_CONVERSION_LABEL = '2xaOCNDV-IMcEP3uooZD';
+// ─── Multi-account Google Ads conversion tracking ───
+
+// Compte 1: Funnel TikTok
+const GA_TIKTOK_FUNNEL_ID = process.env.NEXT_PUBLIC_GA_TIKTOK_FUNNEL_ID || '';
+const GA_TIKTOK_FUNNEL_LABEL = process.env.NEXT_PUBLIC_GA_TIKTOK_FUNNEL_CONVERSION_LABEL || '';
 
 /**
- * Track a Google Ads Purchase conversion event for the /instagram funnel ONLY.
- * Uses dedicated AW-ID and label so it never interferes with other product tracking.
+ * Track a Google Ads Purchase conversion event for the TikTok funnel (/tiktok).
+ * Uses dedicated Google Ads account for TikTok funnel conversions.
  */
-export function trackFunnelPurchase(orderData: {
+export function trackTiktokFunnelPurchase(orderData: {
   value: number;
   currency: string;
   transactionId: string;
 }) {
   if (typeof window === 'undefined' || !window.gtag) {
-    console.warn('[gtag] gtag not loaded — skipping funnel conversion tracking.');
+    console.warn('[gtag] gtag not loaded — skipping TikTok funnel conversion tracking.');
+    return;
+  }
+  if (!GA_TIKTOK_FUNNEL_ID || !GA_TIKTOK_FUNNEL_LABEL) {
+    console.warn('[gtag] Missing NEXT_PUBLIC_GA_TIKTOK_FUNNEL_ID or NEXT_PUBLIC_GA_TIKTOK_FUNNEL_CONVERSION_LABEL — skipping TikTok funnel conversion.');
     return;
   }
 
   window.gtag('event', 'conversion', {
-    send_to: `${FUNNEL_AW_ID}/${FUNNEL_CONVERSION_LABEL}`,
+    send_to: `${GA_TIKTOK_FUNNEL_ID}/${GA_TIKTOK_FUNNEL_LABEL}`,
     value: orderData.value,
     currency: orderData.currency.toUpperCase(),
     transaction_id: orderData.transactionId,
   });
+}
+
+// Compte 2: Funnel Instagram
+const GA_INSTA_FUNNEL_ID = process.env.NEXT_PUBLIC_GA_INSTA_FUNNEL_ID || '';
+const GA_INSTA_FUNNEL_LABEL = process.env.NEXT_PUBLIC_GA_INSTA_FUNNEL_CONVERSION_LABEL || '';
+
+/**
+ * Track a Google Ads Purchase conversion event for the Instagram funnel (/instagram).
+ * Uses dedicated Google Ads account for Instagram funnel conversions.
+ */
+export function trackInstaFunnelPurchase(orderData: {
+  value: number;
+  currency: string;
+  transactionId: string;
+}) {
+  if (typeof window === 'undefined' || !window.gtag) {
+    console.warn('[gtag] gtag not loaded — skipping Instagram funnel conversion tracking.');
+    return;
+  }
+  if (!GA_INSTA_FUNNEL_ID || !GA_INSTA_FUNNEL_LABEL) {
+    console.warn('[gtag] Missing NEXT_PUBLIC_GA_INSTA_FUNNEL_ID or NEXT_PUBLIC_GA_INSTA_FUNNEL_CONVERSION_LABEL — skipping Instagram funnel conversion.');
+    return;
+  }
+
+  window.gtag('event', 'conversion', {
+    send_to: `${GA_INSTA_FUNNEL_ID}/${GA_INSTA_FUNNEL_LABEL}`,
+    value: orderData.value,
+    currency: orderData.currency.toUpperCase(),
+    transaction_id: orderData.transactionId,
+  });
+}
+
+// Compte 3: Page de vente classique TikTok (/t)
+const GA_TIKTOK_CLASSIC_ID = process.env.NEXT_PUBLIC_GA_TIKTOK_CLASSIC_ID || '';
+const GA_TIKTOK_CLASSIC_LABEL = process.env.NEXT_PUBLIC_GA_TIKTOK_CLASSIC_CONVERSION_LABEL || '';
+
+/**
+ * Track a Google Ads Purchase conversion event for the classic TikTok sales page (/t).
+ * Uses dedicated Google Ads account for classic TikTok page conversions.
+ */
+export function trackTiktokClassicPurchase(orderData: {
+  value: number;
+  currency: string;
+  transactionId: string;
+}) {
+  if (typeof window === 'undefined' || !window.gtag) {
+    console.warn('[gtag] gtag not loaded — skipping TikTok classic conversion tracking.');
+    return;
+  }
+  if (!GA_TIKTOK_CLASSIC_ID || !GA_TIKTOK_CLASSIC_LABEL) {
+    console.warn('[gtag] Missing NEXT_PUBLIC_GA_TIKTOK_CLASSIC_ID or NEXT_PUBLIC_GA_TIKTOK_CLASSIC_CONVERSION_LABEL — skipping TikTok classic conversion.');
+    return;
+  }
+
+  window.gtag('event', 'conversion', {
+    send_to: `${GA_TIKTOK_CLASSIC_ID}/${GA_TIKTOK_CLASSIC_LABEL}`,
+    value: orderData.value,
+    currency: orderData.currency.toUpperCase(),
+    transaction_id: orderData.transactionId,
+  });
+}
+
+// Legacy function - kept for backward compatibility, will be removed after migration
+export function trackFunnelPurchase(orderData: {
+  value: number;
+  currency: string;
+  transactionId: string;
+}) {
+  console.warn('[gtag] trackFunnelPurchase is deprecated. Use trackInstaFunnelPurchase or trackTiktokFunnelPurchase instead.');
+  trackInstaFunnelPurchase(orderData);
 }
