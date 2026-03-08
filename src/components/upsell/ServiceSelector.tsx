@@ -89,7 +89,9 @@ function ServiceSelector({ lang }: ServiceSelectorProps) {
   const [sliderValues, setSliderValues] = useState<Record<string, number>>(sliderDefaults);
 
   useEffect(() => {
-    const fetchPricingAndDefaults = async () => {
+    // Only initialize when component is actually visible (step 2)
+    // This prevents sliders from moving when user is on previous steps
+    const initializeServices = async () => {
       try {
         // Fetch pricing
         const pricingRes = await fetch('/api/funnel-pricing');
@@ -99,36 +101,38 @@ function ServiceSelector({ lang }: ServiceSelectorProps) {
           setServices(buildServices(pricingData, t.service));
         }
 
-        // Fetch defaults
-        const defaultsRes = await fetch('/api/funnel-defaults');
-        if (defaultsRes.ok) {
-          const defaultsData = await defaultsRes.json();
-          
-          // Update store defaults first
-          setSliderDefaults(defaultsData);
-          setSliderValues(defaultsData);
-          setDefaultsLoaded(true);
+        // Only fetch and apply defaults if they haven't been loaded yet
+        if (!defaultsLoaded) {
+          const defaultsRes = await fetch('/api/funnel-defaults');
+          if (defaultsRes.ok) {
+            const defaultsData = await defaultsRes.json();
+            
+            // Update store defaults first
+            setSliderDefaults(defaultsData);
+            setSliderValues(defaultsData);
+            setDefaultsLoaded(true);
 
-          // Auto-add services to cart based on defaults
-          const { addServiceToCart } = useUpsellStore.getState();
-          const builtServices = buildServices(pricingData, t.service);
-          
-          Object.entries(defaultsData).forEach(([serviceType, tierIndex]) => {
-            if (typeof tierIndex === 'number' && tierIndex > 0) {
-              const service = builtServices.find(s => s.type === serviceType);
-              if (service && service.pricing[tierIndex]) {
-                const tier = service.pricing[tierIndex];
-                addServiceToCart(serviceType, tier.qty, tier.price);
-                
-                // Set primary service (not story-views)
-                if (serviceType !== 'story-views') {
-                  setSelectedService(serviceType as ServiceType);
-                  setQuantity(tier.qty);
-                  setPrice(tier.price);
+            // Auto-add services to cart based on defaults
+            const { addServiceToCart } = useUpsellStore.getState();
+            const builtServices = buildServices(pricingData, t.service);
+            
+            Object.entries(defaultsData).forEach(([serviceType, tierIndex]) => {
+              if (typeof tierIndex === 'number' && tierIndex > 0) {
+                const service = builtServices.find(s => s.type === serviceType);
+                if (service && service.pricing[tierIndex]) {
+                  const tier = service.pricing[tierIndex];
+                  addServiceToCart(serviceType, tier.qty, tier.price);
+                  
+                  // Set primary service (not story-views)
+                  if (serviceType !== 'story-views') {
+                    setSelectedService(serviceType as ServiceType);
+                    setQuantity(tier.qty);
+                    setPrice(tier.price);
+                  }
                 }
               }
-            }
-          });
+            });
+          }
         }
       } catch (err) {
         console.error('Failed to fetch funnel config:', err);
@@ -137,8 +141,12 @@ function ServiceSelector({ lang }: ServiceSelectorProps) {
         if (!defaultsLoaded) setDefaultsLoaded(true);
       }
     };
-    fetchPricingAndDefaults();
-  }, []);
+
+    // Use a small delay to ensure the component is fully mounted and visible
+    const timeoutId = setTimeout(initializeServices, 100);
+    
+    return () => clearTimeout(timeoutId);
+  }, [defaultsLoaded]);
 
   // Local (visual) slider values for instant feedback
   const [localSliderValues, setLocalSliderValues] = useState(sliderValues);
