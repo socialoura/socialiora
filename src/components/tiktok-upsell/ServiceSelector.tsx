@@ -246,7 +246,7 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
           return (
             <div
               key={service.type}
-              className={`relative overflow-hidden rounded-2xl p-4 sm:p-8 transition-colors duration-200 ${
+              className={`relative overflow-visible sm:overflow-hidden rounded-2xl p-4 sm:p-8 transition-colors duration-200 ${
                 isActive
                   ? 'bg-gray-800/80 sm:backdrop-blur-xl border border-cyan-500/50 shadow-lg'
                   : 'bg-gray-900/50 border border-gray-800 hover:border-gray-700'
@@ -257,7 +257,7 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
               )}
 
               {service.type === 'followers' && (
-                <div className="absolute top-3 right-3 z-20 border border-cyan-500/50 text-cyan-400 bg-transparent text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:top-3 sm:left-auto sm:right-3 sm:translate-x-0 sm:translate-y-0 z-20 border border-cyan-500/50 text-cyan-400 bg-gray-900 text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center gap-1">
                   <Sparkles className="w-2.5 h-2.5" />
                   {t.service.mostPopular}
                 </div>
