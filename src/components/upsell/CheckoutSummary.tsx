@@ -27,6 +27,7 @@ interface CheckoutPaymentFormProps {
     processing: string;
     pay: string;
     encryptedPayment: string;
+    guaranteesList: readonly string[];
   };
 }
 
@@ -154,25 +155,37 @@ function CheckoutPaymentForm({ amount, email, acceptedTerms, lang, onSuccess, on
       <button
         type="submit"
         disabled={!stripe || !elements || isProcessing || !elementsReady || !acceptedTerms || !email || !email.includes('@')}
-        className="w-full relative overflow-hidden rounded-xl bg-gradient-to-r from-yellow-500 via-pink-500 to-purple-600 px-8 py-4 text-lg font-black text-white shadow-lg shadow-pink-500/25 hover:shadow-xl hover:shadow-pink-500/40 transition-all duration-300 uppercase tracking-wide group disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+        className="w-full rounded-xl bg-gradient-to-r from-yellow-500 via-pink-500 to-purple-600 px-8 py-4 text-lg font-black text-white shadow-lg hover:opacity-90 transition-opacity duration-200 uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
       >
         {isProcessing ? (
           <>
-            <Loader2 className="w-6 h-6 animate-spin relative z-10" />
-            <span className="relative z-10">{i18n.processing}</span>
+            <Loader2 className="w-6 h-6 animate-spin" />
+            <span>{i18n.processing}</span>
           </>
         ) : (
           <>
-            <Lock className="w-5 h-5 relative z-10 group-hover:-translate-y-0.5 transition-transform" />
-            <span className="relative z-10">{i18n.pay.replace('{amount}', (amount / 100).toFixed(2))}</span>
+            <Lock className="w-5 h-5" />
+            <span>{i18n.pay.replace('{amount}', (amount / 100).toFixed(2))}</span>
           </>
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </button>
 
       <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
         <ShieldCheck className="w-4 h-4 text-emerald-500" />
         <span>{i18n.encryptedPayment}</span>
+      </div>
+
+      {/* Inline guarantees under pay button */}
+      <div className="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-gray-800">
+        {i18n.guaranteesList.map((text, i) => (
+          <div key={i} className="flex items-center gap-2 text-xs text-gray-400">
+            {i === 0 && <ShieldCheck className="w-3.5 h-3.5 text-pink-400 shrink-0" />}
+            {i === 1 && <CheckCircle2 className="w-3.5 h-3.5 text-pink-400 shrink-0" />}
+            {i === 2 && <Lock className="w-3.5 h-3.5 text-pink-400 shrink-0" />}
+            {i === 3 && <ArrowLeft className="w-3.5 h-3.5 text-pink-400 shrink-0 rotate-180" />}
+            <span>{text}</span>
+          </div>
+        ))}
       </div>
     </form>
   );
@@ -273,7 +286,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
         
         {/* Left Column: Summary */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden shadow-2xl">
+          <div className="bg-gray-800/50 sm:backdrop-blur-xl border border-gray-700/50 rounded-2xl overflow-hidden shadow-lg sm:shadow-2xl">
             <div className="p-6 bg-gray-900/50 border-b border-gray-800 flex items-center gap-4">
               <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-800 ring-2 ring-pink-500/50 flex-shrink-0">
                 <Image
@@ -331,7 +344,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
             </div>
           </div>
 
-          <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 shadow-2xl">
+          <div className="bg-gray-800/50 sm:backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 shadow-lg sm:shadow-2xl">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4 flex items-center gap-2">
               <ShieldCheck className="w-5 h-5 text-pink-500" />
               {t.checkout.guarantees}
@@ -351,8 +364,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
 
         {/* Right Column: Payment */}
         <div className="lg:col-span-7">
-          <div className="bg-gray-800/50 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-pink-500/5 rounded-full blur-3xl" />
+          <div className="bg-gray-800/50 sm:backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 sm:p-8 shadow-lg sm:shadow-2xl relative overflow-hidden">
             
             <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-6 sm:mb-8 relative z-10">{t.checkout.securePayment}</h2>
 
@@ -419,6 +431,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
                           processing: t.checkout.processing,
                           pay: t.checkout.pay,
                           encryptedPayment: t.checkout.encryptedPayment,
+                          guaranteesList: t.checkout.guaranteesList,
                         }}
                         onPaymentIntentId={(id) => { paymentIntentIdRef.current = id; }}
                         onBeforePayment={() => {

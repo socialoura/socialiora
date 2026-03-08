@@ -11,6 +11,17 @@ export const upsellTranslations = {
     },
     stepOf: 'Step {current}/4',
 
+    // LiveDeliveryNotification
+    notification: {
+      delivered: 'delivered',
+      ago: 'ago',
+      services: {
+        'abonnés': 'followers',
+        'likes': 'likes',
+        'vues': 'views',
+      },
+    },
+
     // ProfileSearchInput
     search: {
       title: 'BOOST YOUR PROFILE',
@@ -21,6 +32,12 @@ export const upsellTranslations = {
       searching: 'Searching...',
       secure: '100% Secure',
       noPassword: 'No password needed',
+      trustpilot: 'Rated 4.8/5 on Trustpilot by 10,000+ clients',
+      resultsTitle: 'The results speak for themselves 👇',
+      beforeAfterLabel: 'Before / After',
+      beforeFollowers: 'Followers',
+      beforeCount: '100',
+      afterCount: '10,000',
       followers: 'followers',
       errorTitle: 'Profile not found',
       errorDesc: 'You may have mistyped the username or your account is set to private.',
@@ -42,7 +59,8 @@ export const upsellTranslations = {
       selected: 'selected',
       bonusFree: 'bonus included',
       orderTotal: 'Your order total',
-      continueOrder: "Continue",
+      continueOrder: 'Validate my pack',
+      mostPopular: 'Most popular',
     },
 
     // PostGrid
@@ -107,6 +125,16 @@ export const upsellTranslations = {
     },
     stepOf: 'Étape {current}/4',
 
+    notification: {
+      delivered: 'livrés',
+      ago: 'il y a',
+      services: {
+        'abonnés': 'abonnés',
+        'likes': 'likes',
+        'vues': 'vues',
+      },
+    },
+
     search: {
       title: 'BOOSTEZ VOTRE PROFIL',
       subtitle: 'Entrez votre nom d\'utilisateur Instagram public pour commencer. Aucun mot de passe requis.',
@@ -116,6 +144,12 @@ export const upsellTranslations = {
       searching: 'Recherche...',
       secure: '100% Sécurisé',
       noPassword: 'Sans mot de passe',
+      trustpilot: 'Noté 4.8/5 sur Trustpilot par +10 000 clients',
+      resultsTitle: 'Les résultats parlent d\'eux-mêmes 👇',
+      beforeAfterLabel: 'Avant / Après',
+      beforeFollowers: 'Abonnés',
+      beforeCount: '100',
+      afterCount: '10 000',
       followers: 'abonnés',
       errorTitle: 'Profil introuvable',
       errorDesc: 'Sûrement vous avez mal tapé l\'username ou votre compte est en privé.',
@@ -135,7 +169,8 @@ export const upsellTranslations = {
       selected: 'sélectionnés',
       bonusFree: 'bonus offerts',
       orderTotal: 'Total de votre commande',
-      continueOrder: "Continuer l'achat",
+      continueOrder: 'Valider mon pack',
+      mostPopular: 'Le plus populaire',
     },
 
     grid: {
@@ -197,6 +232,16 @@ export const upsellTranslations = {
     },
     stepOf: 'Schritt {current}/4',
 
+    notification: {
+      delivered: 'geliefert',
+      ago: 'vor',
+      services: {
+        'abonnés': 'Follower',
+        'likes': 'Likes',
+        'vues': 'Aufrufe',
+      },
+    },
+
     search: {
       title: 'BOOSTEN SIE IHR PROFIL',
       subtitle: 'Geben Sie Ihren öffentlichen Instagram-Benutzernamen ein, um zu beginnen. Kein Passwort erforderlich.',
@@ -206,6 +251,12 @@ export const upsellTranslations = {
       searching: 'Suche...',
       secure: '100% Sicher',
       noPassword: 'Kein Passwort nötig',
+      trustpilot: 'Bewertet mit 4.8/5 auf Trustpilot von 10.000+ Kunden',
+      resultsTitle: 'Die Ergebnisse sprechen für sich 👇',
+      beforeAfterLabel: 'Vorher / Nachher',
+      beforeFollowers: 'Follower',
+      beforeCount: '100',
+      afterCount: '10.000',
       followers: 'Follower',
       errorTitle: 'Profil nicht gefunden',
       errorDesc: 'Möglicherweise haben Sie den Benutzernamen falsch eingegeben oder Ihr Konto ist privat.',
@@ -225,7 +276,8 @@ export const upsellTranslations = {
       selected: 'ausgewählt',
       bonusFree: 'Bonus inklusive',
       orderTotal: 'Ihre Bestellsumme',
-      continueOrder: 'Weiter zum Kauf',
+      continueOrder: 'Paket bestätigen',
+      mostPopular: 'Am beliebtesten',
     },
 
     grid: {
@@ -287,6 +339,16 @@ export const upsellTranslations = {
     },
     stepOf: 'Paso {current}/4',
 
+    notification: {
+      delivered: 'entregados',
+      ago: 'hace',
+      services: {
+        'abonnés': 'seguidores',
+        'likes': 'me gusta',
+        'vues': 'vistas',
+      },
+    },
+
     search: {
       title: 'IMPULSA TU PERFIL',
       subtitle: 'Introduce tu nombre de usuario público de Instagram para comenzar. No se requiere contraseña.',
@@ -296,6 +358,12 @@ export const upsellTranslations = {
       searching: 'Buscando...',
       secure: '100% Seguro',
       noPassword: 'Sin contraseña',
+      trustpilot: 'Valorado 4.8/5 en Trustpilot por +10.000 clientes',
+      resultsTitle: 'Los resultados hablan por sí mismos 👇',
+      beforeAfterLabel: 'Antes / Después',
+      beforeFollowers: 'Seguidores',
+      beforeCount: '100',
+      afterCount: '10.000',
       followers: 'seguidores',
       errorTitle: 'Perfil no encontrado',
       errorDesc: 'Es posible que hayas escrito mal el nombre de usuario o tu cuenta sea privada.',
@@ -315,7 +383,8 @@ export const upsellTranslations = {
       selected: 'seleccionados',
       bonusFree: 'bonus incluidos',
       orderTotal: 'Total de tu pedido',
-      continueOrder: 'Continuar compra',
+      continueOrder: 'Validar mi pack',
+      mostPopular: 'Más popular',
     },
 
     grid: {

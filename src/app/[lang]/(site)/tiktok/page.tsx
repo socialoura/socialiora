@@ -11,13 +11,14 @@ import TiktokPostGrid from '@/components/tiktok-upsell/PostGrid';
 import TiktokCheckoutSummary from '@/components/tiktok-upsell/CheckoutSummary';
 import { getStripe } from '@/components/StripeProvider';
 import ChatWidget from '@/components/ChatWidget';
+import LiveDeliveryNotification from '@/components/LiveDeliveryNotification';
 import { type Language } from '@/i18n/config';
 import { getTiktokUpsellTranslations } from '@/i18n/tiktok-upsell';
 
 const stepVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
 };
 
 export default function TiktokUpsellPage() {
@@ -35,7 +36,7 @@ export default function TiktokUpsellPage() {
   }, [currentStep]);
 
   useEffect(() => {
-    if (currentStep >= 2) {
+    if (currentStep >= 3) {
       getStripe();
     }
   }, [currentStep]);
@@ -49,16 +50,13 @@ export default function TiktokUpsellPage() {
 
   return (
     <div className="relative isolate min-h-full bg-gray-950 font-sans selection:bg-cyan-500/30">
-      {/* Background Effects - TikTok themed */}
+      {/* Lightweight Background */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-gray-950 to-pink-900/10" />
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-pink-600/10 rounded-full blur-[120px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
       </div>
 
       {/* Progress Header */}
-      <header className="sticky top-0 z-40 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/60">
+      <header className="sticky top-0 z-40 bg-gray-950/95 sm:bg-gray-950/80 sm:backdrop-blur-xl border-b border-gray-800/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-center">
           <div className="hidden sm:flex items-center gap-3">
             {steps.map((step, index) => (
@@ -98,25 +96,25 @@ export default function TiktokUpsellPage() {
       <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-20 min-h-[calc(100vh-64px)] flex flex-col">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
-            <motion.div key="step-0" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-0" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <TiktokProfileSearchInput lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 1 && (
-            <motion.div key="step-1" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-1" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <TiktokServiceSelector lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 2 && (
-            <motion.div key="step-2" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-2" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <TiktokPostGrid lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 3 && (
-            <motion.div key="step-3" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-3" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <TiktokCheckoutSummary lang={lang} />
             </motion.div>
           )}
@@ -125,6 +123,12 @@ export default function TiktokUpsellPage() {
 
       {/* Support Chat Widget */}
       <ChatWidget lang={lang} />
+
+      {/* Live Delivery Notification - Fixed bottom-left */}
+      <LiveDeliveryNotification 
+        variant="tiktok" 
+        translations={t.notification}
+      />
     </div>
   );
 }

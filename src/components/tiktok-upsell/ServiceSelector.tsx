@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef, memo } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { X, UserPlus, Heart, Eye, Share2, Sparkles, ArrowRight } from 'lucide-react';
 import posthog from 'posthog-js';
 import useTiktokUpsellStore, { TiktokServiceType } from '@/store/useTiktokUpsellStore';
@@ -202,7 +201,7 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col h-full">
       {/* Profile Header Block */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 sm:mb-12 bg-gray-900/50 backdrop-blur-xl border border-gray-800 p-4 sm:p-6 rounded-2xl shadow-xl">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 sm:mb-12 bg-gray-900/50 sm:backdrop-blur-xl border border-gray-800 p-4 sm:p-6 rounded-2xl shadow-lg">
         <div className="flex items-center gap-4">
           <div className="relative">
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden bg-gray-800 ring-2 ring-cyan-500/50">
@@ -237,7 +236,7 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
 
       {/* Services Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pb-28 sm:pb-32">
-        {SERVICES.map((service, i) => {
+        {SERVICES.map((service) => {
           const localIndex = localSliderValues[service.type];
           const tier = getCurrentTier(service, localIndex);
           const isActive = localIndex > 0;
@@ -245,44 +244,48 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
           const pct = (localIndex / (service.pricing.length - 1)) * 100;
 
           return (
-            <motion.div
+            <div
               key={service.type}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.4 }}
-              className={`relative overflow-hidden rounded-2xl p-4 sm:p-8 transition-all duration-500 ${
+              className={`relative overflow-hidden rounded-2xl p-4 sm:p-8 transition-colors duration-200 ${
                 isActive
-                  ? 'bg-gray-800/80 backdrop-blur-xl border border-cyan-500/50 shadow-2xl shadow-cyan-500/10'
-                  : 'bg-gray-900/50 backdrop-blur-xl border border-gray-800 hover:border-gray-700'
+                  ? 'bg-gray-800/80 sm:backdrop-blur-xl border border-cyan-500/50 shadow-lg'
+                  : 'bg-gray-900/50 border border-gray-800 hover:border-gray-700'
               }`}
             >
               {isActive && (
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-pink-500/5 to-red-500/5 pointer-events-none" />
               )}
 
+              {service.type === 'followers' && (
+                <div className="absolute top-3 right-3 z-20 bg-gradient-to-r from-cyan-500 to-pink-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-lg shadow-cyan-500/30 flex items-center gap-1">
+                  <Sparkles className="w-3 h-3" />
+                  {t.service.mostPopular}
+                </div>
+              )}
+
               <div className="relative z-10 flex flex-col h-full justify-between gap-6">
                 {/* Header */}
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-200 ${
                       isActive
-                        ? 'bg-gradient-to-tr from-cyan-500 via-pink-500 to-red-500 shadow-lg shadow-cyan-500/30'
+                        ? 'bg-gradient-to-tr from-cyan-500 via-pink-500 to-red-500'
                         : 'bg-gray-800'
                     }`}>
-                      <Icon className={`w-6 h-6 transition-colors duration-500 ${isActive ? 'text-white' : 'text-gray-500'}`} />
+                      <Icon className={`w-6 h-6 transition-colors duration-200 ${isActive ? 'text-white' : 'text-gray-500'}`} />
                     </div>
                     <div>
-                      <h3 className={`text-lg font-bold transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-300'}`}>
+                      <h3 className={`text-lg font-bold transition-colors duration-200 ${isActive ? 'text-white' : 'text-gray-300'}`}>
                         {service.label}
                       </h3>
-                      <p className={`text-sm font-medium transition-colors duration-300 ${isActive ? 'text-cyan-400' : 'text-gray-500'}`}>
+                      <p className={`text-sm font-medium transition-colors duration-200 ${isActive ? 'text-cyan-400' : 'text-gray-500'}`}>
                         {isActive ? `${tier.qty.toLocaleString()} ${t.service.selected}` : '0 ' + t.service.selected}
                       </p>
                     </div>
                   </div>
 
                   <div className="text-right">
-                    <div className={`text-2xl font-black tracking-tight transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-500'}`}>
+                    <div className={`text-2xl font-black tracking-tight transition-colors duration-200 ${isActive ? 'text-white' : 'text-gray-500'}`}>
                       {isActive ? tier.price.toFixed(2) : '0.00'} €
                     </div>
                     {isActive && tier.oldPrice > tier.price && (
@@ -319,12 +322,12 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
                       style={{ touchAction: 'none', height: '44px', top: '50%', transform: 'translateY(-50%)' }}
                     />
                     <div
-                      className={`absolute left-0 h-full rounded-full pointer-events-none transition-all duration-300 ${isActive ? 'bg-gradient-to-r from-cyan-500 to-pink-500' : 'bg-gray-700'}`}
+                      className={`absolute left-0 h-full rounded-full pointer-events-none ${isActive ? 'bg-gradient-to-r from-cyan-500 to-pink-500' : 'bg-gray-700'}`}
                       style={{ width: `${pct}%` }}
                     />
                     <div
-                      className={`absolute w-6 h-6 -ml-3 rounded-full pointer-events-none transition-all duration-300 flex items-center justify-center ${
-                        isActive ? 'bg-white shadow-[0_0_15px_rgba(6,182,212,0.5)] scale-110' : 'bg-gray-400 scale-100'
+                      className={`absolute w-6 h-6 -ml-3 rounded-full pointer-events-none flex items-center justify-center ${
+                        isActive ? 'bg-white shadow-md scale-110' : 'bg-gray-400 scale-100'
                       }`}
                       style={{ left: `${pct}%` }}
                     >
@@ -335,8 +338,8 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
                   <div className="flex justify-between mt-4 px-1">
                     {service.pricing.map((t, idx) => (
                       <div key={idx} className="flex flex-col items-center gap-1">
-                        <div className={`w-1 h-1 rounded-full transition-colors duration-300 ${idx <= localIndex ? 'bg-cyan-500/50' : 'bg-gray-800'}`} />
-                        <span className={`text-[10px] font-bold transition-colors duration-300 ${idx <= localIndex ? 'text-gray-300' : 'text-gray-600'}`}>
+                        <div className={`w-1 h-1 rounded-full ${idx <= localIndex ? 'bg-cyan-500/50' : 'bg-gray-800'}`} />
+                        <span className={`text-[10px] font-bold ${idx <= localIndex ? 'text-gray-300' : 'text-gray-600'}`}>
                           {t.qty >= 1000 ? `${t.qty / 1000}k` : t.qty}
                         </span>
                       </div>
@@ -344,7 +347,7 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           );
         })}
       </div>
@@ -388,11 +391,10 @@ function TiktokServiceSelector({ lang }: ServiceSelectorProps) {
               });
               nextStep();
             }}
-            className="w-full sm:w-auto relative overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 via-pink-500 to-red-500 px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300 uppercase tracking-wide group disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full sm:w-auto rounded-xl bg-gradient-to-r from-cyan-500 via-pink-500 to-red-500 px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg hover:opacity-90 transition-opacity duration-200 uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            <span className="relative z-10">{t.service.continueOrder}</span>
-            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-            <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span>{t.service.continueOrder}</span>
+            <ArrowRight className="w-5 h-5" />
           </button>
         </div>
       </div>

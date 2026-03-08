@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, memo } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle, ArrowLeft, ArrowRight, Heart, Eye } from 'lucide-react';
 import posthog from 'posthog-js';
 import useTiktokUpsellStore from '@/store/useTiktokUpsellStore';
@@ -68,7 +67,7 @@ function TiktokPostGrid({ lang }: PostGridProps) {
           </p>
         </div>
 
-        <div className="flex items-center gap-3 bg-gray-900/50 backdrop-blur-xl border border-gray-800 p-4 rounded-2xl shrink-0">
+        <div className="flex items-center gap-3 bg-gray-900/50 sm:backdrop-blur-xl border border-gray-800 p-4 rounded-2xl shrink-0">
           <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-cyan-500 via-pink-500 to-red-500 flex items-center justify-center shadow-lg shadow-cyan-500/20">
             <ServiceIcon className="w-6 h-6 text-white" />
           </div>
@@ -86,35 +85,23 @@ function TiktokPostGrid({ lang }: PostGridProps) {
         <p className="text-sm font-medium text-gray-300">
           <span className="text-white font-bold">{posts.length}</span> {t.grid.postsAvailable}
         </p>
-        <AnimatePresence mode="popLayout">
-          {hasSelectedPosts && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-semibold"
-            >
-              <CheckCircle className="w-4 h-4" />
-              {t.grid.selectedCount.replace('{count}', String(currentSelectedPosts.length))}
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {hasSelectedPosts && (
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-sm font-semibold">
+            <CheckCircle className="w-4 h-4" />
+            {t.grid.selectedCount.replace('{count}', String(currentSelectedPosts.length))}
+          </div>
+        )}
       </div>
 
       {/* Posts Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4 md:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-4">
         {posts.map((post, index) => {
           const isSelected = currentSelectedPosts.includes(post.id);
           const dist = distribution.find((d) => d.postId === post.id);
 
           return (
-            <motion.button
+            <button
               key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05, duration: 0.4 }}
-              whileHover={{ scale: 1.02, y: -2 }}
-              whileTap={{ scale: 0.98 }}
               onClick={() => {
                 const willBeSelected = !currentSelectedPosts.includes(post.id);
                 togglePostSelection(post.id);
@@ -124,9 +111,9 @@ function TiktokPostGrid({ lang }: PostGridProps) {
                   target_platform: 'tiktok',
                 });
               }}
-              className={`group relative aspect-[4/5] rounded-2xl overflow-hidden transition-all duration-300 ${
+              className={`group relative aspect-[4/5] rounded-xl sm:rounded-2xl overflow-hidden transition-colors duration-200 ${
                 isSelected
-                  ? 'ring-2 ring-cyan-500 ring-offset-4 ring-offset-gray-950 shadow-xl shadow-cyan-500/20'
+                  ? 'ring-2 ring-cyan-500 ring-offset-2 sm:ring-offset-4 ring-offset-gray-950'
                   : 'ring-1 ring-gray-800 hover:ring-gray-600'
               }`}
             >
@@ -134,59 +121,38 @@ function TiktokPostGrid({ lang }: PostGridProps) {
                 src={proxyImageUrl(post.imageUrl)}
                 alt={post.caption || `Video ${index + 1}`}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
                 unoptimized
               />
 
               {/* Overlay */}
               <div
-                className={`absolute inset-0 transition-all duration-300 ${
-                  isSelected ? 'bg-black/40 backdrop-blur-[2px]' : 'bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-100'
+                className={`absolute inset-0 ${
+                  isSelected ? 'bg-black/40' : 'bg-gradient-to-t from-gray-950/60 via-transparent to-transparent'
                 }`}
               />
 
-              {/* Stats for non-selected */}
-              {!isSelected && (
-                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white/80 text-xs font-medium opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                  <span className="flex items-center gap-1"><Heart className="w-3.5 h-3.5" /> {post.likesCount}</span>
-                  <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> {post.commentsCount}</span>
+              {/* Selected State Indicator */}
+              {isSelected && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-cyan-500 via-pink-500 to-red-500 flex items-center justify-center shadow-lg">
+                    <CheckCircle className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+                  </div>
                 </div>
               )}
 
-              {/* Selected State Indicators */}
-              <AnimatePresence>
-                {isSelected && (
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0, opacity: 0 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-                    className="absolute inset-0 flex flex-col items-center justify-center gap-3"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-cyan-500 via-pink-500 to-red-500 flex items-center justify-center shadow-lg shadow-cyan-500/40">
-                      <CheckCircle className="w-7 h-7 text-white" />
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              <AnimatePresence>
-                {isSelected && dist && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute bottom-3 left-3 right-3"
-                  >
-                    <div className="bg-gray-900/90 backdrop-blur-md rounded-xl py-2 px-3 text-center border border-gray-700/50 shadow-lg">
-                      <span className="text-cyan-400 text-[11px] sm:text-sm font-black tracking-tight">
-                        +{dist.amount} {serviceLabel}
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.button>
+              {isSelected && dist && (
+                <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3">
+                  <div className="bg-gray-900/90 rounded-lg sm:rounded-xl py-1.5 sm:py-2 px-2 sm:px-3 text-center border border-gray-700/50">
+                    <span className="text-cyan-400 text-[10px] sm:text-sm font-black tracking-tight">
+                      +{dist.amount} {serviceLabel}
+                    </span>
+                  </div>
+                </div>
+              )}
+            </button>
           );
         })}
       </div>
@@ -219,11 +185,10 @@ function TiktokPostGrid({ lang }: PostGridProps) {
               posthog.capture('step3_completed', { total_posts_selected: currentSelectedPosts.length, target_platform: 'tiktok' });
               nextStep();
             }}
-            className="w-full sm:w-auto relative overflow-hidden rounded-xl bg-gradient-to-r from-cyan-500 via-pink-500 to-red-500 px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300 uppercase tracking-wide group disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full sm:w-auto rounded-xl bg-gradient-to-r from-cyan-500 via-pink-500 to-red-500 px-8 py-3.5 text-sm sm:text-base font-bold text-white shadow-lg hover:opacity-90 transition-opacity duration-200 uppercase tracking-wide disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
-            <span className="relative z-10">{t.grid.validateSelection}</span>
-            <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-            <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <span>{t.grid.validateSelection}</span>
+            <ArrowRight className="w-5 h-5" />
           </button>
         </div>
       </div>

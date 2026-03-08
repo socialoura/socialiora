@@ -4,6 +4,15 @@ export const tiktokUpsellTranslations = {
   en: {
     steps: { profile: 'Profile', services: 'Services', posts: 'Videos', payment: 'Payment' },
     stepOf: 'Step {current}/4',
+    notification: {
+      delivered: 'delivered',
+      ago: 'ago',
+      services: {
+        'abonnés': 'followers',
+        'likes': 'likes',
+        'vues': 'views',
+      },
+    },
     search: {
       title: 'BOOST YOUR TIKTOK',
       subtitle: 'Enter your public TikTok username to get started. No password required.',
@@ -13,6 +22,10 @@ export const tiktokUpsellTranslations = {
       searching: 'Searching...',
       secure: '100% Secure',
       noPassword: 'No password needed',
+      trustpilot: 'Rated 4.8/5 on Trustpilot by 10,000+ clients',
+      beforeFollowers: 'Followers',
+      beforeCount: '100',
+      afterCount: '10,000',
       followers: 'followers',
       errorTitle: 'Profile not found',
       errorDesc: 'You may have mistyped the username or your account is set to private.',
@@ -26,7 +39,7 @@ export const tiktokUpsellTranslations = {
       selectServicesDesc: 'Adjust the sliders to build your custom package',
       followers: 'Followers', likes: 'Likes', views: 'Views', shares: 'Shares',
       selected: 'selected', bonusFree: 'bonus included',
-      orderTotal: 'Your order total', continueOrder: 'Continue',
+      orderTotal: 'Your order total', continueOrder: 'Validate my pack', mostPopular: 'Most popular',
     },
     grid: {
       backToServices: 'Back to services',
@@ -57,6 +70,15 @@ export const tiktokUpsellTranslations = {
   fr: {
     steps: { profile: 'Profil', services: 'Services', posts: 'Vidéos', payment: 'Paiement' },
     stepOf: 'Étape {current}/4',
+    notification: {
+      delivered: 'livrés',
+      ago: 'il y a',
+      services: {
+        'abonnés': 'abonnés',
+        'likes': 'likes',
+        'vues': 'vues',
+      },
+    },
     search: {
       title: 'BOOSTEZ VOTRE TIKTOK',
       subtitle: 'Entrez votre nom d\'utilisateur TikTok public pour commencer. Aucun mot de passe requis.',
@@ -66,6 +88,10 @@ export const tiktokUpsellTranslations = {
       searching: 'Recherche...',
       secure: '100% Sécurisé',
       noPassword: 'Sans mot de passe',
+      trustpilot: 'Noté 4.8/5 sur Trustpilot par +10 000 clients',
+      beforeFollowers: 'Abonnés',
+      beforeCount: '100',
+      afterCount: '10 000',
       followers: 'abonnés',
       errorTitle: 'Profil introuvable',
       errorDesc: 'Sûrement vous avez mal tapé l\'username ou votre compte est en privé.',
@@ -79,7 +105,7 @@ export const tiktokUpsellTranslations = {
       selectServicesDesc: 'Ajustez les curseurs pour composer votre pack sur-mesure',
       followers: 'Abonnés', likes: 'Likes', views: 'Vues', shares: 'Partages',
       selected: 'sélectionnés', bonusFree: 'bonus offerts',
-      orderTotal: 'Total de votre commande', continueOrder: 'Continuer l\'achat',
+      orderTotal: 'Total de votre commande', continueOrder: 'Valider mon pack', mostPopular: 'Le plus populaire',
     },
     grid: {
       backToServices: 'Retour aux services',
@@ -110,12 +136,24 @@ export const tiktokUpsellTranslations = {
   de: {
     steps: { profile: 'Profil', services: 'Dienste', posts: 'Videos', payment: 'Zahlung' },
     stepOf: 'Schritt {current}/4',
+    notification: {
+      delivered: 'geliefert',
+      ago: 'vor',
+      services: {
+        'abonnés': 'Follower',
+        'likes': 'Likes',
+        'vues': 'Aufrufe',
+      },
+    },
     search: {
       title: 'BOOSTEN SIE IHR TIKTOK',
       subtitle: 'Geben Sie Ihren öffentlichen TikTok-Benutzernamen ein. Kein Passwort erforderlich.',
       publicNote: '* Stellen Sie sicher, dass Ihr Konto öffentlich ist.',
       placeholder: 'charlidamelio', continue: 'Weiter', searching: 'Suche...',
-      secure: '100% Sicher', noPassword: 'Kein Passwort nötig', followers: 'Follower',
+      secure: '100% Sicher', noPassword: 'Kein Passwort nötig',
+      trustpilot: 'Bewertet mit 4.8/5 auf Trustpilot von 10.000+ Kunden',
+      beforeFollowers: 'Follower', beforeCount: '100', afterCount: '10.000',
+      followers: 'Follower',
       errorTitle: 'Profil nicht gefunden',
       errorDesc: 'Möglicherweise haben Sie den Benutzernamen falsch eingegeben oder Ihr Konto ist privat.',
       skeletonTitle: 'Profil wird geladen...', skeletonSubtitle: 'Kontodaten werden abgerufen',
@@ -126,7 +164,7 @@ export const tiktokUpsellTranslations = {
       selectServicesDesc: 'Passen Sie die Regler an, um Ihr individuelles Paket zu erstellen',
       followers: 'Follower', likes: 'Likes', views: 'Views', shares: 'Shares',
       selected: 'ausgewählt', bonusFree: 'Bonus inklusive',
-      orderTotal: 'Ihre Bestellsumme', continueOrder: 'Weiter zum Kauf',
+      orderTotal: 'Ihre Bestellsumme', continueOrder: 'Paket bestätigen', mostPopular: 'Am beliebtesten',
     },
     grid: {
       backToServices: 'Zurück zu den Diensten', whereToSend: 'Wohin sollen Ihre {service} gehen?',
@@ -156,12 +194,24 @@ export const tiktokUpsellTranslations = {
   es: {
     steps: { profile: 'Perfil', services: 'Servicios', posts: 'Videos', payment: 'Pago' },
     stepOf: 'Paso {current}/4',
+    notification: {
+      delivered: 'entregados',
+      ago: 'hace',
+      services: {
+        'abonnés': 'seguidores',
+        'likes': 'me gusta',
+        'vues': 'vistas',
+      },
+    },
     search: {
       title: 'IMPULSA TU TIKTOK',
       subtitle: 'Introduce tu nombre de usuario público de TikTok para comenzar. No se requiere contraseña.',
       publicNote: '* Asegúrate de que tu cuenta sea pública.',
       placeholder: 'charlidamelio', continue: 'Continuar', searching: 'Buscando...',
-      secure: '100% Seguro', noPassword: 'Sin contraseña', followers: 'seguidores',
+      secure: '100% Seguro', noPassword: 'Sin contraseña',
+      trustpilot: 'Valorado 4.8/5 en Trustpilot por +10.000 clientes',
+      beforeFollowers: 'Seguidores', beforeCount: '100', afterCount: '10.000',
+      followers: 'seguidores',
       errorTitle: 'Perfil no encontrado',
       errorDesc: 'Es posible que hayas escrito mal el nombre de usuario o tu cuenta sea privada.',
       skeletonTitle: 'Cargando perfil...', skeletonSubtitle: 'Obteniendo datos de tu cuenta',
@@ -172,7 +222,7 @@ export const tiktokUpsellTranslations = {
       selectServicesDesc: 'Ajusta los controles para componer tu paquete personalizado',
       followers: 'Seguidores', likes: 'Me gusta', views: 'Vistas', shares: 'Compartidos',
       selected: 'seleccionados', bonusFree: 'bonus incluidos',
-      orderTotal: 'Total de tu pedido', continueOrder: 'Continuar compra',
+      orderTotal: 'Total de tu pedido', continueOrder: 'Validar mi pack', mostPopular: 'Más popular',
     },
     grid: {
       backToServices: 'Volver a los servicios', whereToSend: '¿Dónde enviar tus {service}?',

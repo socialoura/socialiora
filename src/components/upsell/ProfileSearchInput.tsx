@@ -108,7 +108,7 @@ export default function ProfileSearchInput({ lang }: ProfileSearchInputProps) {
           {t.search.publicNote}
         </p>
       </div>
-      <div className="p-2 sm:p-2.5 bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 shadow-2xl">
+      <div className="p-2 sm:p-2.5 bg-gray-800/50 sm:backdrop-blur-xl rounded-2xl border border-gray-700/50 shadow-lg sm:shadow-2xl">
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
           <div className="flex-1 relative">
             <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 text-lg font-medium">
@@ -157,6 +157,66 @@ export default function ProfileSearchInput({ lang }: ProfileSearchInputProps) {
         </div>
       </div>
 
+      {/* Trustpilot badge */}
+      <div className="flex items-center justify-center mt-4">
+        <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-3 py-2" aria-label="Trustpilot rating 4.8 out of 5">
+          <span className="text-sm font-black text-white">4.8</span>
+          <span className="h-4 w-px bg-white/20"></span>
+          <span className="inline-flex items-center gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <span key={i} className="inline-flex items-center justify-center w-5 h-5 rounded-[3px]" style={{ backgroundColor: 'rgb(0, 182, 122)' }}>
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="white" aria-hidden="true">
+                  <path d="M12 17.27l-5.18 3.05 1.4-5.95L3.5 9.24l6.06-.52L12 3l2.44 5.72 6.06.52-4.72 5.13 1.4 5.95z"></path>
+                </svg>
+              </span>
+            ))}
+          </span>
+        </div>
+      </div>
+
+      {/* Before/After visual with real images */}
+      <div className="mt-8 sm:mt-10 mx-auto max-w-2xl w-full px-4">
+        <div className="text-center mb-6">
+          <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white mb-2">
+            {t.search.resultsTitle}
+          </h2>
+          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">{t.search.beforeAfterLabel}</span>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+          {/* Before Image */}
+          <div className="relative">
+            <Image
+              src="/before.png"
+              alt="Avant - Profil Instagram"
+              width={400}
+              height={400}
+              className="w-full h-auto rounded-xl shadow-lg"
+              loading="lazy"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+            <div className="absolute top-2 left-2 bg-gray-900/80 px-2 py-1 rounded-lg">
+              <span className="text-xs font-bold text-gray-300">Avant</span>
+            </div>
+          </div>
+
+          {/* After Image */}
+          <div className="relative">
+            <Image
+              src="/after.png"
+              alt="Après - Profil Instagram boosté"
+              width={400}
+              height={400}
+              className="w-full h-auto rounded-xl shadow-lg ring-2 ring-pink-500/30"
+              loading="lazy"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+            <div className="absolute top-2 left-2 bg-gradient-to-r from-pink-500 to-purple-600 px-2 py-1 rounded-lg">
+              <span className="text-xs font-bold text-white">Après</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Immersive Loading Skeleton */}
       <AnimatePresence>
         {isProfileLoading && (
@@ -168,7 +228,7 @@ export default function ProfileSearchInput({ lang }: ProfileSearchInputProps) {
             className="mt-8 sm:mt-10 space-y-6"
           >
             {/* Profile skeleton */}
-            <div className="bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 p-5 sm:p-6 flex items-center gap-4 sm:gap-5">
+            <div className="bg-gray-800/50 sm:backdrop-blur-xl rounded-2xl border border-gray-700/50 p-5 sm:p-6 flex items-center gap-4 sm:gap-5">
               <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-gray-700 to-gray-600 animate-pulse flex-shrink-0" />
               <div className="flex-1 space-y-2.5">
                 <div className="h-5 bg-gray-700 rounded-lg w-36 animate-pulse" />
@@ -198,18 +258,18 @@ export default function ProfileSearchInput({ lang }: ProfileSearchInputProps) {
       <AnimatePresence>
         {searchResult && !isProfileLoading && (
           <motion.div
-            initial={{ opacity: 0, y: 12, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15 }}
             className="mt-8 sm:mt-10"
           >
             <button
               onClick={handleSelectProfile}
-              className="w-full bg-gray-800/50 backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-pink-500/50 p-4 sm:p-6 flex items-center gap-4 sm:gap-5 transition-all duration-300 group hover:bg-gray-800/80"
+              className="w-full bg-gray-800/50 sm:backdrop-blur-xl rounded-2xl border border-gray-700/50 hover:border-pink-500/50 p-4 sm:p-6 flex items-center gap-4 sm:gap-5 transition-colors duration-200 group hover:bg-gray-800/80"
             >
               <div className="relative flex-shrink-0">
-                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-gray-700 ring-2 ring-transparent group-hover:ring-pink-500/50 transition-all duration-300">
+                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-gray-700 ring-2 ring-transparent group-hover:ring-pink-500/50 transition-colors duration-200">
                   <Image
                     src={proxyImageUrl(searchResult.avatarUrl)}
                     alt={searchResult.username}
@@ -253,7 +313,7 @@ export default function ProfileSearchInput({ lang }: ProfileSearchInputProps) {
             transition={{ duration: 0.3 }}
             className="mt-8 sm:mt-10"
           >
-            <div className="bg-red-900/20 backdrop-blur-xl rounded-2xl border border-red-500/30 p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
+            <div className="bg-red-900/20 rounded-2xl border border-red-500/30 p-4 sm:p-5 flex items-start gap-3 sm:gap-4">
               <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-red-400" />
               </div>

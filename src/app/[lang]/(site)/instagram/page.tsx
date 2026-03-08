@@ -11,13 +11,14 @@ import PostGrid from '@/components/upsell/PostGrid';
 import CheckoutSummary from '@/components/upsell/CheckoutSummary';
 import { getStripe } from '@/components/StripeProvider';
 import ChatWidget from '@/components/ChatWidget';
+import LiveDeliveryNotification from '@/components/LiveDeliveryNotification';
 import { type Language } from '@/i18n/config';
 import { getUpsellTranslations } from '@/i18n/upsell';
 
 const stepVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0 },
 };
 
 export default function UpsellPage() {
@@ -36,9 +37,9 @@ export default function UpsellPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentStep]);
 
-  // Preload Stripe SDK when user reaches step 2 so payment form is instant at step 3
+  // Preload Stripe SDK when user reaches step 3 (payment) to save memory on earlier steps
   useEffect(() => {
-    if (currentStep >= 2) {
+    if (currentStep >= 3) {
       getStripe();
     }
   }, [currentStep]);
@@ -52,16 +53,13 @@ export default function UpsellPage() {
 
   return (
     <div className="relative isolate min-h-full bg-gray-950 font-sans selection:bg-pink-500/30">
-      {/* Premium Background Effects from /t */}
+      {/* Lightweight Background */}
       <div className="absolute inset-0 pointer-events-none -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 via-gray-950 to-pink-900/10" />
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-pink-600/10 rounded-full blur-[120px]" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
       </div>
 
       {/* Progress Header */}
-      <header className="sticky top-0 z-40 bg-gray-950/80 backdrop-blur-xl border-b border-gray-800/60">
+      <header className="sticky top-0 z-40 bg-gray-950/95 sm:bg-gray-950/80 sm:backdrop-blur-xl border-b border-gray-800/60">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-center">
           <div className="hidden sm:flex items-center gap-3">
             {steps.map((step, index) => (
@@ -101,25 +99,25 @@ export default function UpsellPage() {
       <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-20 min-h-[calc(100vh-64px)] flex flex-col">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
-            <motion.div key="step-0" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-0" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <ProfileSearchInput lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 1 && (
-            <motion.div key="step-1" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-1" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <ServiceSelector lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 2 && (
-            <motion.div key="step-2" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-2" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <PostGrid lang={lang} />
             </motion.div>
           )}
 
           {currentStep === 3 && (
-            <motion.div key="step-3" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.3 }} className="flex-1 flex flex-col">
+            <motion.div key="step-3" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
               <CheckoutSummary lang={lang} />
             </motion.div>
           )}
@@ -128,6 +126,12 @@ export default function UpsellPage() {
 
       {/* Support Chat Widget */}
       <ChatWidget lang={lang} />
+
+      {/* Live Delivery Notification - Fixed bottom-left */}
+      <LiveDeliveryNotification 
+        variant="instagram" 
+        translations={t.notification}
+      />
     </div>
   );
 }
