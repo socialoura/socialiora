@@ -236,8 +236,11 @@ export default function TiktokCheckoutSummary({ lang }: CheckoutSummaryProps) {
 
   useEffect(() => {
     if (currentStep !== 3) return;
+    
+    // Éviter de créer un nouveau PaymentIntent si on en a déjà un
+    if (clientSecret) return;
 
-    const primaryService = activeServices.find(s => s.type !== 'shares') || activeServices[0];
+    const primaryService = activeServices.find(s => s.type !== 'views') || activeServices[0];
     posthog.capture('tiktok_step4_checkout_viewed', {
       final_price: totalPrice,
       final_service: primaryService?.type || 'unknown',
@@ -245,7 +248,7 @@ export default function TiktokCheckoutSummary({ lang }: CheckoutSummaryProps) {
     });
 
     const createPaymentIntent = async () => {
-      const amountInCents = Math.max(1, Math.round(totalPrice * 100));
+      const amountInCents = Math.max(1, Math.round(convert(totalPrice).amountInCents));
       setIsPaymentLoading(true);
       setPaymentInitError(null);
 
@@ -272,7 +275,7 @@ export default function TiktokCheckoutSummary({ lang }: CheckoutSummaryProps) {
     };
 
     createPaymentIntent();
-  }, [currentStep, totalPrice, activeServices, email, t.checkout.stripeError, currency]);
+  }, [currentStep, totalPrice, activeServices, email, t.checkout.stripeError, currency, clientSecret, convert]);
 
   if (activeServices.length === 0) return null;
 

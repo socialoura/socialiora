@@ -236,6 +236,9 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
 
   useEffect(() => {
     if (currentStep !== 3) return;
+    
+    // Éviter de créer un nouveau PaymentIntent si on en a déjà un
+    if (clientSecret) return;
 
     const primaryService = activeServices.find(s => s.type !== 'story-views') || activeServices[0];
     posthog.capture('instagram_step4_checkout_viewed', {
@@ -245,7 +248,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
     });
 
     const createPaymentIntent = async () => {
-      const amountInCents = Math.max(1, Math.round(totalPrice * 100));
+      const amountInCents = Math.max(1, Math.round(convert(totalPrice).amountInCents));
       setIsPaymentLoading(true);
       setPaymentInitError(null);
 
@@ -272,7 +275,7 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
     };
 
     createPaymentIntent();
-  }, [currentStep, totalPrice, activeServices, email, t.checkout.stripeError, currency]);
+  }, [currentStep, totalPrice, activeServices, email, t.checkout.stripeError, currency, clientSecret, convert]);
 
   if (activeServices.length === 0) return null;
 

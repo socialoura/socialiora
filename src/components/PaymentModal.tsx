@@ -751,9 +751,9 @@ export default function PaymentModal({
     }
   }, [isOpen]);
 
-  // Fetch PaymentIntent when modal opens or amount changes
+  // Create payment intent when modal opens
   useEffect(() => {
-    if (isOpen && !clientSecret) {
+    if (isOpen && !clientSecret && !isLoading) {
       const createPaymentIntent = async () => {
         setIsLoading(true);
         setError(null);
@@ -784,7 +784,7 @@ export default function PaymentModal({
 
       createPaymentIntent();
     }
-  }, [isOpen, finalAmount, currency, clientSecret]);
+  }, [isOpen, finalAmount, currency, clientSecret, isLoading]);
 
   // Reset state when modal closes
   useEffect(() => {
