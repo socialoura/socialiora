@@ -35,7 +35,7 @@ export default function TiktokProfileSearchInput({ lang }: ProfileSearchInputPro
   } = useTiktokUpsellStore();
 
   const handleSearch = async (searchUsername: string) => {
-    const clean = searchUsername.replace('@', '').trim();
+    const clean = searchUsername.replace('@', '').trim().toLowerCase();
     if (!clean) return;
 
     setUsername(clean);
