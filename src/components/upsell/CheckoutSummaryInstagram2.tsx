@@ -43,7 +43,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
   } = useUpsellStore();
 
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
-  const [orderResult, setOrderResult] = useState<any>(null);
+  const [orderResult, setOrderResult] = useState<{ orderId?: string } | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
@@ -67,13 +67,6 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
   };
 
   const totalPrice = calculateTotal();
-
-  // Create payment intent on component mount
-  useEffect(() => {
-    if (!clientSecret && Object.keys(selectedServices).length > 0) {
-      createPaymentIntent();
-    }
-  }, [selectedServices, clientSecret, createPaymentIntent]);
 
   const createPaymentIntent = useCallback(async () => {
     try {
@@ -116,6 +109,13 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
       setPaymentError(t.checkout?.paymentError || 'Payment error');
     }
   }, [selectedServices, pricingCurrency, username, lang, t, totalPrice]);
+
+  // Create payment intent on component mount
+  useEffect(() => {
+    if (!clientSecret && Object.keys(selectedServices).length > 0) {
+      createPaymentIntent();
+    }
+  }, [selectedServices, clientSecret, createPaymentIntent]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -243,13 +243,13 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
   };
 
   // Helper function to get stored ads parameters
-  const getStoredAdsParams = () => {
+  const getStoredAdsParams = useCallback(() => {
     if (typeof window !== 'undefined') {
       const stored = sessionStorage.getItem('adsParams');
       return stored ? JSON.parse(stored) : {};
     }
     return {};
-  };
+  }, []);
 
   if (isComplete) {
     return (
@@ -278,7 +278,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
               <span className="text-gray-400">
                 {service.quantity}x {t.service?.[service.type as keyof typeof t.service] || service.type}
               </span>
-              <span className="text-white">{formatPrice(service.price * service.quantity, pricingCurrency as 'EUR' | 'USD' | 'GBP')}</span>
+              <span className="text-white">{formatPrice(service.price * service.quantity, pricingCurrency.toLowerCase() as 'eur' | 'usd' | 'gbp')}</span>
             </div>
           )
         ))}
@@ -287,7 +287,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
         <div className="border-t border-gray-800 pt-4 mt-4">
           <div className="flex items-center justify-between">
             <span className="text-white font-semibold">{t.checkout?.totalAmount || 'Total'}</span>
-            <span className="text-xl font-bold text-white">{formatPrice(totalPrice, pricingCurrency as 'EUR' | 'USD' | 'GBP')}</span>
+            <span className="text-xl font-bold text-white">{formatPrice(totalPrice, pricingCurrency.toLowerCase() as 'eur' | 'usd' | 'gbp')}</span>
           </div>
         </div>
       </div>
@@ -299,7 +299,16 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
           <div>
             <LinkAuthenticationElement
               id="link-authentication-element"
-              onChange={(e) => setEmail(typeof e === 'string' ? e : e.value || '')}
+              onChange={(e) => {
+                if (e && typeof e === 'object' && 'value' in e) {
+                  const emailValue = e.value;
+                  if (typeof emailValue === 'string') {
+                    setEmail(emailValue);
+                  } else if (emailValue && typeof emailValue === 'object' && 'email' in emailValue) {
+                    setEmail(emailValue.email || '');
+                  }
+                }
+              }}
               options={{
                 defaultValues: { email },
               }}
@@ -344,7 +353,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
               </>
             ) : (
               <>
-                {t.checkout?.backToSelection || 'Pay Now'} {formatPrice(totalPrice, pricingCurrency as 'EUR' | 'USD' | 'GBP')}
+                {t.checkout?.backToSelection || 'Pay Now'} {formatPrice(totalPrice, pricingCurrency.toLowerCase() as 'eur' | 'usd' | 'gbp')}
                 <ChevronRight className="w-5 h-5" />
               </>
             )}
