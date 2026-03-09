@@ -48,17 +48,19 @@ export async function POST(request: NextRequest) {
     const country = await getCountryFromIP(request);
 
     // Determine order source
-    const source = orderSource === 'APP_FUNNEL' ? 'APP_FUNNEL' : 'CLASSIC';
+    const isFunnel = orderSource === 'APP_FUNNEL' || orderSource === 'APP_FUNNEL_TIKTOK';
+    const source = isFunnel ? (orderSource as string) : 'CLASSIC';
 
-    if (source === 'APP_FUNNEL') {
+    if (isFunnel) {
       // Funnel order: store structured funnel_data as JSONB
       // funnelData is expected to contain: { username, avatarUrl, services: [...] }
       const funnelJson = JSON.stringify(funnelData || {});
       const totalFollowers = funnelData?.services?.reduce((sum: number, s: { quantity: number }) => sum + s.quantity, 0) || 0;
+      const funnelPlatform = orderSource === 'APP_FUNNEL_TIKTOK' ? 'tiktok' : 'instagram';
 
       const result = await sql`
         INSERT INTO orders (username, email, platform, followers, amount, price, payment_id, payment_intent_id, status, payment_status, country, order_source, funnel_data, ads_keyword, ads_campaign, ads_device) 
-        VALUES (${username}, ${email || null}, ${'instagram'}, ${totalFollowers}, ${amount}, ${amount}, ${paymentId}, ${paymentId}, 'completed', 'completed', ${country}, ${source}, ${funnelJson}::jsonb, ${adsKeyword || null}, ${adsCampaign || null}, ${adsDevice || null})
+        VALUES (${username}, ${email || null}, ${funnelPlatform}, ${totalFollowers}, ${amount}, ${amount}, ${paymentId}, ${paymentId}, 'completed', 'completed', ${country}, ${source}, ${funnelJson}::jsonb, ${adsKeyword || null}, ${adsCampaign || null}, ${adsDevice || null})
         RETURNING id
       `;
 

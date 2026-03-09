@@ -49,6 +49,18 @@ export async function POST(request: NextRequest) {
         views: 'Views',
         'story-views': 'Story Views',
       },
+      de: {
+        followers: 'Follower',
+        likes: 'Likes',
+        views: 'Aufrufe',
+        'story-views': 'Story-Ansichten',
+      },
+      es: {
+        followers: 'Seguidores',
+        likes: 'Likes',
+        views: 'Vistas',
+        'story-views': 'Vistas de story',
+      },
     };
 
     const labels = serviceLabels[lang] || serviceLabels.fr;
@@ -63,9 +75,12 @@ export async function POST(request: NextRequest) {
         orderNumber: 'Numéro de commande',
         services: 'Services commandés',
         total: 'Total',
-        processing: 'Votre commande est en cours de traitement et sera livrée dans les plus brefs délais.',
-        support: 'Besoin d\'aide ?',
-        contactUs: 'Contactez notre support',
+        serviceHeader: 'Service',
+        quantityHeader: 'Quantité',
+        priceHeader: 'Prix',
+        processing: 'Votre commande est en cours de traitement et sera livrée dans les plus brefs délais. Vous avez effectué cet achat sur socialoura.com.',
+        support: 'Besoin de plus de followers ?',
+        contactUs: 'Retourner sur le site',
         footer: 'SocialOura - Boostez votre présence sur les réseaux sociaux',
       },
       en: {
@@ -77,10 +92,47 @@ export async function POST(request: NextRequest) {
         orderNumber: 'Order Number',
         services: 'Ordered Services',
         total: 'Total',
-        processing: 'Your order is being processed and will be delivered as soon as possible.',
-        support: 'Need help?',
-        contactUs: 'Contact our support',
+        serviceHeader: 'Service',
+        quantityHeader: 'Quantity',
+        priceHeader: 'Price',
+        processing: 'Your order is being processed and will be delivered as soon as possible. You made this purchase on socialoura.com.',
+        support: 'Need more followers?',
+        contactUs: 'Return to site',
         footer: 'SocialOura - Boost your social media presence',
+      },
+      de: {
+        subject: '✅ Bestellbestätigung - SocialOura',
+        title: 'Bestellung bestätigt!',
+        subtitle: 'Vielen Dank für Ihren Kauf',
+        orderDetails: 'Bestelldetails',
+        account: 'Instagram-Konto',
+        orderNumber: 'Bestellnummer',
+        services: 'Bestellte Services',
+        total: 'Gesamt',
+        serviceHeader: 'Service',
+        quantityHeader: 'Menge',
+        priceHeader: 'Preis',
+        processing: 'Ihre Bestellung wird bearbeitet und so schnell wie möglich geliefert. Sie haben diesen Kauf auf socialoura.com getätigt.',
+        support: 'Brauchen Sie mehr Follower?',
+        contactUs: 'Zurück zur Website',
+        footer: 'SocialOura - Steigern Sie Ihre Präsenz in sozialen Medien',
+      },
+      es: {
+        subject: '✅ Confirmación de pedido - SocialOura',
+        title: '¡Pedido confirmado!',
+        subtitle: 'Gracias por su compra',
+        orderDetails: 'Detalles del pedido',
+        account: 'Cuenta de Instagram',
+        orderNumber: 'Número de pedido',
+        services: 'Servicios solicitados',
+        total: 'Total',
+        serviceHeader: 'Servicio',
+        quantityHeader: 'Cantidad',
+        priceHeader: 'Precio',
+        processing: 'Su pedido está siendo procesado y será entregado lo antes posible. Realizó esta compra en socialoura.com.',
+        support: '¿Necesitas más seguidores?',
+        contactUs: 'Volver al sitio',
+        footer: 'SocialOura - Impulsa tu presencia en redes sociales',
       },
     };
 
@@ -144,9 +196,9 @@ export async function POST(request: NextRequest) {
         <table style="width: 100%; border-collapse: collapse; background: white; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
           <thead>
             <tr style="background: #f9fafb;">
-              <th style="padding: 12px; text-align: left; color: #6b7280; font-size: 14px; font-weight: 600;">Service</th>
-              <th style="padding: 12px; text-align: center; color: #6b7280; font-size: 14px; font-weight: 600;">Quantité</th>
-              <th style="padding: 12px; text-align: right; color: #6b7280; font-size: 14px; font-weight: 600;">Prix</th>
+              <th style="padding: 12px; text-align: left; color: #6b7280; font-size: 14px; font-weight: 600;">${t.serviceHeader}</th>
+              <th style="padding: 12px; text-align: center; color: #6b7280; font-size: 14px; font-weight: 600;">${t.quantityHeader}</th>
+              <th style="padding: 12px; text-align: right; color: #6b7280; font-size: 14px; font-weight: 600;">${t.priceHeader}</th>
             </tr>
           </thead>
           <tbody>
@@ -171,7 +223,7 @@ export async function POST(request: NextRequest) {
       <!-- Support -->
       <div style="text-align: center; margin-top: 32px;">
         <p style="margin: 0 0 12px; color: #6b7280; font-size: 14px;">${t.support}</p>
-        <a href="mailto:support@socialoura.com" style="display: inline-block; background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: white; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
+        <a href="https://socialoura.com" style="display: inline-block; background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: white; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
           ${t.contactUs}
         </a>
       </div>
