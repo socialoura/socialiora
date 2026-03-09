@@ -61,6 +61,7 @@ export default function RootLayout({
               ${GA_AW_ID ? `gtag('config', '${GA_AW_ID}');` : ''}
               ${GA_INSTA_FUNNEL_ID ? `gtag('config', '${GA_INSTA_FUNNEL_ID}');` : ''}
               gtag('config', 'AW-17979730701');
+              gtag('config', 'AW-17964092485');
             `,
           }}
         />

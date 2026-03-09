@@ -5,10 +5,10 @@ import { useParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import posthog from 'posthog-js';
 import useUpsellStore from '@/store/useUpsellStore';
-import ProfileSearchInput from '@/components/upsell/ProfileSearchInput';
+import ProfileSearchInput from '@/components/upsell-v2/ProfileSearchInput';
 import ServiceSelector from '@/components/upsell/ServiceSelector';
 import PostGrid from '@/components/upsell/PostGrid';
-import CheckoutSummaryInstagram2 from '@/components/upsell/CheckoutSummaryInstagram2';
+import CheckoutSummary from '@/components/upsell-v2/CheckoutSummary';
 import { getStripe } from '@/components/StripeProvider';
 import { type Language } from '@/i18n/config';
 import { getUpsellTranslations } from '@/i18n/upsell';
@@ -27,12 +27,9 @@ export default function UpsellPage() {
   const { currentStep } = useUpsellStore();
   useAdsParams();
 
-  // Étape 0: Track tunnel page view on mount
+  // Track tunnel page view on mount
   useEffect(() => {
-    posthog.capture('instagram_tunnel_page_viewed', {
-      variant: 'instagram-2',
-      page_type: 'funnel_variant'
-    });
+    posthog.capture('instagram2_tunnel_page_viewed', { source: 'instagram-2_funnel' });
   }, []);
 
   // Scroll to top on every step change
@@ -121,7 +118,7 @@ export default function UpsellPage() {
 
           {currentStep === 3 && (
             <motion.div key="step-3" variants={stepVariants} initial="initial" animate="animate" exit="exit" transition={{ duration: 0.15 }} className="flex-1 flex flex-col">
-              <CheckoutSummaryInstagram2 lang={lang} />
+              <CheckoutSummary lang={lang} />
             </motion.div>
           )}
         </AnimatePresence>
