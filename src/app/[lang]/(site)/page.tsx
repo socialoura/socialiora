@@ -4,6 +4,7 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Language } from '@/i18n/config';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Plus, Minus, Camera, Music, BarChart3, Calendar, MessageCircle, HeadphonesIcon, Instagram } from 'lucide-react';
 
 const ChatWidget = dynamic(() => import('@/components/ChatWidget'), { ssr: false });
@@ -362,10 +363,12 @@ export default function HomePage({ params }: PageProps) {
         
         {/* Banner Image */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
-          <img 
-            src="/public/banner.png" 
+          <Image 
+            src="/banner.png" 
             alt="Socialoura Banner" 
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
         
@@ -477,11 +480,12 @@ export default function HomePage({ params }: PageProps) {
                       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
                       
                       {/* Phone Screen Content */}
-                      <div className="pt-12 px-4 pb-4 h-full flex flex-col items-center justify-center">
-                        <img 
+                      <div className="pt-12 px-4 pb-4 h-full flex flex-col items-center justify-center relative">
+                        <Image 
                           src="/banner.png" 
                           alt="Socialoura Banner" 
-                          className="w-full h-full object-contain rounded-2xl"
+                          fill
+                          className="object-contain rounded-2xl"
                         />
                       </div>
                     </div>
