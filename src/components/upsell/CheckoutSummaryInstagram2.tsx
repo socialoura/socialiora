@@ -377,19 +377,7 @@ function CheckoutPaymentFormInstagram2({ lang, onBeforePayment, onClientSecretCr
 }
 
 export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: CheckoutSummaryProps) {
-  const { selectedServices } = useUpsellStore();
   const [clientSecret, setClientSecret] = useState<string | null>(null);
-
-  // Calculate total price
-  const calculateTotal = () => {
-    let total = 0;
-    Object.values(selectedServices).forEach((service) => {
-      if (service.quantity > 0) {
-        total += service.price * service.quantity;
-      }
-    });
-    return total;
-  };
 
   return (
     <StripeProvider clientSecret={clientSecret || undefined}>
