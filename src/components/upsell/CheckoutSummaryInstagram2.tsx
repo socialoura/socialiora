@@ -43,7 +43,6 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
   } = useUpsellStore();
 
   const [paymentIntentId, setPaymentIntentId] = useState<string | null>(null);
-  const [orderResult, setOrderResult] = useState<{ orderId?: string } | null>(null);
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
@@ -189,7 +188,6 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
       });
 
       const orderResult = await orderResponse.json();
-      setOrderResult(orderResult);
 
       // Send confirmation email
       if (orderResult.orderId) {
@@ -241,15 +239,6 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
       setPaymentError(t.checkout?.paymentError || 'Payment error');
     }
   };
-
-  // Helper function to get stored ads parameters
-  const getStoredAdsParams = useCallback(() => {
-    if (typeof window !== 'undefined') {
-      const stored = sessionStorage.getItem('adsParams');
-      return stored ? JSON.parse(stored) : {};
-    }
-    return {};
-  }, []);
 
   if (isComplete) {
     return (
