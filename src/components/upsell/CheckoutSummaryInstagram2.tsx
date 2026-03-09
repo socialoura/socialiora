@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   PaymentElement,
   LinkAuthenticationElement,
@@ -9,18 +8,20 @@ import {
   useStripe,
   useElements,
 } from '@stripe/react-stripe-js';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import posthog from 'posthog-js';
 import { Shield, Clock, Zap, ChevronRight, AlertCircle, Check } from 'lucide-react';
-import { useCurrency } from '@/contexts/CurrencyContext';
-import useUpsellStore, { ServiceType } from '@/store/useUpsellStore';
+import useUpsellStore from '@/store/useUpsellStore';
 import { getUpsellTranslations } from '@/i18n/upsell';
 import { formatPrice } from '@/lib/pricing';
-import { getStripe } from '@/components/StripeProvider';
-import { trackInstaFunnelPurchase } from '@/lib/gtag';
 import { trackPurchase, getPurchaseSource } from '@/lib/posthog-tracking';
-import { proxyImageUrl } from '@/lib/image-proxy';
 import { type Language } from '@/i18n/config';
+
+interface ServiceSelection {
+  type: string;
+  quantity: number;
+  price: number;
+}
 
 interface CheckoutSummaryProps {
   lang: Language;
@@ -29,8 +30,6 @@ interface CheckoutSummaryProps {
 
 export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: CheckoutSummaryProps) {
   const router = useRouter();
-  const pathname = usePathname();
-  const { currency } = useCurrency();
   const stripe = useStripe();
   const elements = useElements();
   const t = getUpsellTranslations(lang);
@@ -38,10 +37,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
   const {
     username,
     selectedServices,
-    currentStep,
-    setCurrentStep,
     pricingCurrency,
-    setPricingCurrency,
     email,
     setEmail,
   } = useUpsellStore();
@@ -77,9 +73,9 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
     if (!clientSecret && Object.keys(selectedServices).length > 0) {
       createPaymentIntent();
     }
-  }, [selectedServices, clientSecret]);
+  }, [selectedServices, clientSecret, createPaymentIntent]);
 
-  const createPaymentIntent = async () => {
+  const createPaymentIntent = useCallback(async () => {
     try {
       const primaryService = Object.values(selectedServices).find(s => s.type !== 'story-views') || Object.values(selectedServices)[0];
       posthog.capture('instagram_step4_checkout_viewed', {
@@ -119,7 +115,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
       console.error('Error creating payment intent:', error);
       setPaymentError(t.checkout?.paymentError || 'Payment error');
     }
-  };
+  }, [selectedServices, pricingCurrency, username, lang, t, totalPrice]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -154,41 +150,6 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
       });
       setPaymentError(error.message || t.checkout?.paymentError || 'Payment error');
       setIsProcessing(false);
-      return;
-    }
-
-    if (paymentIntent?.status === 'succeeded') {
-      await handlePaymentSuccess(paymentIntent.id);
-    }
-  };
-
-  const handleExpressConfirm = async () => {
-    if (!stripe || !elements) return;
-    
-    posthog.capture('instagram_step4_payment_attempted', { 
-      variant: 'instagram-2',
-      payment_method_type: 'express', 
-      target_platform: 'instagram' 
-    });
-    onBeforePayment?.();
-
-    const { error, paymentIntent } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: `${window.location.origin}/${lang}/instagram-2/success`,
-        receipt_email: email,
-      },
-      redirect: 'if_required',
-    });
-
-    if (error) {
-      posthog.capture('instagram_step4_payment_failed', { 
-        variant: 'instagram-2',
-        error_code: error.code || 'unknown', 
-        error_message: error.message || 'unknown', 
-        target_platform: 'instagram' 
-      });
-      setPaymentError(error.message || t.checkout?.paymentError || 'Payment error');
       return;
     }
 
@@ -249,16 +210,18 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
           console.error('Failed to send confirmation email:', emailErr);
         }
 
-        // Google Analytics tracking
-        trackInstaFunnelPurchase({
-          value: totalPrice,
-          currency: pricingCurrency.toUpperCase(),
-          transactionId: String(orderResult.orderId || paymentIntentIdRef.current || 'unknown'),
-        });
+        // Google Analytics tracking - Instagram-2 specific
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-17964092485/Hk6VCO74u4UcEMWY-fVC',
+            value: totalPrice,
+            currency: pricingCurrency.toUpperCase(),
+            transaction_id: String(orderResult.orderId || paymentIntentIdRef.current || 'unknown'),
+          });
+        }
 
         // PostHog revenue tracking with source detection
         const source = getPurchaseSource(window.location.pathname, 'APP_FUNNEL');
-        const adsData = getStoredAdsParams();
         trackPurchase({
           revenue: totalPrice,
           currency: pricingCurrency.toUpperCase() as 'USD' | 'EUR' | 'GBP' | 'CHF' | 'CAD' | 'AUD' | 'NZD' | 'JPY' | 'CNY' | 'INR' | 'BRL' | 'MXN' | 'KRW' | 'SEK' | 'NOK' | 'DKK' | 'PLN' | 'CZK' | 'HUF' | 'RON' | 'TRY' | 'ZAR' | 'SGD' | 'HKD',
@@ -309,13 +272,13 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
         <h3 className="text-lg font-semibold text-white mb-4">{t.checkout?.orderFor || 'Order Summary'}</h3>
         
         {/* Services */}
-        {Object.values(selectedServices).map((service: any, index: number) => (
+        {Object.values(selectedServices).map((service: ServiceSelection, index: number) => (
           service.quantity > 0 && (
             <div key={index} className="flex items-center justify-between mb-2 text-sm">
               <span className="text-gray-400">
                 {service.quantity}x {t.service?.[service.type as keyof typeof t.service] || service.type}
               </span>
-              <span className="text-white">{formatPrice(service.price * service.quantity, pricingCurrency as any)}</span>
+              <span className="text-white">{formatPrice(service.price * service.quantity, pricingCurrency as 'EUR' | 'USD' | 'GBP')}</span>
             </div>
           )
         ))}
@@ -324,7 +287,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
         <div className="border-t border-gray-800 pt-4 mt-4">
           <div className="flex items-center justify-between">
             <span className="text-white font-semibold">{t.checkout?.totalAmount || 'Total'}</span>
-            <span className="text-xl font-bold text-white">{formatPrice(totalPrice, pricingCurrency as any)}</span>
+            <span className="text-xl font-bold text-white">{formatPrice(totalPrice, pricingCurrency as 'EUR' | 'USD' | 'GBP')}</span>
           </div>
         </div>
       </div>
@@ -381,7 +344,7 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
               </>
             ) : (
               <>
-                {t.checkout?.backToSelection || 'Pay Now'} {formatPrice(totalPrice, pricingCurrency as any)}
+                {t.checkout?.backToSelection || 'Pay Now'} {formatPrice(totalPrice, pricingCurrency as 'EUR' | 'USD' | 'GBP')}
                 <ChevronRight className="w-5 h-5" />
               </>
             )}
