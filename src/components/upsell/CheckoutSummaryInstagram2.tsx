@@ -11,6 +11,7 @@ import {
 import { useRouter } from 'next/navigation';
 import posthog from 'posthog-js';
 import { Shield, Clock, Zap, ChevronRight, AlertCircle, Check } from 'lucide-react';
+import StripeProvider from '@/components/StripeProvider';
 import useUpsellStore from '@/store/useUpsellStore';
 import { getUpsellTranslations } from '@/i18n/upsell';
 import { formatPrice } from '@/lib/pricing';
@@ -26,9 +27,10 @@ interface ServiceSelection {
 interface CheckoutSummaryProps {
   lang: Language;
   onBeforePayment?: () => void;
+  onClientSecretCreated?: (secret: string) => void;
 }
 
-export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: CheckoutSummaryProps) {
+function CheckoutPaymentFormInstagram2({ lang, onBeforePayment, onClientSecretCreated }: CheckoutSummaryProps) {
   const router = useRouter();
   const stripe = useStripe();
   const elements = useElements();
@@ -103,11 +105,16 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
 
       setClientSecret(data.clientSecret);
       setPaymentIntentId(data.paymentIntentId);
+      
+      // Notify parent component of client secret
+      if (onClientSecretCreated) {
+        onClientSecretCreated(data.clientSecret);
+      }
     } catch (error) {
       console.error('Error creating payment intent:', error);
       setPaymentError(t.checkout?.paymentError || 'Payment error');
     }
-  }, [selectedServices, pricingCurrency, username, lang, t, totalPrice]);
+  }, [selectedServices, pricingCurrency, username, lang, t, totalPrice, onClientSecretCreated]);
 
   // Create payment intent on component mount
   useEffect(() => {
@@ -366,5 +373,31 @@ export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: Che
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CheckoutSummaryInstagram2({ lang, onBeforePayment }: CheckoutSummaryProps) {
+  const { selectedServices } = useUpsellStore();
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
+
+  // Calculate total price
+  const calculateTotal = () => {
+    let total = 0;
+    Object.values(selectedServices).forEach((service) => {
+      if (service.quantity > 0) {
+        total += service.price * service.quantity;
+      }
+    });
+    return total;
+  };
+
+  return (
+    <StripeProvider clientSecret={clientSecret || undefined}>
+      <CheckoutPaymentFormInstagram2 
+        lang={lang} 
+        onBeforePayment={onBeforePayment}
+        onClientSecretCreated={setClientSecret}
+      />
+    </StripeProvider>
   );
 }
