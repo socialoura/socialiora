@@ -360,6 +360,15 @@ export default function HomePage({ params }: PageProps) {
         {/* Grid Pattern Overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
         
+        {/* Banner Image */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-10">
+          <img 
+            src="/public/banner.png" 
+            alt="Socialoura Banner" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
         <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:flex lg:items-center lg:gap-16">
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left">
@@ -468,47 +477,12 @@ export default function HomePage({ params }: PageProps) {
                       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
                       
                       {/* Phone Screen Content */}
-                      <div className="pt-12 px-4 pb-4 h-full flex flex-col">
-                        {/* Profile Section */}
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/30">
-                            <span className="text-white text-lg font-bold">S</span>
-                          </div>
-                          <div>
-                            <div className="text-white font-semibold text-sm">@socialoura</div>
-                            <div className="text-purple-400 text-xs">Pro Account</div>
-                          </div>
-                        </div>
-                        
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-3 gap-2 mb-4">
-                          <div className="bg-gray-800/50 backdrop-blur rounded-xl p-2 text-center border border-gray-700/50">
-                            <div className="text-white font-bold text-lg">12.5K</div>
-                            <div className="text-purple-400 text-[10px]">Followers</div>
-                          </div>
-                          <div className="bg-gray-800/50 backdrop-blur rounded-xl p-2 text-center border border-gray-700/50">
-                            <div className="text-white font-bold text-lg">847</div>
-                            <div className="text-purple-400 text-[10px]">Posts</div>
-                          </div>
-                          <div className="bg-gray-800/50 backdrop-blur rounded-xl p-2 text-center border border-gray-700/50">
-                            <div className="text-white font-bold text-lg">98%</div>
-                            <div className="text-purple-400 text-[10px]">Growth</div>
-                          </div>
-                        </div>
-                        
-                        {/* Growth Chart */}
-                        <div className="flex-1 bg-gray-800/30 backdrop-blur rounded-2xl p-3 relative overflow-hidden border border-gray-700/50">
-                          <div className="text-purple-400 text-xs mb-2">Growth Analytics</div>
-                          <div className="flex items-end gap-1 h-28">
-                            {[40, 55, 45, 70, 60, 85, 75, 95, 88, 100].map((height, i) => (
-                              <div 
-                                key={i} 
-                                className="flex-1 bg-gradient-to-t from-purple-600 to-pink-500 rounded-t-sm"
-                                style={{ height: `${height}%` }}
-                              />
-                            ))}
-                          </div>
-                        </div>
+                      <div className="pt-12 px-4 pb-4 h-full flex flex-col items-center justify-center">
+                        <img 
+                          src="/banner.png" 
+                          alt="Socialoura Banner" 
+                          className="w-full h-full object-contain rounded-2xl"
+                        />
                       </div>
                     </div>
                   </div>

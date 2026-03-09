@@ -1,0 +1,51 @@
+User-agent: *
+Disallow: /
+
+# Whitelisted pages - Allow only specific pages
+Allow: /t$
+Allow: /instagram$
+Allow: /tiktok$
+Allow: /funnel-instagram$
+Allow: /funnel-tiktok$
+Allow: /faq$
+Allow: /contact$
+Allow: /terms$
+Allow: /privacy$
+Allow: /$
+
+# Block all language-prefixed versions except whitelisted ones
+Disallow: /*/t
+Disallow: /*/instagram
+Disallow: /*/tiktok
+Disallow: /*/funnel-instagram
+Disallow: /*/funnel-tiktok
+Disallow: /*/faq
+Disallow: /*/contact
+Disallow: /*/terms
+Disallow: /*/privacy
+
+# Allow language-prefixed versions of whitelisted pages
+Allow: /*/t$
+Allow: /*/instagram$
+Allow: /*/tiktok$
+Allow: /*/funnel-instagram$
+Allow: /*/funnel-tiktok$
+Allow: /*/faq$
+Allow: /*/contact$
+Allow: /*/terms$
+Allow: /*/privacy$
+
+# Block all dynamic and parameterized URLs
+Disallow: /*?
+Disallow: /*=
+Disallow: /*&
+Disallow: /*#
+
+# Block admin and API routes
+Disallow: /admin
+Disallow: /api
+Disallow: /_next
+Disallow: /favicon.ico
+
+# Sitemap (if you have one)
+# Sitemap: https://socialoura.com/sitemap.xml

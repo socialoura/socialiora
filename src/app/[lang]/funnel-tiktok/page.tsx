@@ -7,6 +7,7 @@ import posthog from 'posthog-js';
 import { ArrowRight } from 'lucide-react';
 import { type Language } from '@/i18n/config';
 import { getLandingTiktokTranslations } from '@/i18n/landing-tiktok';
+import SEOHead from '@/components/SEOHead';
 
 export default function FunnelTiktokLandingPage({ params }: { params: { lang: string } }) {
   const router = useRouter();
@@ -24,6 +25,21 @@ export default function FunnelTiktokLandingPage({ params }: { params: { lang: st
 
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center px-4 sm:px-6 relative overflow-hidden">
+      <SEOHead 
+        title={`${lang === 'fr' ? 'Funnel TikTok' : lang === 'de' ? 'TikTok Trichter' : lang === 'es' ? 'Embudo TikTok' : 'TikTok Funnel'} - Socialoura`}
+        description={lang === 'fr' 
+          ? "Découvrez notre funnel TikTok pour augmenter vos followers."
+          : lang === 'de' 
+          ? "Entdecken Sie unseren TikTok-Trichter, um Ihre Follower zu erhöhen."
+          : lang === 'es'
+          ? "Descubre nuestro embudo de TikTok para aumentar tus seguidores."
+          : "Discover our TikTok funnel to increase your followers."
+        }
+        keywords={['tiktok funnel', 'tiktok growth', 'social media marketing']}
+        index={true}
+        follow={true}
+        canonical={`https://socialoura.com/${lang}/funnel-tiktok`}
+      />
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/10 rounded-full blur-[120px]" />

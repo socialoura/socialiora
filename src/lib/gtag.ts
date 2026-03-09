@@ -89,21 +89,33 @@ export function trackInstaFunnelPurchase(orderData: {
   currency: string;
   transactionId: string;
 }) {
+  console.log('[DEBUG] trackInstaFunnelPurchase called with:', orderData);
+  console.log('[DEBUG] GA_INSTA_FUNNEL_ID:', GA_INSTA_FUNNEL_ID);
+  console.log('[DEBUG] GA_INSTA_FUNNEL_LABEL:', GA_INSTA_FUNNEL_LABEL);
+  
   if (typeof window === 'undefined' || !window.gtag) {
-    console.warn('[gtag] gtag not loaded — skipping Instagram funnel conversion tracking.');
+    console.error('[gtag] gtag not loaded — skipping Instagram funnel conversion tracking.');
     return;
   }
   if (!GA_INSTA_FUNNEL_ID || !GA_INSTA_FUNNEL_LABEL) {
-    console.warn('[gtag] Missing NEXT_PUBLIC_GA_INSTA_FUNNEL_ID or NEXT_PUBLIC_GA_INSTA_FUNNEL_CONVERSION_LABEL — skipping Instagram funnel conversion.');
+    console.error('[gtag] Missing NEXT_PUBLIC_GA_INSTA_FUNNEL_ID or NEXT_PUBLIC_GA_INSTA_FUNNEL_CONVERSION_LABEL — skipping Instagram funnel conversion.');
+    console.error('[gtag] GA_INSTA_FUNNEL_ID:', GA_INSTA_FUNNEL_ID);
+    console.error('[gtag] GA_INSTA_FUNNEL_LABEL:', GA_INSTA_FUNNEL_LABEL);
     return;
   }
 
-  window.gtag('event', 'conversion', {
+  const conversionData = {
     send_to: `${GA_INSTA_FUNNEL_ID}/${GA_INSTA_FUNNEL_LABEL}`,
     value: orderData.value,
     currency: orderData.currency.toUpperCase(),
     transaction_id: orderData.transactionId,
-  });
+  };
+  
+  console.log('[DEBUG] Sending conversion:', conversionData);
+  
+  window.gtag('event', 'conversion', conversionData);
+  
+  console.log('[DEBUG] Conversion sent successfully!');
 }
 
 // Compte 3: Page de vente classique TikTok (/t)

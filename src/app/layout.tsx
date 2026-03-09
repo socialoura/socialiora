@@ -8,6 +8,7 @@ import PostHogProvider from "@/components/PostHogProvider";
 import "./globals.css";
 
 const GA_AW_ID = process.env.NEXT_PUBLIC_GA_AW_ID || '';
+const GA_INSTA_FUNNEL_ID = process.env.NEXT_PUBLIC_GA_INSTA_FUNNEL_ID || '';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -20,6 +21,14 @@ export const metadata: Metadata = {
   description: "Grow your Instagram and TikTok followers with Socialoura. Safe, reliable, and effective social media growth service.",
   keywords: ["social media", "instagram followers", "tiktok followers", "social growth", "socialoura"],
   authors: [{ name: "Socialoura" }],
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -50,6 +59,7 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               ${GA_AW_ID ? `gtag('config', '${GA_AW_ID}');` : ''}
+              ${GA_INSTA_FUNNEL_ID ? `gtag('config', '${GA_INSTA_FUNNEL_ID}');` : ''}
               gtag('config', 'AW-17979730701');
             `,
           }}

@@ -7,6 +7,7 @@ import posthog from 'posthog-js';
 import { ArrowRight } from 'lucide-react';
 import { type Language } from '@/i18n/config';
 import { getLandingTranslations } from '@/i18n/landing';
+import SEOHead from '@/components/SEOHead';
 
 export default function FunnelLandingPage({ params }: { params: { lang: string } }) {
   const router = useRouter();
@@ -24,6 +25,21 @@ export default function FunnelLandingPage({ params }: { params: { lang: string }
 
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center px-4 sm:px-6 relative overflow-hidden">
+      <SEOHead 
+        title={`${lang === 'fr' ? 'Funnel Instagram' : lang === 'de' ? 'Instagram Trichter' : lang === 'es' ? 'Embudo Instagram' : 'Instagram Funnel'} - Socialoura`}
+        description={lang === 'fr' 
+          ? "Découvrez notre funnel Instagram pour augmenter vos followers."
+          : lang === 'de' 
+          ? "Entdecken Sie unseren Instagram-Trichter, um Ihre Follower zu erhöhen."
+          : lang === 'es'
+          ? "Descubre nuestro embudo de Instagram para aumentar tus seguidores."
+          : "Discover our Instagram funnel to increase your followers."
+        }
+        keywords={['instagram funnel', 'instagram growth', 'social media marketing']}
+        index={true}
+        follow={true}
+        canonical={`https://socialoura.com/${lang}/funnel-instagram`}
+      />
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-pink-500/10 rounded-full blur-[120px]" />
