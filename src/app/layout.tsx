@@ -76,6 +76,7 @@ export default function RootLayout({
               gtag('config', 'AW-17979730701');
               gtag('config', 'AW-17964092485');
               gtag('config', 'AW-18009151319');
+              gtag('config', 'AW-18013095662');
             `,
           }}
         />

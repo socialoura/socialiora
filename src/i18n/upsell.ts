@@ -136,8 +136,8 @@ export const upsellTranslations = {
     },
 
     search: {
-      title: 'BOOSTEZ VOTRE PROFIL',
-      subtitle: 'Entrez votre nom d\'utilisateur Instagram public pour commencer. Aucun mot de passe requis.',
+      title: 'AMPLIFIEZ VOTRE VISIBILITÉ',
+      subtitle: 'Saisissez votre identifiant Instagram public pour démarrer. Aucune authentification requise.',
       publicNote: '* Assurez-vous que votre compte est en public.',
       placeholder: 'votre_pseudo',
       continue: 'Continuer',
@@ -160,23 +160,23 @@ export const upsellTranslations = {
 
     service: {
       changeProfile: 'Changer de profil',
-      selectServices: 'Sélectionnez vos services',
-      selectServicesDesc: 'Ajustez les curseurs pour composer votre pack sur-mesure',
-      followers: 'Abonnés',
+      selectServices: 'Configurez vos options',
+      selectServicesDesc: 'Calibrez les paramètres pour composer votre formule personnalisée',
+      followers: 'Réseau',
       likes: 'Likes',
       views: 'Vues',
       storyViews: 'Vues de story',
-      selected: 'sélectionnés',
-      bonusFree: 'bonus offerts',
-      orderTotal: 'Total de votre commande',
+      selected: 'activés',
+      bonusFree: 'suppléments inclus',
+      orderTotal: 'Total de votre formule',
       continueOrder: 'Valider mon pack',
       mostPopular: 'Le plus populaire',
     },
 
     grid: {
       backToServices: 'Retour aux services',
-      whereToSend: 'Où envoyer vos {service} ?',
-      selectPosts: 'Sélectionnez les publications sur lesquelles répartir votre commande',
+      whereToSend: 'Où distribuer vos {service} ?',
+      selectPosts: 'Choisissez les publications pour la répartition de votre formule',
       toDistribute: 'À répartir',
       postsAvailable: 'publications disponibles',
       selectedCount: '{count} sélectionnée(s)',
@@ -188,8 +188,8 @@ export const upsellTranslations = {
 
     checkout: {
       backToSelection: 'Retour à la sélection',
-      orderFor: 'Commande pour',
-      serviceDetails: 'Détail des services',
+      orderFor: 'Formule pour',
+      serviceDetails: 'Détails de la configuration',
       onPosts: 'Sur {count} publication(s)',
       totalAmount: 'Montant total',
       securePayment: 'Paiement sécurisé',
@@ -207,10 +207,10 @@ export const upsellTranslations = {
       privacyLink: 'politique de confidentialité',
       guarantees: 'Garanties incluses',
       guaranteesList: [
-        'Livraison 100% sécurisée',
-        'Comptes réels et actifs',
-        'Aucun mot de passe requis',
-        'Support client 24/7',
+        'Activation 100% sécurisée',
+        'Profils authentiques et engagés',
+        'Aucune authentification requise',
+        'Assistance continue 24/7',
       ],
       paymentError: 'Une erreur est survenue lors du paiement.',
       stripeError: 'Impossible de créer le paiement Stripe',

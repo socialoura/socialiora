@@ -193,6 +193,31 @@ export function trackTiktok2FunnelPurchase(orderData: {
   });
 }
 
+// Compte 7: New Google Ads Account
+/**
+ * Track a Google Ads Purchase conversion event for the new account.
+ * Uses conversion ID: AW-18013095662/83qNCJ6xgogcEO6NqI1D
+ */
+export function trackNewAccountPurchase(orderData: {
+  value: number;
+  currency: string;
+  transactionId: string;
+}) {
+  if (typeof window === 'undefined' || !window.gtag) {
+    console.warn('[gtag] gtag not loaded — skipping new account conversion tracking.');
+    return;
+  }
+
+  const sendTo = 'AW-18013095662/83qNCJ6xgogcEO6NqI1D';
+
+  window.gtag('event', 'conversion', {
+    send_to: sendTo,
+    value: orderData.value,
+    currency: orderData.currency.toUpperCase(),
+    transaction_id: orderData.transactionId,
+  });
+}
+
 // Legacy function - kept for backward compatibility, will be removed after migration
 export function trackFunnelPurchase(orderData: {
   value: number;
