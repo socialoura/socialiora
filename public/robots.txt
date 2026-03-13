@@ -48,4 +48,4 @@ Disallow: /_next
 Disallow: /favicon.ico
 
 # Sitemap (if you have one)
-# Sitemap: https://socialoura.com/sitemap.xml
+# Sitemap: https://socialiora.com/sitemap.xml

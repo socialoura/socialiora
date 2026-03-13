@@ -12,6 +12,27 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: {
+          DEFAULT: '#7C3AED',
+          50: '#F5F0FF',
+          100: '#EDE5FF',
+          200: '#D4BFFF',
+          300: '#B794F6',
+          400: '#9F6AED',
+          500: '#7C3AED',
+          600: '#6522D1',
+          700: '#4F1AAB',
+          800: '#3B1382',
+          900: '#270D59',
+        },
+        accent: {
+          DEFAULT: '#DB2777',
+          light: '#F472B6',
+          dark: '#9D174D',
+        },
+      },
+      fontFamily: {
+        sans: ['Poppins', 'system-ui', '-apple-system', 'sans-serif'],
       },
       backgroundSize: {
         '200': '200%',

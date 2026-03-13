@@ -22,8 +22,8 @@ export default function ContactPage({ params }: PageProps) {
 
   const content = {
     en: {
-      title: 'Contact Us',
-      subtitle: 'Have a question or need help? We\'re here for you.',
+      title: 'Reach Out',
+      subtitle: 'Got a question or need assistance? Our team is standing by.',
       form: {
         name: 'Your Name',
         namePlaceholder: 'John Doe',
@@ -33,39 +33,39 @@ export default function ContactPage({ params }: PageProps) {
         subjectPlaceholder: 'How can we help you?',
         message: 'Message',
         messagePlaceholder: 'Tell us more about your inquiry...',
-        submit: 'Send Message',
-        submitting: 'Sending...',
+        submit: 'Submit Inquiry',
+        submitting: 'Processing...',
       },
       contactInfo: {
         title: 'Get In Touch',
         description: 'Reach out to us through any of these channels',
         email: {
           label: 'Email',
-          value: 'support@socialoura.com',
+          value: 'support@socialiora.com',
         },
         phone: {
           label: 'Phone',
           value: '+33 1 84 80 00 00',
         },
         address: {
-          label: 'Address',
-          value: '128 Rue La Boétie, 75008 Paris, France',
+          label: 'Office',
+          value: '75 Place de la Madeleine, 75010 Paris, France',
         },
       },
       responseTime: {
-        title: 'Quick Response',
-        description: 'We typically respond within 24 hours',
+        title: 'Lightning-Fast Replies',
+        description: 'Expect a response within 24 hours or less',
       },
       support: {
-        title: '24/7 Support',
-        description: 'Our team is always available to help',
+        title: 'Always-On Assistance',
+        description: 'Our crew is available around the clock to guide you',
       },
-      success: 'Message sent successfully! We\'ll get back to you soon.',
-      error: 'Failed to send message. Please try again.',
+      success: 'Your inquiry has been submitted! We will follow up shortly.',
+      error: 'Something went wrong. Please give it another try.',
     },
     fr: {
-      title: 'Nous Contacter',
-      subtitle: 'Une question ou besoin d\'aide ? Nous sommes là pour vous.',
+      title: 'Nous Écrire',
+      subtitle: 'Une interrogation ou besoin d\'accompagnement ? Notre équipe est à votre écoute.',
       form: {
         name: 'Votre Nom',
         namePlaceholder: 'Jean Dupont',
@@ -83,15 +83,15 @@ export default function ContactPage({ params }: PageProps) {
         description: 'Contactez-nous via l\'un de ces canaux',
         email: {
           label: 'Email',
-          value: 'support@socialoura.com',
+          value: 'support@socialiora.com',
         },
         phone: {
           label: 'Téléphone',
           value: '+33 1 84 80 00 00',
         },
         address: {
-          label: 'Adresse',
-          value: '128 Rue La Boétie, 75008 Paris, France',
+          label: 'Bureau',
+          value: '75 Place de la Madeleine, 75010 Paris, France',
         },
       },
       responseTime: {
@@ -125,15 +125,15 @@ export default function ContactPage({ params }: PageProps) {
         description: 'Erreichen Sie uns über einen dieser Kanäle',
         email: {
           label: 'E-Mail',
-          value: 'support@socialoura.com',
+          value: 'support@socialiora.com',
         },
         phone: {
           label: 'Telefon',
           value: '+33 1 84 80 00 00',
         },
         address: {
-          label: 'Adresse',
-          value: '128 Rue La Boétie, 75008 Paris, Frankreich',
+          label: 'Büro',
+          value: '75 Place de la Madeleine, 75010 Paris, Frankreich',
         },
       },
       responseTime: {
@@ -167,15 +167,15 @@ export default function ContactPage({ params }: PageProps) {
         description: 'Contáctanos a través de cualquiera de estos canales',
         email: {
           label: 'Correo',
-          value: 'support@socialoura.com',
+          value: 'support@socialiora.com',
         },
         phone: {
           label: 'Teléfono',
           value: '+33 1 84 80 00 00',
         },
         address: {
-          label: 'Dirección',
-          value: '128 Rue La Boétie, 75008 París, Francia',
+          label: 'Oficina',
+          value: '75 Place de la Madeleine, 75010 París, Francia',
         },
       },
       responseTime: {
@@ -426,7 +426,7 @@ export default function ContactPage({ params }: PageProps) {
       {/* Footer */}
       <footer className="border-t border-gray-200 dark:border-gray-800 py-8 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600 dark:text-gray-400">
-          <p>&copy; 2026 Socialoura. All rights reserved.</p>
+          <p>&copy; 2026 Socialiora. All rights reserved.</p>
         </div>
       </footer>
 

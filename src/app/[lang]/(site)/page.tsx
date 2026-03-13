@@ -26,114 +26,114 @@ export default function HomePage({ params }: PageProps) {
   const content = {
     en: {
       hero: {
-        headline: 'Elevate Your Social Media Presence',
-        subheadline: 'Professional marketing solutions to help your Instagram, TikTok and X (Twitter) accounts reach their full potential',
+        headline: 'Amplify Your Digital Influence',
+        subheadline: 'Advanced audience development platform designed to elevate your Instagram, TikTok and X (Twitter) presence beyond industry standards',
         instagramCta: 'Instagram',
         tiktokCta: 'TikTok',
         twitterCta: 'X (Twitter)',
       },
       services: {
-        title: 'Our Services',
-        subtitle: 'Everything you need to succeed on social media',
+        title: 'Our Solutions',
+        subtitle: 'A comprehensive suite for maximizing performance across all networks',
         items: [
           {
-            title: 'Instagram Marketing',
-            description: 'Strategic marketing campaigns to expand your Instagram reach and connect with your ideal audience.',
+            title: 'Instagram Visibility',
+            description: 'Strategic audience development initiatives engineered to expand your Instagram reach and connect with high-value demographics.',
             icon: Camera,
           },
           {
-            title: 'TikTok Promotion',
-            description: 'Professional promotion strategies to increase your TikTok visibility and audience engagement.',
+            title: 'TikTok Engagement',
+            description: 'Proven methodologies calibrated to enhance your TikTok visibility and drive meaningful audience participation.',
             icon: Music,
           },
           {
-            title: 'X (Twitter) Growth',
-            description: 'Targeted strategies to grow your X presence and build an engaged following in your niche.',
+            title: 'X (Twitter) Reach',
+            description: 'Laser-focused strategies to broaden your X influence and build a dedicated network within your vertical.',
             icon: MessageCircle,
           },
           {
             title: 'Analytics Dashboard',
-            description: 'Track your progress with detailed analytics and insights to optimize your social media strategy.',
+            description: 'Track your trajectory with comprehensive metrics and intelligence-driven insights to optimize your expansion roadmap.',
             icon: BarChart3,
           },
           {
-            title: 'Content Strategy',
-            description: 'Plan and organize your content in advance to maintain a consistent presence on your channels.',
+            title: 'Content Planning',
+            description: 'Map out and schedule your posts ahead of time so your channels stay active and on-brand.',
             icon: Calendar,
           },
           {
             title: 'Audience Development',
-            description: 'Build meaningful connections with your target audience to increase your visibility and reach.',
+            description: 'Cultivate meaningful connections with your target demographics to amplify both exposure and natural momentum.',
             icon: MessageCircle,
           },
           {
-            title: '24/7 Support',
-            description: 'Our dedicated support team is always ready to help you maximize your results.',
+            title: 'Round-the-Clock Assistance',
+            description: 'Our responsive team stands by at all hours to ensure you get the most out of every campaign.',
             icon: HeadphonesIcon,
           },
         ],
       },
       faq: {
-        title: 'Frequently Asked Questions',
-        subtitle: 'Everything you need to know about our services',
+        title: 'Common Questions',
+        subtitle: 'Quick answers to help you get started with confidence',
         items: [
           {
-            question: 'Is your service safe for my account?',
-            answer: 'Yes, our marketing strategies are designed to comply with platform guidelines and best practices to keep your account secure.',
+            question: 'Will my account remain secure?',
+            answer: 'Absolutely. Every technique we employ adheres to platform terms of service and industry best practices, keeping your profile protected at all times.',
           },
           {
-            question: 'How quickly will I see results?',
-            answer: 'Most clients see noticeable improvements within the first 2-4 weeks, with consistent progress over time.',
+            question: 'When will I see measurable results?',
+            answer: 'Most clients observe substantial performance improvements within 2 to 4 weeks, with consistent advancement as your initiatives scale.',
           },
           {
-            question: 'Can I cancel my subscription anytime?',
-            answer: 'Absolutely! You can cancel your subscription at any time with no questions asked. No hidden fees or commitments.',
+            question: 'Am I locked into a long-term contract?',
+            answer: 'Not at all. You are free to pause or cancel whenever you wish—zero penalties, zero surprise charges.',
           },
           {
-            question: 'Do you offer a free trial?',
-            answer: 'Yes, we offer a 7-day free trial on all our plans so you can test our services risk-free.',
+            question: 'Is there a risk-free trial available?',
+            answer: 'Yes! Every plan includes a complimentary 7-day trial so you can evaluate the impact before committing.',
           },
           {
-            question: 'What makes you different from competitors?',
-            answer: 'We focus on authentic audience development with strategic targeting, provide superior customer support, and offer transparent pricing with no hidden costs.',
+            question: 'What sets Socialiora apart from competitors?',
+            answer: 'We emphasize authentic audience interaction via precision targeting, provide premium-tier assistance, and uphold complete pricing transparency without concealed fees.',
           },
           {
-            question: 'Which platforms do you support?',
-            answer: 'We support Instagram, TikTok and X (Twitter) to help you grow across multiple platforms.',
+            question: 'Which platforms do you service?',
+            answer: 'We support Instagram, TikTok and X (Twitter), delivering an integrated approach for cross-channel presence optimization.',
           },
         ],
       },
     },
     fr: {
       hero: {
-        headline: 'Élevez Votre Présence Sur Les Réseaux Sociaux',
-        subheadline: 'Solutions marketing professionnelles pour aider vos comptes Instagram, TikTok et X (Twitter) à atteindre leur plein potentiel',
+        headline: 'Amplifiez Votre Influence Digitale',
+        subheadline: 'Plateforme de développement d\'audience avancée conçue pour propulser vos profils Instagram, TikTok et X (Twitter) au-delà des standards du secteur',
         instagramCta: 'Instagram',
         tiktokCta: 'TikTok',
         twitterCta: 'X (Twitter)',
       },
       services: {
-        title: 'Nos Services',
-        subtitle: 'Tout ce dont vous avez besoin pour réussir sur les réseaux sociaux',
+        title: 'Nos Solutions',
+        subtitle: 'Une suite complète pour maximiser vos performances sur tous les réseaux',
         items: [
           {
-            title: 'Marketing Instagram',
-            description: 'Campagnes marketing stratégiques pour étendre votre portée Instagram et connecter avec votre audience idéale.',
+            title: 'Visibilité Instagram',
+            description: 'Initiatives stratégiques de développement d\'audience conçues pour élargir votre portée Instagram et connecter avec des démographies à forte valeur.',
             icon: Camera,
           },
           {
-            title: 'Promotion TikTok',
-            description: 'Stratégies de promotion professionnelles pour augmenter votre visibilité TikTok et l\'engagement de votre audience.',
+            title: 'Engagement TikTok',
+            description: 'Méthodologies éprouvées calibrées pour renforcer votre visibilité TikTok et stimuler la participation authentique de l\'audience.',
             icon: Music,
           },
           {
-            title: 'Croissance X (Twitter)',
-            description: 'Stratégies ciblées pour développer votre présence sur X et construire une communauté engagée dans votre niche.',
+            title: 'Portée X (Twitter)',
+            description: 'Stratégies ultra-ciblées pour élargir votre influence sur X et bâtir un réseau dédié dans votre vertical.',
             icon: MessageCircle,
           },
           {
             title: 'Tableau de Bord Analytique',
-            description: 'Suivez vos progrès avec des analyses et des informations détaillées pour optimiser votre stratégie.',
+            description: 'Tracez votre trajectoire avec des métriques complètes et des insights pilotés par l\'intelligence pour optimiser votre feuille de route d\'expansion.',
             icon: BarChart3,
           },
           {
@@ -143,7 +143,7 @@ export default function HomePage({ params }: PageProps) {
           },
           {
             title: 'Développement d\'Audience',
-            description: 'Construisez des connexions significatives avec votre audience cible pour augmenter votre visibilité.',
+            description: 'Cultivez des connexions significatives avec vos démographies cibles pour amplifier votre exposition et votre dynamique naturelle.',
             icon: MessageCircle,
           },
           {
@@ -162,8 +162,8 @@ export default function HomePage({ params }: PageProps) {
             answer: 'Oui, nos stratégies marketing sont conçues pour respecter les directives des plateformes et les meilleures pratiques pour garder votre compte sécurisé.',
           },
           {
-            question: 'À quelle vitesse verrai-je des résultats ?',
-            answer: 'La plupart des clients constatent des améliorations notables dans les 2 à 4 premières semaines, avec des progrès constants au fil du temps.',
+            question: 'Quand verrai-je des résultats mesurables ?',
+            answer: 'La majorité des clients observent des améliorations substantielles de performance dans les 2 à 4 semaines, avec une progression constante au fil de l\'évolution de vos initiatives.',
           },
           {
             question: 'Puis-je annuler mon abonnement à tout moment ?',
@@ -174,12 +174,12 @@ export default function HomePage({ params }: PageProps) {
             answer: 'Oui, nous offrons un essai gratuit de 7 jours sur tous nos forfaits afin que vous puissiez tester nos services sans risque.',
           },
           {
-            question: 'Qu\'est-ce qui vous différencie de la concurrence ?',
-            answer: 'Nous nous concentrons sur le développement d\'audience authentique avec un ciblage stratégique, offrons un support client supérieur et proposons des prix transparents sans frais cachés.',
+            question: 'Qu\'est-ce qui distingue Socialiora des alternatives ?',
+            answer: 'Nous privilégions l\'interaction authentique de l\'audience via un ciblage de précision, fournissons une assistance de niveau premium et maintenons une transparence tarifaire totale sans frais dissimulés.',
           },
           {
-            question: 'Quelles plateformes supportez-vous ?',
-            answer: 'Nous supportons Instagram, TikTok et X (Twitter) pour vous aider à grandir sur plusieurs plateformes.',
+            question: 'Quelles plateformes desservez-vous ?',
+            answer: 'Nous couvrons Instagram, TikTok et X (Twitter), offrant une approche intégrée pour l\'optimisation de présence multi-canaux.',
           },
         ],
       },
@@ -350,8 +350,8 @@ export default function HomePage({ params }: PageProps) {
 
   return (
     <div className="bg-gray-950">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+      {/* Hero Banner */}
+      <div className="relative overflow-hidden min-h-[92vh] flex items-center">
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-gray-950 to-pink-900/20" />
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl" />
@@ -364,8 +364,8 @@ export default function HomePage({ params }: PageProps) {
         {/* Banner Image */}
         <div className="absolute inset-0 flex items-center justify-center opacity-10">
           <Image 
-            src="/banner.png" 
-            alt="Socialoura Banner" 
+            src="/hero-visual.png" 
+            alt="Socialiora Banner" 
             fill
             className="object-cover"
             priority
@@ -482,8 +482,8 @@ export default function HomePage({ params }: PageProps) {
                       {/* Phone Screen Content */}
                       <div className="pt-12 px-4 pb-4 h-full flex flex-col items-center justify-center relative">
                         <Image 
-                          src="/banner.png" 
-                          alt="Socialoura Banner" 
+                          src="/hero-visual.png" 
+                          alt="Socialiora Banner" 
                           fill
                           className="object-contain rounded-2xl"
                         />
@@ -535,16 +535,21 @@ export default function HomePage({ params }: PageProps) {
                       <div className="w-2 h-2 bg-white rounded-full animate-ping" />
                       <span className="text-white text-xs font-bold">LIVE</span>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
+          </div>
         </div>
+      </div>
+
+      {/* Reviews Section */}
+      <section id="reviews" className="py-24 sm:py-32 bg-gray-950 relative overflow-hidden">
+        <ReviewsSection lang={lang} platform="all" />
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 sm:py-28 bg-gray-900 relative overflow-hidden">
+      {/* Solutions Overview */}
+      <article id="services" className="py-24 sm:py-32 bg-gray-900 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-950 to-gray-900" />
         <div className="absolute top-0 right-0 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl" />
         
@@ -563,9 +568,9 @@ export default function HomePage({ params }: PageProps) {
             {t.services.items.map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <article
+                <section
                   key={index}
-                  className="group relative p-8 rounded-2xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:bg-gray-800/80"
+                  className="group relative p-10 rounded-3xl bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:bg-gray-800/80"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="relative">
@@ -579,15 +584,20 @@ export default function HomePage({ params }: PageProps) {
                       {service.description}
                     </p>
                   </div>
-                </article>
+                </section>
               );
             })}
           </div>
         </div>
+      </article>
+
+      {/* Trusted Brands */}
+      <section id="trusted-brands" className="py-24 sm:py-32 bg-gray-900 relative overflow-hidden">
+        <TrustedBrands lang={lang} />
       </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="py-20 sm:py-28 bg-gray-950 relative overflow-hidden">
+      {/* Common Questions */}
+      <article id="faq" className="py-24 sm:py-32 bg-gray-950 relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl" />
         
         <div className="relative mx-auto max-w-4xl px-6 lg:px-8">
@@ -633,13 +643,7 @@ export default function HomePage({ params }: PageProps) {
             ))}
           </dl>
         </div>
-      </section>
-
-      {/* Trusted Brands */}
-      <TrustedBrands lang={lang} />
-
-      {/* Reviews Section */}
-      <ReviewsSection lang={lang} platform="all" />
+      </article>
 
       {/* Chat Widget */}
       <ChatWidget lang={lang} />

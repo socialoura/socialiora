@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const supportEmail = process.env.SUPPORT_EMAIL || 'support@socialoura.com';
+    const supportEmail = process.env.SUPPORT_EMAIL || 'support@socialiora.com';
     const timestamp = new Date().toLocaleString(language === 'fr' ? 'fr-FR' : 'en-US', {
       dateStyle: 'full',
       timeStyle: 'short',
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
       const resend = new Resend(resendApiKey);
       
       await resend.emails.send({
-        from: 'SocialOura Support <noreply@socialoura.com>',
+        from: 'Socialiora Support <noreply@socialiora.com>',
         to: [supportEmail],
         subject: `💬 New Support Message from ${normalizedEmail}`,
         html: `
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       </div>
     </div>
     <div style="background: #f9fafb; padding: 16px; text-align: center; border-top: 1px solid #e5e7eb;">
-      <p style="margin: 0; color: #9ca3af; font-size: 12px;">SocialOura Support System</p>
+      <p style="margin: 0; color: #9ca3af; font-size: 12px;">Socialiora Support System</p>
     </div>
   </div>
 </body>
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
               { name: '💬 Message', value: message.length > 1000 ? message.substring(0, 1000) + '...' : message, inline: false },
             ],
             timestamp: new Date().toISOString(),
-            footer: { text: 'SocialOura Support' },
+            footer: { text: 'Socialiora Support' },
           }],
         }),
       });

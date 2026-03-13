@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       ...(body.email ? { receipt_email: body.email } : {}),
       // Add metadata for tracking (optional)
       metadata: {
-        integration_source: 'socialoura',
+        integration_source: 'Socialiora',
       },
     });
 

@@ -138,7 +138,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         inputPlaceholder: 'https://vm.tiktok.com/...',
       },
       difference: {
-        title: 'Why creators trust Socialoura',
+        title: 'Why creators trust Socialiora',
         cards: [
           {
             title: 'AI-Powered Distribution',
@@ -196,7 +196,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         cta: 'LAUNCH MY CAMPAIGN',
       },
       compliance: {
-        text: 'Compliance: Socialoura uses AI-driven content distribution strategies that are fully compliant with TikTok\'s terms of service. We never use bots, fake accounts, or any method that could put your account at risk.',
+        text: 'Compliance: Socialiora uses AI-driven content distribution strategies that are fully compliant with TikTok\'s terms of service. We never use bots, fake accounts, or any method that could put your account at risk.',
       },
     },
     fr: {
@@ -214,7 +214,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         inputPlaceholder: 'https://vm.tiktok.com/...',
       },
       difference: {
-        title: 'Pourquoi les créateurs font confiance à Socialoura',
+        title: 'Pourquoi les créateurs font confiance à Socialiora',
         cards: [
           {
             title: 'Distribution propulsée par l\'IA',
@@ -272,7 +272,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         cta: 'LANCER MA CAMPAGNE',
       },
       compliance: {
-        text: 'Conformité : Socialoura utilise des stratégies de distribution de contenu propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de TikTok. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre compte en danger.',
+        text: 'Conformité : Socialiora utilise des stratégies de distribution de contenu propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de TikTok. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre compte en danger.',
       },
     },
     de: {
@@ -290,7 +290,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         inputPlaceholder: 'https://vm.tiktok.com/...',
       },
       difference: {
-        title: 'Warum Creator Socialoura vertrauen',
+        title: 'Warum Creator Socialiora vertrauen',
         cards: [
           {
             title: 'KI-gestützte Distribution',
@@ -348,7 +348,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         cta: 'MEINE KAMPAGNE STARTEN',
       },
       compliance: {
-        text: 'Konformität: Socialoura nutzt KI-gesteuerte Content-Distributionsstrategien, die vollständig konform mit den Nutzungsbedingungen von TikTok sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihr Konto gefährden könnten.',
+        text: 'Konformität: Socialiora nutzt KI-gesteuerte Content-Distributionsstrategien, die vollständig konform mit den Nutzungsbedingungen von TikTok sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihr Konto gefährden könnten.',
       },
     },
     es: {
@@ -366,7 +366,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         inputPlaceholder: 'https://vm.tiktok.com/...',
       },
       difference: {
-        title: 'Por qué los creadores confían en Socialoura',
+        title: 'Por qué los creadores confían en Socialiora',
         cards: [
           {
             title: 'Distribución con IA',
@@ -424,7 +424,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
         cta: 'LANZAR MI CAMPAÑA',
       },
       compliance: {
-        text: 'Conformidad: Socialoura utiliza estrategias de distribución de contenido impulsadas por IA, totalmente conformes con los términos de servicio de TikTok. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu cuenta.',
+        text: 'Conformidad: Socialiora utiliza estrategias de distribución de contenido impulsadas por IA, totalmente conformes con los términos de servicio de TikTok. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu cuenta.',
       },
     },
   };
@@ -682,7 +682,7 @@ export default function TikTokLikesPage({ params }: PageProps) {
               <div className="absolute -inset-4 bg-gradient-to-r from-rose-500 to-cyan-500 rounded-3xl blur-2xl opacity-20" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-gray-700">
                 <Image
-                  src="/img/smiling-woman-using-her-phone-surrounded-by-social.webp"
+                  src="/img/creator-lifestyle-hero.webp"
                   alt="Woman using phone"
                   width={600}
                   height={600}

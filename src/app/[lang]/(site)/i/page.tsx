@@ -110,34 +110,34 @@ export default function InstagramPage({ params }: PageProps) {
   const content = {
     en: {
       hero: {
-        title: 'Buy Instagram Followers',
-        subtitle: 'Instant Delivery',
-        description: 'Boost your Instagram presence with real, high-quality followers. Start growing today with our premium service.',
+        title: 'Instagram Audience Development',
+        subtitle: 'Rapid Implementation',
+        description: 'Elevate your Instagram visibility with authentic, premium network connections. Begin expanding your reach today with our professional service.',
         badges: [
-          { text: 'Instant Delivery' },
-          { text: '100% Safe & Secure' },
-          { text: 'No Password Required' },
-          { text: '24/7 Support' },
+          { text: 'Swift Activation' },
+          { text: '100% Secure Process' },
+          { text: 'No Credentials Needed' },
+          { text: 'Round-the-Clock Assistance' },
         ],
-        cta: 'GET STARTED NOW',
-        priceStart: 'Starting at $2.99',
+        cta: 'BEGIN YOUR GROWTH',
+        priceStart: 'Plans from $2.99',
       },
       difference: {
-        title: 'What makes Socialoura different?',
+        title: 'Why Socialiora stands apart?',
         cards: [
           {
-            title: 'Authentic Marketing Only',
-            description: 'We promote your content through real partnerships and strategic collaborations. Every interaction is genuine and compliant with platform guidelines.',
+            title: 'Verified Outreach Exclusively',
+            description: 'We amplify your content via established partnerships and tactical alliances. Every engagement is authentic and platform-compliant.',
             icon: 'Bot'
           },
           {
-            title: 'Time-saving solutions',
-            description: 'Focus on creating great content while we handle the marketing strategy. Our professional approach saves you hours of networking time.',
+            title: 'Efficiency-Driven Methods',
+            description: 'Concentrate on content creation while we manage visibility strategy. Our expert approach conserves countless networking hours.',
             icon: 'Clock'
           },
           {
-            title: 'Build credibility the right way',
-            description: 'Strategic promotion through trusted channels builds real authority and engagement with your target audience.',
+            title: 'Establish Authority Properly',
+            description: 'Tactical exposure via reputable channels cultivates genuine influence and interaction with your ideal demographics.',
             icon: 'Shield'
           },
         ],
@@ -147,89 +147,89 @@ export default function InstagramPage({ params }: PageProps) {
         cards: [
           {
             number: '1',
-            title: 'CHOOSE YOUR PACKAGE',
-            description: 'Select the marketing support level that aligns with your goals. Our plans offer professional promotion through our exclusive partner network.',
+            title: 'SELECT YOUR TIER',
+            description: 'Pick the visibility support level matching your objectives. Our programs deliver expert exposure via our proprietary partner ecosystem.',
             icon: 'Package'
           },
           {
             number: '2',
-            title: 'WE MARKET YOUR CONTENT',
-            description: 'We share your content through selected platforms, creators, and communities to reach people genuinely interested in your niche.',
+            title: 'WE AMPLIFY YOUR PRESENCE',
+            description: 'We distribute your content across curated platforms, influencers, and networks to connect with audiences authentically engaged in your vertical.',
             icon: 'Megaphone'
           },
           {
             number: '3',
-            title: 'TRACK THE IMPACT',
-            description: 'Monitor your results through your dashboard as your content reaches new audiences and builds stronger visibility.',
+            title: 'MEASURE PERFORMANCE',
+            description: 'Observe your metrics via your analytics panel as your content penetrates fresh demographics and strengthens exposure.',
             icon: 'BarChart3'
           },
         ],
         cta: 'START NOW',
       },
       benefits: {
-        title: '(Re)take the control now',
+        title: 'Reclaim your influence today',
         items: [
-          'Greater visibility for your content',
-          'Stronger presence across platforms',
-          'Earn audience trust through consistent exposure',
-          'Reach more people interested in your niche',
-          'Professional and safe process',
+          'Enhanced exposure for your content',
+          'Amplified presence across networks',
+          'Build audience credibility via sustained visibility',
+          'Connect with demographics aligned to your vertical',
+          'Expert-grade secure methodology',
         ],
       },
       pricing: {
-        title: 'Test our subscription with our trial offer',
+        title: 'Experience our platform with complimentary access',
         plan: {
           name: 'PREMIUM',
           price: '$39.90',
           period: 'per month',
           features: [
             '24h trial to explore all features',
-            'Audience research and targeting',
-            'Content placement guidance',
-            'Professional promotional outreach',
-            'Strategic recommendations to improve reach',
+            'Demographic intelligence and segmentation',
+            'Content distribution advisory',
+            'Expert visibility initiatives',
+            'Tactical insights to maximize exposure',
           ],
           cta: 'SUBSCRIBE NOW',
         },
       },
       finalCta: {
-        title: 'Much more than just a solution. A true partner in your success.',
-        cta: 'START IT NOW',
+        title: 'Beyond a platform. Your dedicated growth ally.',
+        cta: 'ACTIVATE NOW',
       },
       compliance: {
-        text: 'Compliance Disclaimer: All our services are based on authentic marketing strategies and visibility solutions in accordance with platform policies and terms of service.',
+        text: 'Legal Notice: Our services utilize verified audience development methodologies and exposure enhancement techniques fully aligned with platform guidelines and service agreements.',
       },
     },
     fr: {
       hero: {
-        title: 'Acheter des Abonnés Instagram',
-        subtitle: 'Livraison Instantanée',
-        description: 'Boostez votre présence Instagram avec de vrais abonnés de haute qualité. Commencez à grandir dès aujourd\'hui avec notre service premium.',
+        title: 'Développement d\'Audience Instagram',
+        subtitle: 'Mise en Œuvre Rapide',
+        description: 'Élevez votre visibilité Instagram avec des connexions réseau authentiques et premium. Commencez à élargir votre portée dès aujourd\'hui avec notre service professionnel.',
         badges: [
-          { text: 'Livraison Instantanée' },
-          { text: '100% Sûr et Sécurisé' },
-          { text: 'Aucun Mot de Passe Requis' },
-          { text: 'Support 24/7' },
+          { text: 'Activation Rapide' },
+          { text: '100% Processus Sécurisé' },
+          { text: 'Aucun Identifiant Nécessaire' },
+          { text: 'Assistance Continue' },
         ],
-        cta: 'COMMENCER MAINTENANT',
-        priceStart: 'À partir de 2,99€',
+        cta: 'LANCER VOTRE CROISSANCE',
+        priceStart: 'Forfaits dès 2,99€',
       },
       difference: {
-        title: 'Qu\'est-ce qui rend Socialoura différent ?',
+        title: 'Pourquoi Socialiora se démarque ?',
         cards: [
           {
-            title: 'Marketing authentique uniquement',
-            description: 'Nous promouvons votre contenu via de vrais partenariats et collaborations stratégiques. Chaque interaction est authentique et conforme aux directives de la plateforme.',
+            title: 'Diffusion vérifiée exclusivement',
+            description: 'Nous amplifions votre contenu via des partenariats établis et des alliances tactiques. Chaque engagement est authentique et conforme aux plateformes.',
             icon: 'Bot'
           },
           {
-            title: 'Solutions qui font gagner du temps',
-            description: 'Concentrez-vous sur la création de contenu de qualité pendant que nous gérons la stratégie marketing. Notre approche professionnelle vous fait gagner des heures.',
+            title: 'Méthodes axées sur l\'efficacité',
+            description: 'Concentrez-vous sur la création de contenu pendant que nous pilotons la stratégie de visibilité. Notre approche experte économise d\'innombrables heures de réseautage.',
             icon: 'Clock'
           },
           {
-            title: 'Construisez votre crédibilité de la bonne manière',
-            description: 'Une promotion stratégique via des canaux de confiance construit une vraie autorité et un engagement avec votre audience cible.',
+            title: 'Établissez votre autorité correctement',
+            description: 'Une exposition tactique via des canaux réputés cultive une influence authentique et une interaction avec vos démographies idéales.',
             icon: 'Shield'
           },
         ],
@@ -239,57 +239,57 @@ export default function InstagramPage({ params }: PageProps) {
         cards: [
           {
             number: '1',
-            title: 'CHOISISSEZ VOTRE FORFAIT',
-            description: 'Sélectionnez le niveau de support marketing qui correspond à vos objectifs. Nos plans offrent une promotion professionnelle via notre réseau partenaire exclusif.',
+            title: 'SÉLECTIONNEZ VOTRE NIVEAU',
+            description: 'Choisissez le niveau de support visibilité correspondant à vos objectifs. Nos programmes offrent une exposition experte via notre écosystème partenaire propriétaire.',
             icon: 'Package'
           },
           {
             number: '2',
-            title: 'NOUS PROMOUVONS VOTRE CONTENU',
-            description: 'Nous partageons votre contenu via des plateformes, créateurs et communautés sélectionnés pour atteindre les personnes vraiment intéressées par votre niche.',
+            title: 'NOUS AMPLIFIONS VOTRE PRÉSENCE',
+            description: 'Nous distribuons votre contenu à travers des plateformes, influenceurs et réseaux sélectionnés pour connecter avec des audiences authentiquement engagées dans votre vertical.',
             icon: 'Megaphone'
           },
           {
             number: '3',
-            title: 'SUIVEZ L\'IMPACT',
-            description: 'Surveillez vos résultats via votre tableau de bord pendant que votre contenu atteint de nouvelles audiences et construit une visibilité plus forte.',
+            title: 'MESUREZ LA PERFORMANCE',
+            description: 'Observez vos métriques via votre panneau analytique pendant que votre contenu pénètre de nouvelles démographies et renforce l\'exposition.',
             icon: 'BarChart3'
           },
         ],
-        cta: 'COMMENCER MAINTENANT',
+        cta: 'DÉMARRER MAINTENANT',
       },
       benefits: {
-        title: '(Re)prenez le contrôle maintenant',
+        title: 'Reprenez votre influence aujourd\'hui',
         items: [
-          'Plus grande visibilité pour votre contenu',
-          'Présence plus forte sur les plateformes',
-          'Gagnez la confiance de votre audience par une exposition cohérente',
-          'Atteignez plus de personnes intéressées par votre niche',
-          'Processus professionnel et sécurisé',
+          'Exposition renforcée pour votre contenu',
+          'Présence amplifiée sur les réseaux',
+          'Construisez la crédibilité de l\'audience via une visibilité soutenue',
+          'Connectez avec des démographies alignées à votre vertical',
+          'Méthodologie sécurisée de niveau expert',
         ],
       },
       pricing: {
-        title: 'Testez notre abonnement avec notre offre d\'essai',
+        title: 'Expérimentez notre plateforme avec un accès gratuit',
         plan: {
           name: 'PREMIUM',
           price: '39,90€',
           period: 'par mois',
           features: [
             'Essai de 24h pour explorer toutes les fonctionnalités',
-            'Recherche et ciblage d\'audience',
-            'Conseils pour le placement de contenu',
-            'Promotion professionnelle',
-            'Recommandations stratégiques pour améliorer la portée',
+            'Intelligence démographique et segmentation',
+            'Conseil en distribution de contenu',
+            'Initiatives de visibilité expertes',
+            'Insights tactiques pour maximiser l\'exposition',
           ],
           cta: 'S\'ABONNER MAINTENANT',
         },
       },
       finalCta: {
-        title: 'Bien plus qu\'une simple solution. Un véritable partenaire dans votre succès.',
-        cta: 'COMMENCEZ DÈS MAINTENANT',
+        title: 'Au-delà d\'une plateforme. Votre allié de croissance dédié.',
+        cta: 'ACTIVER MAINTENANT',
       },
       compliance: {
-        text: 'Avertissement de conformité : Tous nos services sont basés sur des stratégies marketing authentiques et des solutions de visibilité conformes aux politiques et conditions de la plateforme.',
+        text: 'Avis légal : Nos services utilisent des méthodologies vérifiées de développement d\'audience et des techniques d\'amélioration de l\'exposition entièrement alignées avec les directives et accords de service des plateformes.',
       },
     },
     de: {
@@ -307,7 +307,7 @@ export default function InstagramPage({ params }: PageProps) {
         priceStart: 'Ab 2,99€',
       },
       difference: {
-        title: 'Was macht Socialoura anders?',
+        title: 'Was macht Socialiora anders?',
         cards: [
           {
             title: 'Nur authentisches Marketing',
@@ -399,7 +399,7 @@ export default function InstagramPage({ params }: PageProps) {
         priceStart: 'Desde 2,99€',
       },
       difference: {
-        title: '¿Qué hace diferente a Socialoura?',
+        title: '¿Qué hace diferente a Socialiora?',
         cards: [
           {
             title: 'Solo marketing auténtico',
@@ -734,7 +734,7 @@ export default function InstagramPage({ params }: PageProps) {
               <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl blur-2xl opacity-20" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-gray-700">
                 <Image
-                  src="/img/smiling-woman-using-her-phone-surrounded-by-social.webp"
+                  src="/img/creator-lifestyle-hero.webp"
                   alt="Woman using phone"
                   width={600}
                   height={600}

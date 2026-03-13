@@ -118,7 +118,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'GET VIEWS',
       },
       difference: {
-        title: 'Why creators trust Socialoura',
+        title: 'Why creators trust Socialiora',
         cards: [
           {
             title: 'AI-Powered Promotion',
@@ -192,7 +192,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'GET MY VIEWS',
       },
       compliance: {
-        text: 'Compliance: Socialoura uses AI-driven video promotion strategies that are fully compliant with YouTube\'s terms of service. We never use bots, fake accounts, or any method that could put your channel at risk.',
+        text: 'Compliance: Socialiora uses AI-driven video promotion strategies that are fully compliant with YouTube\'s terms of service. We never use bots, fake accounts, or any method that could put your channel at risk.',
       },
     },
     fr: {
@@ -208,7 +208,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'OBTENIR DES VUES',
       },
       difference: {
-        title: 'Pourquoi les créateurs font confiance à Socialoura',
+        title: 'Pourquoi les créateurs font confiance à Socialiora',
         cards: [
           {
             title: 'Promotion propulsée par l\'IA',
@@ -282,7 +282,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'OBTENIR MES VUES',
       },
       compliance: {
-        text: 'Conformité : Socialoura utilise des stratégies de promotion vidéo propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de YouTube. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre chaîne en danger.',
+        text: 'Conformité : Socialiora utilise des stratégies de promotion vidéo propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de YouTube. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre chaîne en danger.',
       },
     },
     de: {
@@ -298,7 +298,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'VIEWS ERHALTEN',
       },
       difference: {
-        title: 'Warum Creator Socialoura vertrauen',
+        title: 'Warum Creator Socialiora vertrauen',
         cards: [
           {
             title: 'KI-gestützte Promotion',
@@ -372,7 +372,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'MEINE VIEWS ERHALTEN',
       },
       compliance: {
-        text: 'Konformität: Socialoura nutzt KI-gesteuerte Video-Promotionsstrategien, die vollständig konform mit den Nutzungsbedingungen von YouTube sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihren Kanal gefährden könnten.',
+        text: 'Konformität: Socialiora nutzt KI-gesteuerte Video-Promotionsstrategien, die vollständig konform mit den Nutzungsbedingungen von YouTube sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihren Kanal gefährden könnten.',
       },
     },
     es: {
@@ -388,7 +388,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'OBTENER VISTAS',
       },
       difference: {
-        title: 'Por qué los creadores confían en Socialoura',
+        title: 'Por qué los creadores confían en Socialiora',
         cards: [
           {
             title: 'Promoción con IA',
@@ -462,7 +462,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
         cta: 'OBTENER MIS VISTAS',
       },
       compliance: {
-        text: 'Conformidad: Socialoura utiliza estrategias de promoción de video impulsadas por IA, totalmente conformes con los términos de servicio de YouTube. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu canal.',
+        text: 'Conformidad: Socialiora utiliza estrategias de promoción de video impulsadas por IA, totalmente conformes con los términos de servicio de YouTube. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu canal.',
       },
     },
   };
@@ -713,7 +713,7 @@ export default function YouTubeViewsPage({ params }: PageProps) {
               <div className="absolute -inset-4 bg-gradient-to-r from-red-500 to-rose-500 rounded-3xl blur-2xl opacity-20" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-gray-700">
                 <Image
-                  src="/img/smiling-woman-using-her-phone-surrounded-by-social.webp"
+                  src="/img/creator-lifestyle-hero.webp"
                   alt="Woman using phone"
                   width={600}
                   height={600}

@@ -26,7 +26,7 @@ export default function FunnelTiktokLandingPage({ params }: { params: { lang: st
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center px-4 sm:px-6 relative overflow-hidden">
       <SEOHead 
-        title={`${lang === 'fr' ? 'Funnel TikTok' : lang === 'de' ? 'TikTok Trichter' : lang === 'es' ? 'Embudo TikTok' : 'TikTok Funnel'} - Socialoura`}
+        title={`${lang === 'fr' ? 'Funnel TikTok' : lang === 'de' ? 'TikTok Trichter' : lang === 'es' ? 'Embudo TikTok' : 'TikTok Funnel'} - Socialiora`}
         description={lang === 'fr' 
           ? "Découvrez notre funnel TikTok pour augmenter vos followers."
           : lang === 'de' 
@@ -38,7 +38,7 @@ export default function FunnelTiktokLandingPage({ params }: { params: { lang: st
         keywords={['tiktok funnel', 'tiktok growth', 'social media marketing']}
         index={true}
         follow={true}
-        canonical={`https://socialoura.com/${lang}/funnel-tiktok`}
+        canonical={`https://socialiora.com/${lang}/funnel-tiktok`}
       />
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
@@ -51,7 +51,7 @@ export default function FunnelTiktokLandingPage({ params }: { params: { lang: st
         {/* TikTok Icon */}
         <div className="mb-6 sm:mb-8">
           <Image
-            src="/tiktok.webp"
+            src="/tiktok-icon-asset.webp"
             alt="TikTok"
             width={96}
             height={96}
@@ -80,7 +80,7 @@ export default function FunnelTiktokLandingPage({ params }: { params: { lang: st
           <div className="flex justify-center">
             <div className="relative">
               <Image
-                src="/12tiktok.jpg"
+                src="/tiktok-promo-banner.jpg"
                 alt="Profil TikTok à 12.3M d'abonnés"
                 width={250}
                 height={250}

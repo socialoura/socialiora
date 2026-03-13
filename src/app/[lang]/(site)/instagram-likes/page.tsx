@@ -141,7 +141,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'START NOW',
       },
       benefits: {
-        title: 'Why choose SocialOura for engagement?',
+        title: 'Why choose Socialiora for engagement?',
         items: [
           { title: 'High-quality activity', desc: 'Designed to support visibility with a realistic, promotion-friendly approach.' },
           { title: 'Safe & secure', desc: 'Fully compliant with Instagram guidelines. Zero risk.' },
@@ -207,7 +207,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'COMMENCER MAINTENANT',
       },
       benefits: {
-        title: 'Pourquoi choisir SocialOura pour l\'engagement ?',
+        title: 'Pourquoi choisir Socialiora pour l\'engagement ?',
         items: [
           { title: 'Activité de qualité', desc: 'Pensée pour accompagner une promotion de manière réaliste et cohérente.' },
           { title: 'Sûr et sécurisé', desc: 'Entièrement conforme aux directives Instagram. Zéro risque.' },
@@ -273,7 +273,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'JETZT STARTEN',
       },
       benefits: {
-        title: 'Warum SocialOura für Engagement wählen?',
+        title: 'Warum Socialiora für Engagement wählen?',
         items: [
           { title: 'Hochwertige Aktivität', desc: 'Für Promotion mit einem realistischen, nachhaltigen Ansatz.' },
           { title: 'Sicher & geschützt', desc: 'Vollständig konform mit Instagram-Richtlinien. Null Risiko.' },
@@ -339,7 +339,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'EMPEZAR AHORA',
       },
       benefits: {
-        title: '¿Por qué elegir SocialOura para el engagement?',
+        title: '¿Por qué elegir Socialiora para el engagement?',
         items: [
           { title: 'Actividad de calidad', desc: 'Diseñada para apoyar la visibilidad con un enfoque realista y coherente.' },
           { title: 'Seguro y protegido', desc: 'Totalmente conforme con las directrices de Instagram. Cero riesgo.' },

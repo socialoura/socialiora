@@ -213,7 +213,7 @@ export default function AdminDashboard() {
   const [promoFieldEnabled, setPromoFieldEnabled] = useState(true);
   const [promoBarConfig, setPromoBarConfig] = useState<PromoBarConfig>({
     enabled: true,
-    code: 'SOCIALOURA5',
+    code: 'Socialiora5',
     percentOff: 5,
     durationHours: 6,
     showCountdown: true,

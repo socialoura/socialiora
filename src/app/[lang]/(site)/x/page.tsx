@@ -109,32 +109,32 @@ export default function TwitterPage({ params }: PageProps) {
   const content = {
     en: {
       hero: {
-        title: 'ELEVATE YOUR PRESENCE ON',
+        title: 'AMPLIFY YOUR INFLUENCE ON',
         platform: 'X (TWITTER)',
-        subtitle: 'Professional marketing solutions through our exclusive partner network — designed to expand your reach authentically on X.',
+        subtitle: 'Expert visibility enhancement via our proprietary partner ecosystem — engineered to broaden your exposure authentically on X.',
         badges: [
-          { text: '100% Authentic approach' },
-          { text: 'Safe & Private' },
-          { text: 'Customer-approved' },
+          { text: '100% Verified methodology' },
+          { text: 'Secure & Confidential' },
+          { text: 'Client-validated' },
         ],
         cta: 'CONTINUE',
       },
       difference: {
-        title: 'What makes Socialoura different?',
+        title: 'What distinguishes Socialiora?',
         cards: [
           {
-            title: 'Authentic Marketing Only',
-            description: 'We promote your profile through real partnerships and strategic collaborations. Every interaction is genuine and compliant with platform guidelines.',
+            title: 'Verified Outreach Exclusively',
+            description: 'We elevate your profile via established partnerships and tactical alliances. Every engagement is authentic and platform-compliant.',
             icon: 'Bot'
           },
           {
-            title: 'Time-saving solutions',
-            description: 'Focus on creating great tweets while we handle the marketing strategy. Our professional approach saves you hours of networking time.',
+            title: 'Efficiency-optimized methods',
+            description: 'Concentrate on crafting compelling content while we manage visibility strategy. Our expert approach conserves countless outreach hours.',
             icon: 'Clock'
           },
           {
-            title: 'Build credibility the right way',
-            description: 'Strategic promotion through trusted channels builds real authority and engagement with your target audience on X.',
+            title: 'Establish authority properly',
+            description: 'Tactical exposure via reputable channels cultivates genuine influence and interaction with your ideal demographics on X.',
             icon: 'Shield'
           },
         ],
@@ -144,87 +144,87 @@ export default function TwitterPage({ params }: PageProps) {
         cards: [
           {
             number: '1',
-            title: 'CHOOSE YOUR PACKAGE',
-            description: 'Select the marketing support level that aligns with your goals. Our plans offer professional promotion through our exclusive partner network.',
+            title: 'SELECT YOUR TIER',
+            description: 'Pick the visibility support level matching your objectives. Our programs deliver expert exposure via our proprietary partner ecosystem.',
             icon: 'Package'
           },
           {
             number: '2',
-            title: 'WE MARKET YOUR PROFILE',
-            description: 'We share your profile through selected platforms, creators, and communities to reach people genuinely interested in your niche.',
+            title: 'WE AMPLIFY YOUR PRESENCE',
+            description: 'We distribute your profile across curated platforms, influencers, and networks to connect with audiences authentically engaged in your vertical.',
             icon: 'Megaphone'
           },
           {
             number: '3',
-            title: 'TRACK THE IMPACT',
-            description: 'Monitor your results as your profile reaches new audiences and builds stronger visibility on X.',
+            title: 'MEASURE PERFORMANCE',
+            description: 'Observe your metrics as your profile penetrates fresh demographics and strengthens exposure on X.',
             icon: 'BarChart3'
           },
         ],
         cta: 'START NOW',
       },
       benefits: {
-        title: '(Re)take the control now',
+        title: 'Reclaim your influence today',
         items: [
-          'Greater visibility for your tweets',
-          'Stronger presence on X',
-          'Earn audience trust through consistent exposure',
-          'Reach more people interested in your niche',
-          'Professional and safe process',
+          'Enhanced exposure for your content',
+          'Amplified presence on X',
+          'Build audience credibility via sustained visibility',
+          'Connect with demographics aligned to your vertical',
+          'Expert-grade secure methodology',
         ],
       },
       pricing: {
-        title: 'Test our subscription with our trial offer',
+        title: 'Experience our platform with complimentary access',
         plan: {
           name: 'PREMIUM',
           price: '$39.90',
           period: 'per month',
           features: [
             '24h trial to explore all features',
-            'Audience research and targeting',
-            'Content placement guidance',
-            'Professional promotional outreach',
-            'Strategic recommendations to improve reach',
+            'Demographic intelligence and segmentation',
+            'Content distribution advisory',
+            'Expert visibility initiatives',
+            'Tactical insights to maximize exposure',
           ],
           cta: 'SUBSCRIBE NOW',
         },
       },
       finalCta: {
-        title: 'Much more than just a solution. A true partner in your success.',
-        cta: 'START IT NOW',
+        title: 'Beyond a platform. Your dedicated growth ally.',
+        cta: 'ACTIVATE NOW',
       },
       compliance: {
-        text: 'Compliance Disclaimer: All our services are based on authentic marketing strategies and visibility solutions in accordance with platform policies and terms of service.',
+        text: 'Legal Notice: Our services utilize verified audience development methodologies and exposure enhancement techniques fully aligned with platform guidelines and service agreements.',
       },
     },
     fr: {
       hero: {
-        title: 'ÉLEVEZ VOTRE PRÉSENCE SUR',
+        title: 'AMPLIFIEZ VOTRE INFLUENCE SUR',
         platform: 'X (TWITTER)',
-        subtitle: 'Solutions marketing professionnelles via notre réseau de partenaires exclusif — conçues pour étendre votre portée de manière authentique sur X.',
+        subtitle: 'Amélioration de visibilité experte via notre écosystème partenaire propriétaire — conçue pour élargir votre exposition authentiquement sur X.',
         badges: [
-          { text: 'Approche 100% authentique' },
-          { text: 'Sûr et Privé' },
-          { text: 'Approuvé par les clients' },
+          { text: 'Méthodologie 100% vérifiée' },
+          { text: 'Sécurisé et Confidentiel' },
+          { text: 'Validé par les clients' },
         ],
         cta: 'CONTINUER',
       },
       difference: {
-        title: 'Qu\'est-ce qui rend Socialoura différent ?',
+        title: 'Qu\'est-ce qui distingue Socialiora ?',
         cards: [
           {
-            title: 'Marketing authentique uniquement',
-            description: 'Nous promouvons votre profil via de vrais partenariats et collaborations stratégiques. Chaque interaction est authentique et conforme aux directives de la plateforme.',
+            title: 'Diffusion vérifiée exclusivement',
+            description: 'Nous élevons votre profil via des partenariats établis et des alliances tactiques. Chaque engagement est authentique et conforme aux plateformes.',
             icon: 'Bot'
           },
           {
-            title: 'Solutions qui font gagner du temps',
-            description: 'Concentrez-vous sur la création de tweets de qualité pendant que nous gérons la stratégie marketing. Notre approche professionnelle vous fait gagner des heures.',
+            title: 'Méthodes optimisées pour l\'efficacité',
+            description: 'Concentrez-vous sur la création de contenu percutant pendant que nous pilotons la stratégie de visibilité. Notre approche experte économise d\'innombrables heures de diffusion.',
             icon: 'Clock'
           },
           {
-            title: 'Construisez votre crédibilité de la bonne manière',
-            description: 'Une promotion stratégique via des canaux de confiance construit une vraie autorité et un engagement avec votre audience cible sur X.',
+            title: 'Établissez votre autorité correctement',
+            description: 'Une exposition tactique via des canaux réputés cultive une influence authentique et une interaction avec vos démographies idéales sur X.',
             icon: 'Shield'
           },
         ],
@@ -234,57 +234,57 @@ export default function TwitterPage({ params }: PageProps) {
         cards: [
           {
             number: '1',
-            title: 'CHOISISSEZ VOTRE FORFAIT',
-            description: 'Sélectionnez le niveau de support marketing qui correspond à vos objectifs. Nos plans offrent une promotion professionnelle via notre réseau partenaire exclusif.',
+            title: 'SÉLECTIONNEZ VOTRE NIVEAU',
+            description: 'Choisissez le niveau de support visibilité correspondant à vos objectifs. Nos programmes offrent une exposition experte via notre écosystème partenaire propriétaire.',
             icon: 'Package'
           },
           {
             number: '2',
-            title: 'NOUS PROMOUVONS VOTRE PROFIL',
-            description: 'Nous partageons votre profil via des plateformes, créateurs et communautés sélectionnés pour atteindre les personnes vraiment intéressées par votre niche.',
+            title: 'NOUS AMPLIFIONS VOTRE PRÉSENCE',
+            description: 'Nous distribuons votre profil à travers des plateformes, influenceurs et réseaux sélectionnés pour connecter avec des audiences authentiquement engagées dans votre vertical.',
             icon: 'Megaphone'
           },
           {
             number: '3',
-            title: 'SUIVEZ L\'IMPACT',
-            description: 'Surveillez vos résultats pendant que votre profil atteint de nouvelles audiences et construit une visibilité plus forte sur X.',
+            title: 'MESUREZ LA PERFORMANCE',
+            description: 'Observez vos métriques pendant que votre profil pénètre de nouvelles démographies et renforce l\'exposition sur X.',
             icon: 'BarChart3'
           },
         ],
         cta: 'COMMENCER MAINTENANT',
       },
       benefits: {
-        title: '(Re)prenez le contrôle maintenant',
+        title: 'Reprenez votre influence aujourd\'hui',
         items: [
-          'Plus grande visibilité pour vos tweets',
-          'Présence plus forte sur X',
-          'Gagnez la confiance de votre audience par une exposition cohérente',
-          'Atteignez plus de personnes intéressées par votre niche',
-          'Processus professionnel et sécurisé',
+          'Exposition renforcée pour votre contenu',
+          'Présence amplifiée sur X',
+          'Construisez la crédibilité de l\'audience via une visibilité soutenue',
+          'Connectez avec des démographies alignées à votre vertical',
+          'Méthodologie sécurisée de niveau expert',
         ],
       },
       pricing: {
-        title: 'Testez notre abonnement avec notre offre d\'essai',
+        title: 'Expérimentez notre plateforme avec un accès gratuit',
         plan: {
           name: 'PREMIUM',
           price: '39,90€',
           period: 'par mois',
           features: [
             'Essai de 24h pour explorer toutes les fonctionnalités',
-            'Recherche et ciblage d\'audience',
-            'Conseils pour le placement de contenu',
-            'Promotion professionnelle',
-            'Recommandations stratégiques pour améliorer la portée',
+            'Intelligence démographique et segmentation',
+            'Conseil en distribution de contenu',
+            'Initiatives de visibilité expertes',
+            'Insights tactiques pour maximiser l\'exposition',
           ],
           cta: 'S\'ABONNER MAINTENANT',
         },
       },
       finalCta: {
-        title: 'Bien plus qu\'une simple solution. Un véritable partenaire dans votre succès.',
-        cta: 'COMMENCEZ DÈS MAINTENANT',
+        title: 'Au-delà d\'une plateforme. Votre allié de croissance dédié.',
+        cta: 'ACTIVER MAINTENANT',
       },
       compliance: {
-        text: 'Avertissement de conformité : Tous nos services sont basés sur des stratégies marketing authentiques et des solutions de visibilité conformes aux politiques et conditions de la plateforme.',
+        text: 'Avis légal : Nos services utilisent des méthodologies vérifiées de développement d\'audience et des techniques d\'amélioration de l\'exposition entièrement alignées avec les directives et accords de service des plateformes.',
       },
     },
     de: {
@@ -300,7 +300,7 @@ export default function TwitterPage({ params }: PageProps) {
         cta: 'WEITER',
       },
       difference: {
-        title: 'Was macht Socialoura anders?',
+        title: 'Was macht Socialiora anders?',
         cards: [
           {
             title: 'Nur authentisches Marketing',
@@ -390,7 +390,7 @@ export default function TwitterPage({ params }: PageProps) {
         cta: 'CONTINUAR',
       },
       difference: {
-        title: '¿Qué hace diferente a Socialoura?',
+        title: '¿Qué hace diferente a Socialiora?',
         cards: [
           {
             title: 'Solo marketing auténtico',
@@ -715,7 +715,7 @@ export default function TwitterPage({ params }: PageProps) {
               <div className="absolute -inset-4 bg-gradient-to-r from-gray-500 to-white rounded-3xl blur-2xl opacity-20" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-gray-700">
                 <Image
-                  src="/img/smiling-woman-using-her-phone-surrounded-by-social.webp"
+                  src="/img/creator-lifestyle-hero.webp"
                   alt="Woman using phone"
                   width={600}
                   height={600}

@@ -397,7 +397,7 @@ export type PromoBarConfig = {
 
 const DEFAULT_PROMO_BAR_CONFIG: PromoBarConfig = {
   enabled: true,
-  code: 'SOCIALOURA5',
+  code: 'Socialiora5',
   percentOff: 5,
   durationHours: 6,
   showCountdown: true,

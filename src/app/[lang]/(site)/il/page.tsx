@@ -149,7 +149,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'START NOW',
       },
       benefits: {
-        title: 'Why choose SocialOura for likes?',
+        title: 'Why choose Socialiora for likes?',
         items: [
           { title: 'High-quality likes', desc: 'From real accounts with profile pictures and activity.' },
           { title: 'Safe & secure', desc: 'Fully compliant with Instagram guidelines. Zero risk.' },
@@ -215,7 +215,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'COMMENCER MAINTENANT',
       },
       benefits: {
-        title: 'Pourquoi choisir SocialOura pour les likes ?',
+        title: 'Pourquoi choisir Socialiora pour les likes ?',
         items: [
           { title: 'Likes de qualité', desc: 'De vrais comptes avec photos de profil et activité.' },
           { title: 'Sûr et sécurisé', desc: 'Entièrement conforme aux directives Instagram. Zéro risque.' },
@@ -281,7 +281,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'JETZT STARTEN',
       },
       benefits: {
-        title: 'Warum SocialOura für Likes wählen?',
+        title: 'Warum Socialiora für Likes wählen?',
         items: [
           { title: 'Hochwertige Likes', desc: 'Von echten Konten mit Profilbildern und Aktivität.' },
           { title: 'Sicher & geschützt', desc: 'Vollständig konform mit Instagram-Richtlinien. Null Risiko.' },
@@ -347,7 +347,7 @@ export default function InstagramLikesPage({ params }: PageProps) {
         cta: 'EMPEZAR AHORA',
       },
       benefits: {
-        title: '¿Por qué elegir SocialOura para likes?',
+        title: '¿Por qué elegir Socialiora para likes?',
         items: [
           { title: 'Likes de calidad', desc: 'De cuentas reales con fotos de perfil y actividad.' },
           { title: 'Seguro y protegido', desc: 'Totalmente conforme con las directrices de Instagram. Cero riesgo.' },

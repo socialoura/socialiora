@@ -26,7 +26,7 @@ export default function FunnelLandingPage({ params }: { params: { lang: string }
   return (
     <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-center px-4 sm:px-6 relative overflow-hidden">
       <SEOHead 
-        title={`${lang === 'fr' ? 'Funnel Instagram' : lang === 'de' ? 'Instagram Trichter' : lang === 'es' ? 'Embudo Instagram' : 'Instagram Funnel'} - Socialoura`}
+        title={`${lang === 'fr' ? 'Funnel Instagram' : lang === 'de' ? 'Instagram Trichter' : lang === 'es' ? 'Embudo Instagram' : 'Instagram Funnel'} - Socialiora`}
         description={lang === 'fr' 
           ? "Découvrez notre funnel Instagram pour augmenter vos followers."
           : lang === 'de' 
@@ -38,7 +38,7 @@ export default function FunnelLandingPage({ params }: { params: { lang: string }
         keywords={['instagram funnel', 'instagram growth', 'social media marketing']}
         index={true}
         follow={true}
-        canonical={`https://socialoura.com/${lang}/funnel-instagram`}
+        canonical={`https://socialiora.com/${lang}/funnel-instagram`}
       />
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
@@ -51,7 +51,7 @@ export default function FunnelLandingPage({ params }: { params: { lang: string }
         {/* Instagram Icon */}
         <div className="mb-8 sm:mb-10">
           <Image
-            src="/instagram.svg.webp"
+            src="/instagram-icon-asset.webp"
             alt="Instagram"
             width={96}
             height={96}
@@ -81,7 +81,7 @@ export default function FunnelLandingPage({ params }: { params: { lang: string }
             {/* Before Image */}
             <div className="relative">
               <Image
-                src="/before.png"
+                src="/profile-initial.png"
                 alt={t.results.before}
                 width={400}
                 height={400}
@@ -97,7 +97,7 @@ export default function FunnelLandingPage({ params }: { params: { lang: string }
             {/* After Image */}
             <div className="relative">
               <Image
-                src="/after.png"
+                src="/profile-boosted.png"
                 alt={t.results.after}
                 width={400}
                 height={400}

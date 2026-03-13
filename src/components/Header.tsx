@@ -153,7 +153,7 @@ export default function Header({ lang }: HeaderProps) {
   const currentLanguage = languageMeta[lang];
 
   const pad = (n: number) => String(n).padStart(2, '0');
-  const promoCode = promoConfig?.code || 'SOCIALOURA5';
+  const promoCode = promoConfig?.code || 'Socialiora5';
 
   const handleCopyPromo = async () => {
     try {
@@ -230,8 +230,8 @@ export default function Header({ lang }: HeaderProps) {
               >
                 <div className="relative w-12 h-12 sm:w-20 sm:h-20 md:w-24 md:h-24">
                   <Image
-                    src="/img/a-modern-flat-vector-logo-design-featuri_ZEbfVp__QiK-0wr5MrgGJg_ZFPYEbSKRM6a11TOK-IQCQ-removebg-preview.png"
-                    alt="Socialoura"
+                    src="/img/brand-logo-socialiora.png"
+                    alt="Socialiora"
                     width={128}
                     height={128}
                     priority

@@ -12,28 +12,28 @@ export default function FAQSection({ lang }: FAQSectionProps) {
 
   const content = {
     en: {
-      title: 'Frequently Asked Questions',
-      subtitle: 'Everything you need to know',
+      title: 'Got Questions? We Have Answers',
+      subtitle: 'All the details you need before getting started',
       faqs: [
         {
-          question: 'Is this service safe for my account?',
-          answer: 'Absolutely! We use 100% safe methods that comply with all platform guidelines. No password is ever required, and we never ask for sensitive information.',
+          question: 'Will this put my account at risk?',
+          answer: 'Not at all. Our approach relies on fully compliant techniques aligned with every platform\'s guidelines. Your credentials are never requested, and sensitive data stays private.',
         },
         {
-          question: 'How fast will I receive my followers?',
-          answer: 'Most orders are completed within 5-10 minutes. Larger orders may take up to 24 hours for gradual delivery to ensure maximum safety.',
+          question: 'How quickly are followers delivered?',
+          answer: 'The majority of orders reach completion in 5–10 minutes. Higher-volume requests may roll out over 24 hours via gradual delivery for optimal security.',
         },
         {
-          question: 'Are these real followers or bots?',
-          answer: 'All followers are real accounts. We never use bots or fake profiles. Your engagement will come from genuine users interested in your content.',
+          question: 'Are the followers genuine people?',
+          answer: 'Every single follower is a real, active account. We categorically refuse bots and hollow profiles—your engagement comes from authentic users.',
         },
         {
-          question: 'What if I\'m not satisfied with the service?',
-          answer: 'We offer a 100% money-back guarantee. If you\'re not completely satisfied within 30 days, we\'ll refund your purchase - no questions asked.',
+          question: 'What if the results disappoint me?',
+          answer: 'We stand behind a full money-back promise. If you\'re anything less than thrilled within 30 days, we\'ll issue a complete refund—no questions, no hassle.',
         },
         {
-          question: 'Do you offer refills if followers drop?',
-          answer: 'Yes! We provide a 60-day refill guarantee. If any followers drop during this period, we\'ll replace them for free.',
+          question: 'Is there protection against follower drops?',
+          answer: 'Absolutely. Every order includes a 60-day replenishment guarantee. Should any followers disappear during that window, we top them up at no extra charge.',
         },
       ],
     },
@@ -94,11 +94,11 @@ export default function FAQSection({ lang }: FAQSectionProps) {
   const t = content[lang as keyof typeof content] || content.en;
 
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+    <article className="py-28 bg-white">
+      <div className="max-w-4xl mx-auto px-5 lg:px-10">
         {/* Title */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-4">
+        <div className="text-center mb-14">
+          <h2 className="text-4xl sm:text-5xl font-black text-gray-900 mb-5">
             {t.title}
           </h2>
           <p className="text-xl text-gray-600">
@@ -111,19 +111,19 @@ export default function FAQSection({ lang }: FAQSectionProps) {
           {t.faqs.map((faq, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl border-2 border-gray-200 overflow-hidden hover:border-purple-300 transition-all duration-300 shadow-sm hover:shadow-lg"
+              className="bg-white rounded-xl border-2 border-gray-200 overflow-hidden hover:border-violet-300 transition-all duration-300 shadow-sm hover:shadow-lg"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors"
+                className="w-full flex items-center justify-between p-7 text-left hover:bg-gray-50 transition-colors"
               >
                 <span className="text-lg font-bold text-gray-900 pr-8">
                   {faq.question}
                 </span>
                 <div
-                  className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                  className={`flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
                     openIndex === index
-                      ? 'bg-gradient-to-br from-purple-600 to-pink-600 rotate-180'
+                      ? 'bg-gradient-to-br from-violet-600 to-pink-600 rotate-180'
                       : 'bg-gray-100'
                   }`}
                 >
@@ -145,6 +145,6 @@ export default function FAQSection({ lang }: FAQSectionProps) {
           ))}
         </div>
       </div>
-    </section>
+    </article>
   );
 }

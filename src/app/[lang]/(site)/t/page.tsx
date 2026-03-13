@@ -163,38 +163,38 @@ export default function TikTokPage({ params }: PageProps) {
   const content = {
     en: {
       hero: {
-        title: 'GET REAL TIKTOK',
-        platform: 'FOLLOWERS',
-        subtitle: 'AI-powered audience growth that delivers real, engaged followers to your TikTok profile — fast, safe, and fully compliant.',
+        title: 'TIKTOK AUDIENCE',
+        platform: 'EXPANSION',
+        subtitle: 'Intelligence-driven network development that connects engaged demographics to your TikTok presence — swift, secure, and platform-compliant.',
         badges: [
-          { text: 'AI-Driven Growth' },
-          { text: 'Real Followers Only' },
-          { text: '24/7 Smart Delivery' },
+          { text: 'Algorithm-Optimized Reach' },
+          { text: 'Authentic Connections Only' },
+          { text: 'Round-the-Clock Activation' },
         ],
-        cta: 'GET FOLLOWERS',
+        cta: 'EXPAND NETWORK',
       },
       difference: {
-        title: 'Why creators trust Socialoura',
+        title: 'Why influencers choose Socialiora',
         cards: [
           {
-            title: 'AI-Powered Targeting',
-            description: 'Our algorithm analyzes your niche, content style, and audience demographics to connect you with followers who genuinely care about your content.',
+            title: 'Intelligent Segmentation',
+            description: 'Our system evaluates your vertical, content format, and demographic patterns to link you with audiences authentically invested in your material.',
             icon: 'Bot'
           },
           {
-            title: 'Instant & Gradual Delivery',
-            description: 'Choose between a quick visibility boost or natural-looking gradual growth. Our smart delivery system adapts to keep your account safe.',
+            title: 'Flexible Implementation Speed',
+            description: 'Select between rapid exposure enhancement or organic-paced network expansion. Our adaptive distribution system maintains account security.',
             icon: 'Clock'
           },
           {
-            title: 'Account Safety First',
-            description: 'We never ask for your password. Our growth methods are 100% compliant with TikTok guidelines — zero risk to your account.',
+            title: 'Security-First Approach',
+            description: 'We never request credentials. Our expansion methodologies are 100% aligned with TikTok policies — zero account jeopardy.',
             icon: 'Shield'
           },
         ],
       },
       howItWorks: {
-        title: 'Get followers in 3 steps',
+        title: 'Expand your network in 3 steps',
         cards: [
           {
             number: '1',
@@ -204,8 +204,8 @@ export default function TikTokPage({ params }: PageProps) {
           },
           {
             number: '2',
-            title: 'PICK YOUR GROWTH PLAN',
-            description: 'Select the number of followers you want. From 100 to 100K+ — we have flexible plans for every budget and goal.',
+            title: 'CHOOSE YOUR EXPANSION TIER',
+            description: 'Determine your network development scale. From 100 to 100K+ — we offer adaptable programs for every budget and objective.',
             icon: 'Megaphone'
           },
           {
@@ -248,43 +248,43 @@ export default function TikTokPage({ params }: PageProps) {
         cta: 'GET MY FOLLOWERS',
       },
       compliance: {
-        text: 'Compliance: Socialoura uses AI-driven audience growth strategies that are fully compliant with TikTok\'s terms of service. We never use bots, fake accounts, or any method that could put your account at risk.',
+        text: 'Compliance: Socialiora uses AI-driven audience growth strategies that are fully compliant with TikTok\'s terms of service. We never use bots, fake accounts, or any method that could put your account at risk.',
       },
     },
     fr: {
       hero: {
-        title: 'OBTENEZ DE VRAIS',
-        platform: 'ABONNÉS TIKTOK',
-        subtitle: 'Croissance d\'audience propulsée par l\'IA qui livre de vrais abonnés engagés sur votre profil TikTok — rapide, sûr et 100% conforme.',
+        title: 'AUDIENCE TIKTOK',
+        platform: 'AUTHENTIQUE',
+        subtitle: 'Développement de réseau piloté par l\'intelligence qui connecte des démographies engagées à votre présence TikTok — rapide, sécurisé et conforme aux plateformes.',
         badges: [
-          { text: 'Croissance par IA' },
-          { text: 'Vrais abonnés uniquement' },
-          { text: 'Livraison 24/7' },
+          { text: 'Portée optimisée par algorithme' },
+          { text: 'Connexions authentiques uniquement' },
+          { text: 'Activation continue' },
         ],
-        cta: 'OBTENIR MES ABONNÉS',
+        cta: 'ÉLARGIR MON RÉSEAU',
       },
       difference: {
-        title: 'Pourquoi les créateurs font confiance à Socialoura',
+        title: 'Pourquoi les influenceurs choisissent Socialiora',
         cards: [
           {
-            title: 'Ciblage propulsé par l\'IA',
-            description: 'Notre algorithme analyse votre niche, votre style de contenu et les données démographiques de votre audience pour vous connecter avec des abonnés réellement intéressés.',
+            title: 'Segmentation intelligente',
+            description: 'Notre système évalue votre vertical, votre format de contenu et les patterns démographiques pour vous lier avec des audiences authentiquement investies dans votre contenu.',
             icon: 'Bot'
           },
           {
-            title: 'Livraison instantanée ou progressive',
-            description: 'Choisissez entre un boost de visibilité rapide ou une croissance progressive et naturelle. Notre système intelligent s\'adapte pour protéger votre compte.',
+            title: 'Vitesse d\'implémentation flexible',
+            description: 'Sélectionnez entre une amélioration d\'exposition rapide ou une expansion réseau à rythme organique. Notre système adaptatif maintient la sécurité du compte.',
             icon: 'Clock'
           },
           {
-            title: 'Sécurité du compte avant tout',
-            description: 'Nous ne demandons jamais votre mot de passe. Nos méthodes de croissance sont 100% conformes aux directives TikTok — zéro risque pour votre compte.',
+            title: 'Approche sécurité-first',
+            description: 'Nous ne demandons jamais d\'identifiants. Nos méthodologies d\'expansion sont 100% alignées avec les politiques TikTok — zéro risque pour votre compte.',
             icon: 'Shield'
           },
         ],
       },
       howItWorks: {
-        title: 'Obtenez des abonnés en 3 étapes',
+        title: 'Élargissez votre réseau en 3 étapes',
         cards: [
           {
             number: '1',
@@ -294,27 +294,27 @@ export default function TikTokPage({ params }: PageProps) {
           },
           {
             number: '2',
-            title: 'CHOISISSEZ VOTRE PLAN',
-            description: 'Sélectionnez le nombre d\'abonnés souhaité. De 100 à 100K+ — des plans flexibles pour chaque budget et objectif.',
+            title: 'CHOISISSEZ VOTRE NIVEAU D\'EXPANSION',
+            description: 'Déterminez votre échelle de développement réseau. De 100 à 100K+ — des programmes adaptables pour chaque budget et objectif.',
             icon: 'Megaphone'
           },
           {
             number: '3',
-            title: 'REGARDEZ VOTRE AUDIENCE GRANDIR',
-            description: 'Les abonnés commencent à arriver en quelques minutes. Suivez votre croissance en temps réel et constatez l\'impact sur votre engagement.',
+            title: 'OBSERVEZ VOTRE RÉSEAU S\'AMPLIFIER',
+            description: 'Les connexions commencent à s\'activer en quelques minutes. Suivez votre expansion en temps réel et constatez l\'impact sur votre engagement.',
             icon: 'BarChart3'
           },
         ],
         cta: 'COMMENCER',
       },
       benefits: {
-        title: 'Débloquez votre potentiel TikTok',
+        title: 'Libérez votre potentiel TikTok',
         items: [
-          'Plus d\'abonnés = plus de visibilité sur la page Pour Toi',
-          'Une preuve sociale forte attire des abonnés organiques',
-          'Les marques remarquent les comptes avec beaucoup d\'abonnés',
-          'Percez l\'algorithme grâce à l\'élan',
-          'Processus sûr, privé et entièrement chiffré',
+          'Réseau élargi = visibilité accrue sur la page Pour Toi',
+          'Une crédibilité sociale forte attire des connexions organiques',
+          'Les marques repèrent les comptes avec une forte présence',
+          'Percez l\'algorithme grâce à la dynamique',
+          'Processus sécurisé, confidentiel et entièrement chiffré',
         ],
       },
       pricing: {
@@ -338,7 +338,7 @@ export default function TikTokPage({ params }: PageProps) {
         cta: 'OBTENIR MES ABONNÉS',
       },
       compliance: {
-        text: 'Conformité : Socialoura utilise des stratégies de croissance d\'audience propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de TikTok. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre compte en danger.',
+        text: 'Conformité : Socialiora utilise des stratégies de croissance d\'audience propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de TikTok. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre compte en danger.',
       },
     },
     de: {
@@ -354,7 +354,7 @@ export default function TikTokPage({ params }: PageProps) {
         cta: 'FOLLOWER ERHALTEN',
       },
       difference: {
-        title: 'Warum Creator Socialoura vertrauen',
+        title: 'Warum Creator Socialiora vertrauen',
         cards: [
           {
             title: 'KI-gestütztes Targeting',
@@ -428,7 +428,7 @@ export default function TikTokPage({ params }: PageProps) {
         cta: 'MEINE FOLLOWER ERHALTEN',
       },
       compliance: {
-        text: 'Konformität: Socialoura nutzt KI-gesteuerte Zielgruppen-Wachstumsstrategien, die vollständig konform mit den Nutzungsbedingungen von TikTok sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihr Konto gefährden könnten.',
+        text: 'Konformität: Socialiora nutzt KI-gesteuerte Zielgruppen-Wachstumsstrategien, die vollständig konform mit den Nutzungsbedingungen von TikTok sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihr Konto gefährden könnten.',
       },
     },
     es: {
@@ -444,7 +444,7 @@ export default function TikTokPage({ params }: PageProps) {
         cta: 'OBTENER SEGUIDORES',
       },
       difference: {
-        title: 'Por qué los creadores confían en Socialoura',
+        title: 'Por qué los creadores confían en Socialiora',
         cards: [
           {
             title: 'Segmentación con IA',
@@ -518,7 +518,7 @@ export default function TikTokPage({ params }: PageProps) {
         cta: 'OBTENER MIS SEGUIDORES',
       },
       compliance: {
-        text: 'Conformidad: Socialoura utiliza estrategias de crecimiento de audiencia impulsadas por IA, totalmente conformes con los términos de servicio de TikTok. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu cuenta.',
+        text: 'Conformidad: Socialiora utiliza estrategias de crecimiento de audiencia impulsadas por IA, totalmente conformes con los términos de servicio de TikTok. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu cuenta.',
       },
     },
   };
@@ -769,7 +769,7 @@ export default function TikTokPage({ params }: PageProps) {
               <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-3xl blur-2xl opacity-20" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-gray-700">
                 <Image
-                  src="/img/smiling-woman-using-her-phone-surrounded-by-social.webp"
+                  src="/img/creator-lifestyle-hero.webp"
                   alt="Woman using phone"
                   width={600}
                   height={600}

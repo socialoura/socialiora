@@ -16,43 +16,43 @@ export default function HeroSection({ lang }: HeroSectionProps) {
 
   const content = {
     en: {
-      title: 'Skyrocket Your',
-      titleHighlight: 'Social Proof',
-      subtitle: 'Get real followers, likes, and engagement in minutes. No bots. No fake accounts. Just results.',
-      trustLine: 'Trusted by 50,000+ Creators',
+      title: 'Supercharge Your',
+      titleHighlight: 'Digital Presence',
+      subtitle: 'Gain authentic followers, genuine likes, and real engagement within minutes. Zero bots. Zero fakes. Pure impact.',
+      trustLine: 'Chosen by 50,000+ Influencers',
       platforms: {
         instagram: 'Instagram',
         tiktok: 'TikTok',
         twitter: 'Twitter',
       },
-      cta: 'Get Started Now',
-      startingAt: 'Starting at $2.99',
+      cta: 'Boost My Profile',
+      startingAt: 'Plans from $2.99',
     },
     fr: {
-      title: 'Boostez Votre',
-      titleHighlight: 'Preuve Sociale',
-      subtitle: 'Obtenez de vrais abonnés, likes et engagement en quelques minutes. Pas de bots. Pas de faux comptes. Que des résultats.',
-      trustLine: 'Approuvé par 50 000+ Créateurs',
+      title: 'Décuplez Votre',
+      titleHighlight: 'Visibilité Digitale',
+      subtitle: 'Obtenez des abonnés authentiques, des likes réels et un engagement concret en quelques minutes. Zéro bot. Zéro faux profil. Que du concret.',
+      trustLine: 'Adopté par 50 000+ Influenceurs',
       platforms: {
         instagram: 'Instagram',
         tiktok: 'TikTok',
         twitter: 'Twitter',
       },
-      cta: 'Commencer Maintenant',
-      startingAt: 'À partir de 2,99€',
+      cta: 'Lancer Mon Boost',
+      startingAt: 'Dès 2,99€',
     },
     de: {
-      title: 'Steigern Sie Ihren',
-      titleHighlight: 'Social Proof',
-      subtitle: 'Erhalten Sie echte Follower, Likes und Engagement in Minuten. Keine Bots. Keine gefälschten Konten. Nur Ergebnisse.',
-      trustLine: 'Vertraut von 50.000+ Creators',
+      title: 'Vervielfachen Sie Ihre',
+      titleHighlight: 'Digitale Reichweite',
+      subtitle: 'Gewinnen Sie echte Follower, authentische Likes und reales Engagement in Minuten. Null Bots. Null Fakes. Nur Wirkung.',
+      trustLine: 'Gewählt von 50.000+ Influencern',
       platforms: {
         instagram: 'Instagram',
         tiktok: 'TikTok',
         twitter: 'Twitter',
       },
-      cta: 'Jetzt Starten',
-      startingAt: 'Ab 2,99€',
+      cta: 'Profil boosten',
+      startingAt: 'Bereits ab 2,99€',
     },
   };
 
@@ -85,7 +85,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
   const selectedPlatformData = platforms.find(p => p.id === selectedPlatform);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-purple-50">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-bl from-gray-100 via-white to-violet-50">
       {/* Floating Emojis Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 text-6xl opacity-20 blur-sm animate-float">🚀</div>
@@ -99,10 +99,10 @@ export default function HeroSection({ lang }: HeroSectionProps) {
       <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-300/30 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-300/30 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 py-24 lg:px-10">
         <div className="text-center">
           {/* Trust Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-6 py-2 mb-8 shadow-lg">
+          <div className="inline-flex items-center gap-2.5 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-5 py-2.5 mb-10 shadow-lg">
             <Sparkles className="w-4 h-4 text-yellow-500" />
             <span className="text-sm font-semibold text-gray-700">{t.trustLine}</span>
             <div className="flex -space-x-2">
@@ -118,7 +118,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
           </div>
 
           {/* Main Title */}
-          <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black text-gray-900 mb-4 leading-none tracking-tight">
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black text-gray-900 mb-5 leading-none tracking-tighter">
             {t.title}
             <br />
             <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 bg-clip-text text-transparent">
@@ -127,7 +127,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p className="text-lg sm:text-2xl text-gray-600 max-w-3xl mx-auto mb-14 leading-relaxed">
             {t.subtitle}
           </p>
 
@@ -141,7 +141,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
                   <button
                     key={platform.id}
                     onClick={() => setSelectedPlatform(platform.id)}
-                    className={`group relative px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 ${
+                    className={`group relative px-7 py-5 rounded-xl font-bold text-lg transition-all duration-300 ${
                       isSelected
                         ? 'bg-gray-900 text-white shadow-2xl scale-105'
                         : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md hover:shadow-xl'
@@ -160,7 +160,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
             </div>
 
             {/* Search Input */}
-            <div className="bg-white rounded-3xl shadow-2xl p-8 border border-gray-200">
+            <div className="bg-white rounded-2xl shadow-2xl p-10 border border-gray-200">
               <UserSearchInput
                 platform={selectedPlatform}
                 onUserConfirmed={() => {
@@ -178,13 +178,13 @@ export default function HeroSection({ lang }: HeroSectionProps) {
           {/* CTA Button */}
           <Link
             href={selectedPlatformData?.href || `/${lang}/i`}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-2xl font-bold text-xl shadow-2xl hover:shadow-purple-500/50 hover:scale-105 transition-all duration-300 group"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-violet-600 to-pink-600 text-white px-12 py-5 rounded-xl font-bold text-xl shadow-2xl hover:shadow-violet-500/50 hover:scale-105 transition-all duration-300 group"
           >
             <span>{t.cta}</span>
             <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
           </Link>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

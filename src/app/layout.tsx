@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Space_Grotesk } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { CurrencyProvider } from "@/contexts/CurrencyContext";
@@ -10,17 +10,30 @@ import "./globals.css";
 const GA_AW_ID = process.env.NEXT_PUBLIC_GA_AW_ID || '';
 const GA_INSTA_FUNNEL_ID = process.env.NEXT_PUBLIC_GA_INSTA_FUNNEL_ID || '';
 
-const spaceGrotesk = Space_Grotesk({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Socialoura - Boost Your Social Media Growth",
-  description: "Grow your Instagram and TikTok followers with Socialoura. Safe, reliable, and effective social media growth service.",
-  keywords: ["social media", "instagram followers", "tiktok followers", "social growth", "socialoura"],
-  authors: [{ name: "Socialoura" }],
+  title: "Socialiora — Amplify Your Digital Influence",
+  description: "Supercharge your Instagram & TikTok reach with Socialiora. Trusted, secure, and lightning-fast social media acceleration platform.",
+  keywords: ["social media growth", "buy instagram followers", "tiktok promotion", "digital influence", "socialiora"],
+  authors: [{ name: "Socialiora" }],
+  openGraph: {
+    title: "Socialiora — Amplify Your Digital Influence",
+    description: "Supercharge your Instagram & TikTok reach with Socialiora. Trusted, secure, and lightning-fast social media acceleration platform.",
+    url: "https://socialiora.com",
+    siteName: "Socialiora",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Socialiora — Amplify Your Digital Influence",
+    description: "Supercharge your Instagram & TikTok reach with Socialiora.",
+  },
   robots: {
     index: false,
     follow: false,
@@ -39,7 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/site-icon.svg" type="image/svg+xml" />
         {/* Preconnect to critical third-party origins */}
         <link rel="preconnect" href="https://js.stripe.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
@@ -83,7 +96,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} font-sans antialiased`}
+        className={`${poppins.variable} font-sans antialiased`}
         style={{ backgroundColor: '#0a0a0a', color: '#ededed' }}
       >
         <PostHogProvider>

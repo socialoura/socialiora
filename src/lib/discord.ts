@@ -102,7 +102,7 @@ export async function sendDiscordOrderNotification({
     ],
     timestamp: new Date().toISOString(),
     footer: {
-      text: 'SocialOura',
+      text: 'Socialiora',
     },
   };
 
@@ -206,7 +206,7 @@ export async function sendDiscordFunnelOrderNotification({
     ],
     timestamp: new Date().toISOString(),
     footer: {
-      text: 'SocialOura — Tunnel',
+      text: 'Socialiora — Tunnel',
     },
   };
 

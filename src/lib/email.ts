@@ -33,12 +33,12 @@ export async function sendOrderConfirmationEmail({
   const isEnglish = language === 'en';
 
   const subject = isEnglish
-    ? `Order Confirmation - SocialOura #${orderDetails.orderId}`
-    : `Confirmation de commande - SocialOura #${orderDetails.orderId}`;
+    ? `Order Confirmation - Socialiora #${orderDetails.orderId}`
+    : `Confirmation de commande - Socialiora #${orderDetails.orderId}`;
 
   const platformName = orderDetails.platform.charAt(0).toUpperCase() + orderDetails.platform.slice(1);
 
-  const logoUrl = 'https://socialoura.com/img/a-modern-flat-vector-logo-design-featuri_ZEbfVp__QiK-0wr5MrgGJg_ZFPYEbSKRM6a11TOK-IQCQ-removebg-preview.png';
+  const logoUrl = 'https://socialiora.com/img/brand-logo-socialiora.png';
   
   const htmlContent = `
 <!DOCTYPE html>
@@ -69,13 +69,13 @@ export async function sendOrderConfirmationEmail({
               <table role="presentation" style="width: 100%; border-collapse: collapse;">
                 <tr>
                   <td align="center">
-                    <img src="${logoUrl}" alt="SocialOura" style="width: 80px; height: 80px; border-radius: 20px; margin-bottom: 16px;" />
+                    <img src="${logoUrl}" alt="Socialiora" style="width: 80px; height: 80px; border-radius: 20px; margin-bottom: 16px;" />
                   </td>
                 </tr>
                 <tr>
                   <td align="center">
                     <h1 style="margin: 0; color: #ffffff; font-size: 32px; font-weight: 800; letter-spacing: -0.5px;">
-                      SocialOura
+                      Socialiora
                     </h1>
                     <p style="margin: 12px 0 0; color: rgba(255, 255, 255, 0.9); font-size: 16px; font-weight: 500;">
                       ${isEnglish ? '✨ Order Confirmation ✨' : '✨ Confirmation de commande ✨'}
@@ -266,8 +266,8 @@ export async function sendOrderConfirmationEmail({
           <!-- CTA Button -->
           <tr>
             <td style="padding: 0 30px 40px; text-align: center;">
-              <a href="https://socialoura.com" style="display: inline-block; background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none; padding: 18px 40px; border-radius: 14px; box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.4);">
-                ${isEnglish ? 'Visit SocialOura' : 'Visiter SocialOura'} →
+              <a href="https://socialiora.com" style="display: inline-block; background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none; padding: 18px 40px; border-radius: 14px; box-shadow: 0 10px 30px -5px rgba(139, 92, 246, 0.4);">
+                ${isEnglish ? 'Visit Socialiora' : 'Visiter Socialiora'} →
               </a>
             </td>
           </tr>
@@ -278,7 +278,7 @@ export async function sendOrderConfirmationEmail({
               <table role="presentation" style="width: 100%; border-collapse: collapse;">
                 <tr>
                   <td align="center" style="padding-bottom: 20px;">
-                    <img src="${logoUrl}" alt="SocialOura" style="width: 50px; height: 50px; border-radius: 12px;" />
+                    <img src="${logoUrl}" alt="Socialiora" style="width: 50px; height: 50px; border-radius: 12px;" />
                   </td>
                 </tr>
                 <tr>
@@ -290,15 +290,15 @@ export async function sendOrderConfirmationEmail({
                 </tr>
                 <tr>
                   <td align="center" style="padding-bottom: 20px;">
-                    <a href="mailto:support@socialoura.com" style="display: inline-block; background-color: rgba(139, 92, 246, 0.2); color: #a78bfa; font-size: 14px; font-weight: 600; text-decoration: none; padding: 12px 24px; border-radius: 10px; border: 1px solid rgba(139, 92, 246, 0.3);">
-                      📧 support@socialoura.com
+                    <a href="mailto:support@socialiora.com" style="display: inline-block; background-color: rgba(139, 92, 246, 0.2); color: #a78bfa; font-size: 14px; font-weight: 600; text-decoration: none; padding: 12px 24px; border-radius: 10px; border: 1px solid rgba(139, 92, 246, 0.3);">
+                      📧 support@socialiora.com
                     </a>
                   </td>
                 </tr>
                 <tr>
                   <td align="center">
                     <p style="margin: 0; color: #6b7280; font-size: 13px;">
-                      © ${new Date().getFullYear()} SocialOura. ${isEnglish ? 'All rights reserved.' : 'Tous droits réservés.'}
+                      © ${new Date().getFullYear()} Socialiora. ${isEnglish ? 'All rights reserved.' : 'Tous droits réservés.'}
                     </p>
                   </td>
                 </tr>
@@ -323,7 +323,7 @@ export async function sendOrderConfirmationEmail({
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'SocialOura <noreply@socialoura.com>',
+      from: 'Socialiora <noreply@socialiora.com>',
       to: [to],
       subject,
       html: htmlContent,

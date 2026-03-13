@@ -11,138 +11,138 @@ export default function TermsPage({ params }: PageProps) {
 
   const content = {
     en: {
-      title: 'Terms of Service',
-      lastUpdated: 'Last updated: December 2024',
+      title: 'General Terms & Conditions',
+      lastUpdated: 'Effective from: March 2026',
       sections: [
         {
-          title: '1. Acceptance of Terms',
-          content: 'By accessing and using Socialoura, you accept and agree to be bound by the terms and provision of this agreement.'
+          title: '1. Agreement to Conditions',
+          content: 'Your continued use of the Socialiora platform constitutes your acknowledgment and acceptance of every clause outlined within this document. If you do not consent to these provisions, you must discontinue use immediately.'
         },
         {
-          title: '2. Description of Service',
-          content: 'Socialoura provides social media growth services for Instagram and TikTok platforms through our network of partners.'
+          title: '2. Nature of the Platform',
+          content: 'Socialiora operates as a digital marketing acceleration service, delivering audience growth solutions across Instagram and TikTok via a curated network of verified promotional partners. Our headquarters are located at 75 Place de la Madeleine, 75010 Paris.'
         },
         {
-          title: '3. User Responsibilities',
-          content: 'Users are responsible for maintaining the confidentiality of their account and password.'
+          title: '3. Client Obligations',
+          content: 'Each client bears sole responsibility for safeguarding the confidentiality of their login credentials and account details. Any activity conducted under your credentials shall be deemed authorized by you.'
         },
         {
-          title: '4. Payment Terms',
-          content: 'All payments are processed securely through Stripe. Refunds are handled according to our refund policy.'
+          title: '4. Billing & Refund Provisions',
+          content: 'Every transaction is handled through the PCI-compliant Stripe payment gateway. Refund eligibility is assessed on a case-by-case basis in accordance with our published refund guidelines. Chargebacks initiated without prior contact may result in account suspension.'
         },
         {
-          title: '5. Prohibited Activities',
-          content: 'Users may not use our services for any illegal or unauthorized purpose.'
+          title: '5. Restricted Usage',
+          content: 'Clients are expressly forbidden from leveraging the platform for unlawful, fraudulent, or otherwise unauthorized activities. Violation of this clause may lead to immediate termination of service without reimbursement.'
         },
         {
-          title: '6. Limitation of Liability',
-          content: 'Socialoura shall not be liable for any indirect, incidental, special, consequential or punitive damages.'
+          title: '6. Liability Cap',
+          content: 'Under no circumstances shall Socialiora, its officers, directors, or affiliates be held liable for indirect, incidental, consequential, special, or exemplary damages arising from the use of our services, even if we have been advised of the possibility of such damages.'
         },
         {
-          title: '7. Contact Information',
-          content: 'For any questions about these Terms of Service, please contact us at support@socialoura.com'
+          title: '7. How to Reach Us',
+          content: 'Should you have inquiries regarding these conditions, please direct your correspondence to support@socialiora.com or write to us at 75 Place de la Madeleine, 75010 Paris, France.'
         }
       ]
     },
     fr: {
-      title: 'Conditions Générales de Vente',
-      lastUpdated: 'Dernière mise à jour : Décembre 2024',
+      title: 'Conditions Générales d\'Utilisation',
+      lastUpdated: 'En vigueur depuis : Mars 2026',
       sections: [
         {
-          title: '1. Acceptation des Conditions',
-          content: 'En accédant et en utilisant Socialoura, vous acceptez d\'être lié par les termes et dispositions de cet accord.'
+          title: '1. Consentement aux Conditions',
+          content: 'Votre utilisation continue de la plateforme Socialiora vaut reconnaissance et acceptation de l\'ensemble des clauses figurant dans le présent document. Si vous n\'y consentez pas, veuillez cesser immédiatement toute utilisation.'
         },
         {
-          title: '2. Description du Service',
-          content: 'Socialoura fournit des services de croissance sur les réseaux sociaux pour les plateformes Instagram et TikTok.'
+          title: '2. Nature de la Plateforme',
+          content: 'Socialiora est un service d\'accélération marketing digital, proposant des solutions de croissance d\'audience sur Instagram et TikTok via un réseau de partenaires promotionnels vérifiés. Notre siège est situé au 75 Place de la Madeleine, 75010 Paris.'
         },
         {
-          title: '3. Responsabilités de l\'Utilisateur',
-          content: 'Les utilisateurs sont responsables de maintenir la confidentialité de leur compte et de leur mot de passe.'
+          title: '3. Obligations du Client',
+          content: 'Chaque client est seul responsable de la protection de ses identifiants de connexion et des informations de son compte. Toute activité effectuée sous vos identifiants sera considérée comme autorisée par vous.'
         },
         {
-          title: '4. Conditions de Paiement',
-          content: 'Tous les paiements sont traités en toute sécurité via Stripe. Les remboursements sont traités selon notre politique.'
+          title: '4. Facturation et Remboursement',
+          content: 'Chaque transaction est traitée via la passerelle de paiement Stripe, conforme PCI. L\'éligibilité au remboursement est évaluée au cas par cas conformément à nos conditions de remboursement publiées.'
         },
         {
-          title: '5. Activités Interdites',
-          content: 'Les utilisateurs ne peuvent pas utiliser nos services à des fins illégales ou non autorisées.'
+          title: '5. Usages Restreints',
+          content: 'Il est strictement interdit aux clients d\'exploiter la plateforme à des fins illicites, frauduleuses ou non autorisées. Toute violation de cette clause pourra entraîner la résiliation immédiate du service sans compensation.'
         },
         {
-          title: '6. Limitation de Responsabilité',
-          content: 'Socialoura ne pourra être tenu responsable des dommages indirects, accessoires, spéciaux ou consécutifs.'
+          title: '6. Plafond de Responsabilité',
+          content: 'En aucun cas Socialiora, ses dirigeants ou affiliés ne sauraient être tenus responsables de dommages indirects, accessoires, consécutifs, spéciaux ou exemplaires résultant de l\'utilisation de nos services.'
         },
         {
-          title: '7. Informations de Contact',
-          content: 'Pour toute question sur ces CGV, veuillez nous contacter à support@socialoura.com'
+          title: '7. Nous Contacter',
+          content: 'Pour toute question relative à ces conditions, veuillez adresser votre correspondance à support@socialiora.com ou par courrier au 75 Place de la Madeleine, 75010 Paris, France.'
         }
       ]
     },
     de: {
-      title: 'Nutzungsbedingungen',
-      lastUpdated: 'Zuletzt aktualisiert: Dezember 2024',
+      title: 'Allgemeine Geschäftsbedingungen',
+      lastUpdated: 'Gültig ab: März 2026',
       sections: [
         {
-          title: '1. Annahme der Bedingungen',
-          content: 'Durch die Nutzung von Socialoura stimmen Sie den Bedingungen dieser Vereinbarung zu.'
+          title: '1. Zustimmung zu den Bedingungen',
+          content: 'Durch die fortgesetzte Nutzung der Socialiora-Plattform erkennen Sie sämtliche in diesem Dokument aufgeführten Bestimmungen an. Sollten Sie nicht einverstanden sein, stellen Sie die Nutzung bitte umgehend ein.'
         },
         {
-          title: '2. Beschreibung des Dienstes',
-          content: 'Socialoura bietet Wachstumsdienste für soziale Medien für Instagram- und TikTok-Plattformen an.'
+          title: '2. Art der Plattform',
+          content: 'Socialiora ist ein digitaler Marketing-Beschleunigungsdienst, der über ein geprüftes Netzwerk von Werbepartnern Wachstumslösungen für Instagram und TikTok bereitstellt. Unser Sitz befindet sich am 75 Place de la Madeleine, 75010 Paris.'
         },
         {
-          title: '3. Benutzerverantwortlichkeiten',
-          content: 'Benutzer sind für die Wahrung der Vertraulichkeit ihres Kontos und Passworts verantwortlich.'
+          title: '3. Pflichten des Kunden',
+          content: 'Jeder Kunde ist allein für den Schutz seiner Zugangsdaten und Kontoinformationen verantwortlich. Jede unter Ihren Zugangsdaten durchgeführte Aktivität gilt als von Ihnen autorisiert.'
         },
         {
-          title: '4. Zahlungsbedingungen',
-          content: 'Alle Zahlungen werden sicher über Stripe abgewickelt. Rückerstattungen erfolgen gemäß unserer Rückerstattungsrichtlinie.'
+          title: '4. Abrechnung und Erstattung',
+          content: 'Sämtliche Transaktionen werden über das PCI-konforme Zahlungsgateway Stripe abgewickelt. Die Erstattungsfähigkeit wird im Einzelfall gemäß unseren veröffentlichten Erstattungsrichtlinien geprüft.'
         },
         {
-          title: '5. Verbotene Aktivitäten',
-          content: 'Benutzer dürfen unsere Dienste nicht für rechtswidrige oder nicht autorisierte Zwecke nutzen.'
+          title: '5. Eingeschränkte Nutzung',
+          content: 'Kunden ist es ausdrücklich untersagt, die Plattform für rechtswidrige, betrügerische oder anderweitig nicht autorisierte Zwecke zu verwenden. Ein Verstoß kann zur sofortigen Kündigung ohne Erstattung führen.'
         },
         {
-          title: '6. Haftungsbeschränkung',
-          content: 'Socialoura haftet nicht für indirekte, zufällige, besondere oder Folgeschäden.'
+          title: '6. Haftungsobergrenze',
+          content: 'Unter keinen Umständen haften Socialiora, seine Geschäftsführer oder verbundene Unternehmen für indirekte, beiläufige, folgerichtige, besondere oder exemplarische Schäden, die aus der Nutzung unserer Dienste entstehen.'
         },
         {
-          title: '7. Kontaktinformationen',
-          content: 'Bei Fragen zu diesen Nutzungsbedingungen kontaktieren Sie uns unter support@socialoura.com'
+          title: '7. So erreichen Sie uns',
+          content: 'Bei Fragen zu diesen Bedingungen wenden Sie sich bitte an support@socialiora.com oder schreiben Sie an 75 Place de la Madeleine, 75010 Paris, Frankreich.'
         }
       ]
     },
     es: {
-      title: 'Términos de Servicio',
-      lastUpdated: 'Última actualización: Diciembre 2024',
+      title: 'Condiciones Generales de Uso',
+      lastUpdated: 'Vigente desde: Marzo 2026',
       sections: [
         {
-          title: '1. Aceptación de los Términos',
-          content: 'Al acceder y usar Socialoura, acepta estar sujeto a los términos y disposiciones de este acuerdo.'
+          title: '1. Conformidad con las Condiciones',
+          content: 'Al continuar utilizando la plataforma Socialiora, usted reconoce y acepta cada cláusula descrita en este documento. Si no está de acuerdo, debe dejar de utilizar el servicio de inmediato.'
         },
         {
-          title: '2. Descripción del Servicio',
-          content: 'Socialoura proporciona servicios de crecimiento en redes sociales para plataformas Instagram y TikTok.'
+          title: '2. Naturaleza de la Plataforma',
+          content: 'Socialiora funciona como un servicio de aceleración de marketing digital, ofreciendo soluciones de crecimiento de audiencia en Instagram y TikTok a través de una red verificada de socios promocionales. Nuestra sede se encuentra en 75 Place de la Madeleine, 75010 París.'
         },
         {
-          title: '3. Responsabilidades del Usuario',
-          content: 'Los usuarios son responsables de mantener la confidencialidad de su cuenta y contraseña.'
+          title: '3. Obligaciones del Cliente',
+          content: 'Cada cliente es el único responsable de proteger sus credenciales de acceso y la información de su cuenta. Cualquier actividad realizada con sus credenciales se considerará autorizada por usted.'
         },
         {
-          title: '4. Términos de Pago',
-          content: 'Todos los pagos se procesan de forma segura a través de Stripe. Los reembolsos se gestionan según nuestra política.'
+          title: '4. Facturación y Reembolsos',
+          content: 'Todas las transacciones se procesan a través de la pasarela de pago Stripe, compatible con PCI. La elegibilidad para reembolso se evalúa caso por caso según nuestras directrices de reembolso publicadas.'
         },
         {
-          title: '5. Actividades Prohibidas',
-          content: 'Los usuarios no pueden usar nuestros servicios para fines ilegales o no autorizados.'
+          title: '5. Uso Restringido',
+          content: 'Queda expresamente prohibido que los clientes utilicen la plataforma con fines ilegales, fraudulentos o no autorizados. La violación de esta cláusula puede resultar en la terminación inmediata del servicio sin reembolso.'
         },
         {
-          title: '6. Limitación de Responsabilidad',
-          content: 'Socialoura no será responsable de daños indirectos, incidentales, especiales o consecuentes.'
+          title: '6. Límite de Responsabilidad',
+          content: 'En ningún caso Socialiora, sus directivos o afiliados serán responsables de daños indirectos, incidentales, consecuentes, especiales o ejemplares derivados del uso de nuestros servicios.'
         },
         {
-          title: '7. Información de Contacto',
-          content: 'Para preguntas sobre estos Términos de Servicio, contáctenos en support@socialoura.com'
+          title: '7. Cómo Contactarnos',
+          content: 'Si tiene consultas sobre estas condiciones, envíe su correspondencia a support@socialiora.com o escriba a 75 Place de la Madeleine, 75010 París, Francia.'
         }
       ]
     }

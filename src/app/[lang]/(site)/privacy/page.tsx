@@ -11,138 +11,138 @@ export default function PrivacyPage({ params }: PageProps) {
 
   const content = {
     en: {
-      title: 'Privacy Policy',
-      lastUpdated: 'Last updated: December 2024',
+      title: 'Data Protection Notice',
+      lastUpdated: 'Effective from: March 2026',
       sections: [
         {
-          title: '1. Information We Collect',
-          content: 'We collect information you provide directly to us, such as when you create an account, use our services, or contact us.'
+          title: '1. Data We Gather',
+          content: 'We gather personal details that you voluntarily submit when registering an account, placing an order, or reaching out to our team. This may include your name, email address, payment information, and social media handle.'
         },
         {
-          title: '2. How We Use Your Information',
-          content: 'We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you.'
+          title: '2. Purpose of Data Processing',
+          content: 'The data we collect is utilized exclusively to deliver, maintain, and enhance our platform, fulfill transactions, send order updates, and respond to your support requests. We never use your data for purposes unrelated to the service.'
         },
         {
-          title: '3. Information Sharing',
-          content: 'We do not sell, trade, or otherwise transfer your personal information to third parties without your consent.'
+          title: '3. Third-Party Disclosure',
+          content: 'Your personal data will never be sold, rented, or disclosed to external parties without your explicit permission, except where legally required or necessary to complete a transaction (e.g., payment processor).'
         },
         {
-          title: '4. Data Security',
-          content: 'We implement appropriate technical and organizational measures to protect your personal information against unauthorized access.'
+          title: '4. Safeguarding Your Data',
+          content: 'We deploy industry-standard encryption protocols and organizational safeguards to shield your personal data from unauthorized access, alteration, or destruction. Our payment partner Stripe is PCI DSS Level 1 certified.'
         },
         {
-          title: '5. Cookies',
-          content: 'We use cookies and similar tracking technologies to track activity on our service and hold certain information.'
+          title: '5. Tracking Technologies',
+          content: 'Our platform employs cookies and analogous tracking mechanisms to enhance user experience, remember preferences, and analyze site traffic patterns. You may adjust cookie settings through your browser at any time.'
         },
         {
-          title: '6. Your Rights',
-          content: 'You have the right to access, update, or delete your personal information at any time.'
+          title: '6. Your Data Rights',
+          content: 'Under applicable regulations (including GDPR), you retain the right to access, rectify, export, or erase your personal data at any time. To exercise these rights, contact our data protection team at the address below.'
         },
         {
-          title: '7. Contact Information',
-          content: 'If you have any questions about this Privacy Policy, please contact us at support@socialoura.com'
+          title: '7. Reach Our Privacy Team',
+          content: 'For any concerns regarding this notice, write to support@socialiora.com or send postal mail to Socialiora, 75 Place de la Madeleine, 75010 Paris, France.'
         }
       ]
     },
     fr: {
-      title: 'Politique de Confidentialité',
-      lastUpdated: 'Dernière mise à jour : Décembre 2024',
+      title: 'Avis de Protection des Données',
+      lastUpdated: 'En vigueur depuis : Mars 2026',
       sections: [
         {
-          title: '1. Informations que nous collectons',
-          content: 'Nous collectons les informations que vous nous fournissez directement, comme lorsque vous créez un compte ou utilisez nos services.'
+          title: '1. Données Recueillies',
+          content: 'Nous recueillons les informations personnelles que vous soumettez volontairement lors de l\'inscription, d\'une commande ou d\'un contact avec notre équipe : nom, adresse e-mail, informations de paiement et identifiant de réseau social.'
         },
         {
-          title: '2. Comment nous utilisons vos informations',
-          content: 'Nous utilisons les informations collectées pour fournir, maintenir et améliorer nos services, traiter les transactions et communiquer avec vous.'
+          title: '2. Finalité du Traitement',
+          content: 'Les données collectées servent exclusivement à délivrer, maintenir et optimiser notre plateforme, exécuter les transactions, envoyer des notifications de commande et répondre à vos demandes d\'assistance.'
         },
         {
-          title: '3. Partage d\'informations',
-          content: 'Nous ne vendons, n\'échangeons ni ne transférons vos informations personnelles à des tiers sans votre consentement.'
+          title: '3. Communication à des Tiers',
+          content: 'Vos données personnelles ne seront jamais vendues, louées ou divulguées à des parties externes sans votre autorisation explicite, sauf obligation légale ou nécessité liée à l\'exécution d\'une transaction.'
         },
         {
-          title: '4. Sécurité des données',
-          content: 'Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles.'
+          title: '4. Protection de vos Données',
+          content: 'Nous déployons des protocoles de chiffrement conformes aux standards de l\'industrie et des mesures organisationnelles pour protéger vos données contre tout accès, modification ou destruction non autorisés.'
         },
         {
-          title: '5. Cookies',
-          content: 'Nous utilisons des cookies et technologies de suivi similaires pour suivre l\'activité sur notre service.'
+          title: '5. Technologies de Suivi',
+          content: 'Notre plateforme utilise des cookies et mécanismes de suivi analogues pour améliorer l\'expérience utilisateur, mémoriser vos préférences et analyser le trafic du site. Vous pouvez ajuster les paramètres des cookies dans votre navigateur.'
         },
         {
-          title: '6. Vos droits',
-          content: 'Vous avez le droit d\'accéder, de mettre à jour ou de supprimer vos informations personnelles à tout moment.'
+          title: '6. Vos Droits sur vos Données',
+          content: 'Conformément aux réglementations applicables (dont le RGPD), vous conservez le droit d\'accéder, de rectifier, d\'exporter ou d\'effacer vos données personnelles à tout moment.'
         },
         {
-          title: '7. Informations de contact',
-          content: 'Pour toute question sur cette politique de confidentialité, veuillez nous contacter à support@socialoura.com'
+          title: '7. Contacter notre Équipe Données',
+          content: 'Pour toute préoccupation relative à cet avis, écrivez à support@socialiora.com ou par courrier à Socialiora, 75 Place de la Madeleine, 75010 Paris, France.'
         }
       ]
     },
     de: {
-      title: 'Datenschutzerklärung',
-      lastUpdated: 'Zuletzt aktualisiert: Dezember 2024',
+      title: 'Datenschutzhinweis',
+      lastUpdated: 'Gültig ab: März 2026',
       sections: [
         {
-          title: '1. Informationen, die wir sammeln',
-          content: 'Wir sammeln Informationen, die Sie uns direkt zur Verfügung stellen, wie bei der Kontoerstellung oder Nutzung unserer Dienste.'
+          title: '1. Erhobene Daten',
+          content: 'Wir erfassen personenbezogene Daten, die Sie bei der Registrierung, Bestellung oder Kontaktaufnahme freiwillig angeben: Name, E-Mail-Adresse, Zahlungsinformationen und Social-Media-Handle.'
         },
         {
-          title: '2. Wie wir Ihre Informationen verwenden',
-          content: 'Wir verwenden die gesammelten Informationen, um unsere Dienste bereitzustellen, zu pflegen und zu verbessern.'
+          title: '2. Zweck der Datenverarbeitung',
+          content: 'Ihre Daten werden ausschließlich zur Bereitstellung, Wartung und Verbesserung unserer Plattform, zur Abwicklung von Transaktionen und zur Beantwortung Ihrer Supportanfragen verwendet.'
         },
         {
-          title: '3. Informationsweitergabe',
-          content: 'Wir verkaufen, tauschen oder übertragen Ihre persönlichen Informationen nicht ohne Ihre Zustimmung an Dritte.'
+          title: '3. Weitergabe an Dritte',
+          content: 'Ihre personenbezogenen Daten werden ohne Ihre ausdrückliche Genehmigung weder verkauft noch vermietet oder an externe Parteien weitergegeben, es sei denn, dies ist gesetzlich vorgeschrieben.'
         },
         {
-          title: '4. Datensicherheit',
-          content: 'Wir implementieren angemessene technische und organisatorische Maßnahmen zum Schutz Ihrer persönlichen Informationen.'
+          title: '4. Schutz Ihrer Daten',
+          content: 'Wir setzen branchenstandard­konforme Verschlüsselungsprotokolle und organisatorische Schutzmaßnahmen ein, um Ihre Daten vor unbefugtem Zugriff, Änderung oder Zerstörung zu schützen.'
         },
         {
-          title: '5. Cookies',
-          content: 'Wir verwenden Cookies und ähnliche Tracking-Technologien, um die Aktivität auf unserem Dienst zu verfolgen.'
+          title: '5. Tracking-Technologien',
+          content: 'Unsere Plattform verwendet Cookies und vergleichbare Tracking-Mechanismen, um das Nutzererlebnis zu verbessern, Präferenzen zu speichern und Website-Traffic zu analysieren.'
         },
         {
-          title: '6. Ihre Rechte',
-          content: 'Sie haben das Recht, jederzeit auf Ihre persönlichen Informationen zuzugreifen, diese zu aktualisieren oder zu löschen.'
+          title: '6. Ihre Datenrechte',
+          content: 'Gemäß den geltenden Vorschriften (einschließlich DSGVO) behalten Sie das Recht, jederzeit auf Ihre personenbezogenen Daten zuzugreifen, diese zu berichtigen, zu exportieren oder zu löschen.'
         },
         {
-          title: '7. Kontaktinformationen',
-          content: 'Bei Fragen zu dieser Datenschutzerklärung kontaktieren Sie uns unter support@socialoura.com'
+          title: '7. Unser Datenschutzteam erreichen',
+          content: 'Bei Fragen zu diesem Hinweis schreiben Sie an support@socialiora.com oder per Post an Socialiora, 75 Place de la Madeleine, 75010 Paris, Frankreich.'
         }
       ]
     },
     es: {
-      title: 'Política de Privacidad',
-      lastUpdated: 'Última actualización: Diciembre 2024',
+      title: 'Aviso de Protección de Datos',
+      lastUpdated: 'Vigente desde: Marzo 2026',
       sections: [
         {
-          title: '1. Información que recopilamos',
-          content: 'Recopilamos información que nos proporciona directamente, como cuando crea una cuenta o usa nuestros servicios.'
+          title: '1. Datos Recopilados',
+          content: 'Recopilamos datos personales que usted envía voluntariamente al registrarse, realizar un pedido o contactar con nuestro equipo: nombre, correo electrónico, información de pago e identificador de red social.'
         },
         {
-          title: '2. Cómo usamos su información',
-          content: 'Usamos la información recopilada para proporcionar, mantener y mejorar nuestros servicios y procesar transacciones.'
+          title: '2. Finalidad del Tratamiento',
+          content: 'Los datos recopilados se utilizan exclusivamente para ofrecer, mantener y mejorar nuestra plataforma, procesar transacciones, enviar actualizaciones de pedidos y responder a sus solicitudes de soporte.'
         },
         {
-          title: '3. Compartir información',
-          content: 'No vendemos, intercambiamos ni transferimos su información personal a terceros sin su consentimiento.'
+          title: '3. Divulgación a Terceros',
+          content: 'Sus datos personales nunca serán vendidos, alquilados o divulgados a partes externas sin su permiso explícito, salvo obligación legal o necesidad vinculada a la ejecución de una transacción.'
         },
         {
-          title: '4. Seguridad de datos',
-          content: 'Implementamos medidas técnicas y organizativas apropiadas para proteger su información personal.'
+          title: '4. Protección de sus Datos',
+          content: 'Desplegamos protocolos de cifrado estándar de la industria y salvaguardas organizativas para proteger sus datos contra accesos, alteraciones o destrucción no autorizados.'
         },
         {
-          title: '5. Cookies',
-          content: 'Usamos cookies y tecnologías de seguimiento similares para rastrear la actividad en nuestro servicio.'
+          title: '5. Tecnologías de Rastreo',
+          content: 'Nuestra plataforma emplea cookies y mecanismos de seguimiento similares para mejorar la experiencia del usuario, recordar preferencias y analizar patrones de tráfico del sitio.'
         },
         {
-          title: '6. Sus derechos',
-          content: 'Tiene derecho a acceder, actualizar o eliminar su información personal en cualquier momento.'
+          title: '6. Sus Derechos sobre los Datos',
+          content: 'Conforme a la normativa aplicable (incluyendo el RGPD), usted conserva el derecho de acceder, rectificar, exportar o eliminar sus datos personales en cualquier momento.'
         },
         {
-          title: '7. Información de contacto',
-          content: 'Si tiene preguntas sobre esta Política de Privacidad, contáctenos en support@socialoura.com'
+          title: '7. Contactar con nuestro Equipo de Privacidad',
+          content: 'Para cualquier consulta sobre este aviso, escriba a support@socialiora.com o por correo postal a Socialiora, 75 Place de la Madeleine, 75010 París, Francia.'
         }
       ]
     }

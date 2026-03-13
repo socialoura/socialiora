@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-const ADS_STORAGE_KEY = 'socialoura_ads_params';
+const ADS_STORAGE_KEY = 'Socialiora_ads_params';
 
 export interface AdsParams {
   keyword?: string;

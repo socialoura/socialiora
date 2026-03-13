@@ -19,8 +19,8 @@ export default function FAQPage({ params }: PageProps) {
 
   const content = {
     en: {
-      title: 'Frequently Asked Questions',
-      subtitle: 'Find answers to the most common questions about our services',
+      title: 'Help Center',
+      subtitle: 'Browse through our most popular inquiries and get instant clarity',
       categories: {
         general: 'General',
         orders: 'Orders & Delivery',
@@ -30,63 +30,63 @@ export default function FAQPage({ params }: PageProps) {
       faqs: [
         {
           category: 'general',
-          question: 'What is SocialOura?',
-          answer: 'SocialOura is a professional marketing platform that helps you grow your social media presence on Instagram and TikTok through our exclusive partner network. We provide authentic engagement to expand your reach.',
+          question: 'What exactly does Socialiora do?',
+          answer: 'Socialiora is a premium digital growth platform that accelerates your social media footprint across Instagram and TikTok. Through our vetted partner ecosystem, we deliver genuine engagement that organically broadens your audience reach.',
         },
         {
           category: 'general',
-          question: 'Is it safe to use your services?',
-          answer: 'Yes, absolutely! We use safe and compliant methods that respect platform guidelines. Your account security is our top priority, and we never ask for your password.',
+          question: 'Are your methods risk-free for my profile?',
+          answer: 'Without question. Every technique we deploy strictly adheres to platform policies and community standards. Protecting your account is paramount—we will never request your login credentials.',
         },
         {
           category: 'general',
-          question: 'Will my account get banned?',
-          answer: 'No. We use gradual delivery methods that mimic organic growth patterns. This ensures your account remains safe and in good standing with the platform.',
+          question: 'Is there any risk of suspension?',
+          answer: 'None whatsoever. Our incremental delivery system replicates natural audience growth curves, ensuring your profile stays fully compliant and in excellent standing.',
         },
         {
           category: 'orders',
-          question: 'How long does delivery take?',
-          answer: 'Delivery typically starts within 0-24 hours after your order is confirmed. The full delivery is completed gradually over 24-72 hours to ensure natural-looking growth.',
+          question: 'When will I start seeing results?',
+          answer: 'Processing begins within minutes to 24 hours of order confirmation. Full fulfillment rolls out progressively over 24–72 hours to maintain an authentic growth trajectory.',
         },
         {
           category: 'orders',
-          question: 'Do I need to provide my password?',
-          answer: 'No, never! We only need your public username. We will never ask for your password or any sensitive account information.',
+          question: 'Do you require my login credentials?',
+          answer: 'Absolutely not. We only need your public handle. Under no circumstances will we ever request passwords or confidential account data.',
         },
         {
           category: 'orders',
-          question: 'What if I don\'t receive my order?',
-          answer: 'If you experience any issues with your order, please contact our support team. We offer a full refund or redelivery guarantee if we fail to deliver your order.',
+          question: 'What happens if my order isn\'t fulfilled?',
+          answer: 'In the unlikely event of a delivery issue, reach out to our support crew immediately. We guarantee either a complete refund or a fresh redelivery at zero extra cost.',
         },
         {
           category: 'orders',
-          question: 'Can I order for multiple accounts?',
-          answer: 'Yes! You can place separate orders for different accounts. Each order is processed independently.',
+          question: 'Can I place orders for several profiles at once?',
+          answer: 'Of course! Simply submit individual orders for each profile. Every request is handled separately to ensure optimal results.',
         },
         {
           category: 'payment',
-          question: 'What payment methods do you accept?',
-          answer: 'We accept all major credit cards (Visa, Mastercard, American Express), Apple Pay, and Google Pay through our secure Stripe payment processor.',
+          question: 'Which payment options are available?',
+          answer: 'We support all leading credit and debit cards (Visa, Mastercard, Amex), along with Apple Pay and Google Pay—all routed through our PCI-certified Stripe checkout.',
         },
         {
           category: 'payment',
-          question: 'Is my payment information secure?',
-          answer: 'Yes, 100%. We use Stripe, a PCI-compliant payment processor. Your payment details are encrypted and never stored on our servers.',
+          question: 'How is my financial data protected?',
+          answer: 'Entirely. Stripe—our PCI Level 1 certified payment partner—encrypts every transaction end-to-end. Your card details never touch our infrastructure.',
         },
         {
           category: 'payment',
-          question: 'Do you offer refunds?',
-          answer: 'Yes, we offer refunds if we are unable to deliver your order. Please contact our support team within 7 days of your purchase if you have any issues.',
+          question: 'What is your refund policy?',
+          answer: 'If we cannot fulfill your order, you are entitled to a full refund. Simply reach out to our team within 7 days of purchase and we will process it promptly.',
         },
         {
           category: 'support',
-          question: 'How can I contact support?',
-          answer: 'You can reach us through the chat widget on our website, or email us at support@socialoura.com. We typically respond within 24 hours.',
+          question: 'What is the fastest way to get help?',
+          answer: 'Use the live chat bubble on any page for real-time assistance, or drop us a line at support@socialiora.com. Our average reply time is under 24 hours.',
         },
         {
           category: 'support',
-          question: 'What are your support hours?',
-          answer: 'Our support team is available Monday to Friday, 9 AM to 6 PM (CET). For urgent matters, please use the chat widget for faster response.',
+          question: 'When is your team available?',
+          answer: 'Our agents are on duty Monday through Friday, 9:00–18:00 CET. For time-sensitive requests outside those hours, the chat widget offers the quickest turnaround.',
         },
       ],
       contactTitle: 'Still have questions?',
@@ -107,8 +107,8 @@ export default function FAQPage({ params }: PageProps) {
       faqs: [
         {
           category: 'general',
-          question: 'Qu\'est-ce que SocialOura ?',
-          answer: 'SocialOura est une plateforme de marketing professionnelle qui vous aide à développer votre présence sur Instagram et TikTok grâce à notre réseau de partenaires exclusifs. Nous fournissons un engagement authentique pour étendre votre portée.',
+          question: 'Qu\'est-ce que Socialiora ?',
+          answer: 'Socialiora est une plateforme de marketing professionnelle qui vous aide à développer votre présence sur Instagram et TikTok grâce à notre réseau de partenaires exclusifs. Nous fournissons un engagement authentique pour étendre votre portée.',
         },
         {
           category: 'general',
@@ -158,7 +158,7 @@ export default function FAQPage({ params }: PageProps) {
         {
           category: 'support',
           question: 'Comment puis-je contacter le support ?',
-          answer: 'Vous pouvez nous joindre via le widget de chat sur notre site, ou nous envoyer un email à support@socialoura.com. Nous répondons généralement sous 24 heures.',
+          answer: 'Vous pouvez nous joindre via le widget de chat sur notre site, ou nous envoyer un email à support@socialiora.com. Nous répondons généralement sous 24 heures.',
         },
         {
           category: 'support',
@@ -184,8 +184,8 @@ export default function FAQPage({ params }: PageProps) {
       faqs: [
         {
           category: 'general',
-          question: 'Was ist SocialOura?',
-          answer: 'SocialOura ist eine professionelle Marketingplattform, die Ihnen hilft, Ihre Social-Media-Präsenz auf Instagram und TikTok über unser exklusives Partnernetzwerk auszubauen. Wir bieten authentisches Engagement, um Ihre Reichweite zu erweitern.',
+          question: 'Was ist Socialiora?',
+          answer: 'Socialiora ist eine professionelle Marketingplattform, die Ihnen hilft, Ihre Social-Media-Präsenz auf Instagram und TikTok über unser exklusives Partnernetzwerk auszubauen. Wir bieten authentisches Engagement, um Ihre Reichweite zu erweitern.',
         },
         {
           category: 'general',
@@ -235,7 +235,7 @@ export default function FAQPage({ params }: PageProps) {
         {
           category: 'support',
           question: 'Wie kann ich den Support kontaktieren?',
-          answer: 'Sie können uns über das Chat-Widget auf unserer Website erreichen oder uns eine E-Mail an support@socialoura.com senden. Wir antworten in der Regel innerhalb von 24 Stunden.',
+          answer: 'Sie können uns über das Chat-Widget auf unserer Website erreichen oder uns eine E-Mail an support@socialiora.com senden. Wir antworten in der Regel innerhalb von 24 Stunden.',
         },
         {
           category: 'support',
@@ -261,8 +261,8 @@ export default function FAQPage({ params }: PageProps) {
       faqs: [
         {
           category: 'general',
-          question: '¿Qué es SocialOura?',
-          answer: 'SocialOura es una plataforma de marketing profesional que te ayuda a hacer crecer tu presencia en redes sociales en Instagram y TikTok a través de nuestra red exclusiva de socios. Proporcionamos engagement auténtico para ampliar tu alcance.',
+          question: '¿Qué es Socialiora?',
+          answer: 'Socialiora es una plataforma de marketing profesional que te ayuda a hacer crecer tu presencia en redes sociales en Instagram y TikTok a través de nuestra red exclusiva de socios. Proporcionamos engagement auténtico para ampliar tu alcance.',
         },
         {
           category: 'general',
@@ -312,7 +312,7 @@ export default function FAQPage({ params }: PageProps) {
         {
           category: 'support',
           question: '¿Cómo puedo contactar con soporte?',
-          answer: 'Puedes contactarnos a través del widget de chat en nuestra web, o enviarnos un correo a support@socialoura.com. Normalmente respondemos en menos de 24 horas.',
+          answer: 'Puedes contactarnos a través del widget de chat en nuestra web, o enviarnos un correo a support@socialiora.com. Normalmente respondemos en menos de 24 horas.',
         },
         {
           category: 'support',
@@ -425,7 +425,7 @@ export default function FAQPage({ params }: PageProps) {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="mailto:support@socialoura.com"
+              href="mailto:support@socialiora.com"
               className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-xl transition-colors"
             >
               <Mail className="w-5 h-5" />

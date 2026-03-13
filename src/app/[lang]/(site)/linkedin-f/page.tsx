@@ -118,7 +118,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'GET FOLLOWERS',
       },
       difference: {
-        title: 'Why professionals trust Socialoura',
+        title: 'Why professionals trust Socialiora',
         cards: [
           {
             title: 'AI-Powered Targeting',
@@ -192,7 +192,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'GET MY FOLLOWERS',
       },
       compliance: {
-        text: 'Compliance: Socialoura uses AI-driven professional network growth strategies that are fully compliant with LinkedIn\'s terms of service. We never use bots, fake accounts, or any method that could put your profile at risk.',
+        text: 'Compliance: Socialiora uses AI-driven professional network growth strategies that are fully compliant with LinkedIn\'s terms of service. We never use bots, fake accounts, or any method that could put your profile at risk.',
       },
     },
     fr: {
@@ -208,7 +208,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'OBTENIR DES ABONNÉS',
       },
       difference: {
-        title: 'Pourquoi les professionnels font confiance à Socialoura',
+        title: 'Pourquoi les professionnels font confiance à Socialiora',
         cards: [
           {
             title: 'Ciblage propulsé par l\'IA',
@@ -282,7 +282,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'OBTENIR MES ABONNÉS',
       },
       compliance: {
-        text: 'Conformité : Socialoura utilise des stratégies de croissance de réseau professionnel propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de LinkedIn. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre profil en danger.',
+        text: 'Conformité : Socialiora utilise des stratégies de croissance de réseau professionnel propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de LinkedIn. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre profil en danger.',
       },
     },
     de: {
@@ -298,7 +298,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'FOLLOWER ERHALTEN',
       },
       difference: {
-        title: 'Warum Profis Socialoura vertrauen',
+        title: 'Warum Profis Socialiora vertrauen',
         cards: [
           {
             title: 'KI-gestütztes Targeting',
@@ -372,7 +372,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'MEINE FOLLOWER ERHALTEN',
       },
       compliance: {
-        text: 'Konformität: Socialoura nutzt KI-gesteuerte professionelle Netzwerk-Wachstumsstrategien, die vollständig konform mit den Nutzungsbedingungen von LinkedIn sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihr Profil gefährden könnten.',
+        text: 'Konformität: Socialiora nutzt KI-gesteuerte professionelle Netzwerk-Wachstumsstrategien, die vollständig konform mit den Nutzungsbedingungen von LinkedIn sind. Wir verwenden niemals Bots, Fake-Accounts oder Methoden, die Ihr Profil gefährden könnten.',
       },
     },
     es: {
@@ -388,7 +388,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'OBTENER SEGUIDORES',
       },
       difference: {
-        title: 'Por qué los profesionales confían en Socialoura',
+        title: 'Por qué los profesionales confían en Socialiora',
         cards: [
           {
             title: 'Segmentación con IA',
@@ -462,7 +462,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
         cta: 'OBTENER MIS SEGUIDORES',
       },
       compliance: {
-        text: 'Conformidad: Socialoura utiliza estrategias de crecimiento de red profesional impulsadas por IA, totalmente conformes con los términos de servicio de LinkedIn. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu perfil.',
+        text: 'Conformidad: Socialiora utiliza estrategias de crecimiento de red profesional impulsadas por IA, totalmente conformes con los términos de servicio de LinkedIn. Nunca usamos bots, cuentas falsas ni ningún método que pueda poner en riesgo tu perfil.',
       },
     },
   };
@@ -717,7 +717,7 @@ export default function LinkedInFollowersPage({ params }: PageProps) {
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500 to-sky-500 rounded-3xl blur-2xl opacity-20" />
               <div className="relative aspect-square rounded-3xl overflow-hidden border-2 border-gray-700">
                 <Image
-                  src="/img/smiling-woman-using-her-phone-surrounded-by-social.webp"
+                  src="/img/creator-lifestyle-hero.webp"
                   alt="Woman using phone"
                   width={600}
                   height={600}

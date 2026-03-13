@@ -9,14 +9,14 @@ export default function Footer({ lang }: FooterProps) {
   const currentYear = new Date().getFullYear();
   
   const footerText = lang === 'fr' 
-    ? `© ${currentYear} Socialoura. Tous droits réservés.`
+    ? `© ${currentYear} Socialiora. Tous droits réservés.`
     : lang === 'de'
-    ? `© ${currentYear} Socialoura. Alle Rechte vorbehalten.`
+    ? `© ${currentYear} Socialiora. Alle Rechte vorbehalten.`
     : lang === 'es'
-    ? `© ${currentYear} Socialoura. Todos los derechos reservados.`
-    : `© ${currentYear} Socialoura. All rights reserved.`;
+    ? `© ${currentYear} Socialiora. Todos los derechos reservados.`
+    : `© ${currentYear} Socialiora. All rights reserved.`;
     
-  const linksTitle = lang === 'fr' ? 'Liens rapides' : lang === 'de' ? 'Schnelllinks' : lang === 'es' ? 'Enlaces rápidos' : 'Quick Links';
+  const linksTitle = lang === 'fr' ? 'Navigation' : lang === 'de' ? 'Navigation' : lang === 'es' ? 'Navegación' : 'Explore';
   const aboutText = lang === 'fr' ? 'À propos' : lang === 'de' ? 'Über uns' : lang === 'es' ? 'Acerca de' : 'About';
   const contactText = lang === 'fr' ? 'Contact' : lang === 'de' ? 'Kontakt' : lang === 'es' ? 'Contacto' : 'Contact';
   const privacyText = lang === 'fr' ? 'Confidentialité' : lang === 'de' ? 'Datenschutz' : lang === 'es' ? 'Privacidad' : 'Privacy';
@@ -29,23 +29,26 @@ export default function Footer({ lang }: FooterProps) {
 
   return (
     <footer className="w-full border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <Image
-                src="/img/a-modern-flat-vector-logo-design-featuri_ZEbfVp__QiK-0wr5MrgGJg_ZFPYEbSKRM6a11TOK-IQCQ-removebg-preview.png"
-                alt="Socialoura Logo"
+                src="/img/brand-logo-socialiora.png"
+                alt="Socialiora Logo"
                 width={48}
                 height={48}
                 className="w-12 h-12"
               />
               <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                Socialoura
+                Socialiora
               </h3>
             </div>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
               {footerText}
+            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-500">
+              75 Place de la Madeleine, 75010 Paris
             </p>
           </div>
           
@@ -149,7 +152,7 @@ export default function Footer({ lang }: FooterProps) {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <div className="mt-10 pt-10 border-t border-gray-200 dark:border-gray-800">
           <p className="text-center text-xs text-gray-500 dark:text-gray-400">
             {footerText}
           </p>

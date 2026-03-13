@@ -133,7 +133,7 @@ export default function TikTokViewsPage({ params }: PageProps) {
         cta: 'START NOW',
       },
       benefits: {
-        title: 'Why choose SocialOura for visibility?',
+        title: 'Why choose Socialiora for visibility?',
         items: [
           { title: 'High-quality activity', desc: 'Designed to support visibility with a realistic, promotion-friendly approach.' },
           { title: 'Safe & secure', desc: 'Fully compliant with TikTok guidelines. Zero risk.' },
@@ -199,7 +199,7 @@ export default function TikTokViewsPage({ params }: PageProps) {
         cta: 'COMMENCER MAINTENANT',
       },
       benefits: {
-        title: 'Pourquoi choisir SocialOura pour la visibilité ?',
+        title: 'Pourquoi choisir Socialiora pour la visibilité ?',
         items: [
           { title: 'Activité de qualité', desc: 'Pensée pour accompagner une promotion de manière réaliste et cohérente.' },
           { title: 'Sûr et sécurisé', desc: 'Entièrement conforme aux directives TikTok. Zéro risque.' },
@@ -265,7 +265,7 @@ export default function TikTokViewsPage({ params }: PageProps) {
         cta: 'JETZT STARTEN',
       },
       benefits: {
-        title: 'Warum SocialOura für Sichtbarkeit wählen?',
+        title: 'Warum Socialiora für Sichtbarkeit wählen?',
         items: [
           { title: 'Hochwertige Aktivität', desc: 'Für Promotion mit einem realistischen, nachhaltigen Ansatz.' },
           { title: 'Sicher & geschützt', desc: 'Vollständig konform mit TikTok-Richtlinien. Null Risiko.' },
@@ -331,7 +331,7 @@ export default function TikTokViewsPage({ params }: PageProps) {
         cta: 'EMPEZAR AHORA',
       },
       benefits: {
-        title: '¿Por qué elegir SocialOura para la visibilidad?',
+        title: '¿Por qué elegir Socialiora para la visibilidad?',
         items: [
           { title: 'Actividad de calidad', desc: 'Diseñada para apoyar la promoción con un enfoque realista y coherente.' },
           { title: 'Seguro y protegido', desc: 'Totalmente conforme con las directrices de TikTok. Cero riesgo.' },

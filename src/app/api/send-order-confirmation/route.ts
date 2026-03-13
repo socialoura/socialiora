@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     const content = {
       fr: {
-        subject: '✅ Confirmation de commande - SocialOura',
+        subject: '✅ Confirmation de commande - Socialiora',
         title: 'Commande confirmée !',
         subtitle: 'Merci pour votre achat',
         orderDetails: 'Détails de la commande',
@@ -78,13 +78,13 @@ export async function POST(request: NextRequest) {
         serviceHeader: 'Service',
         quantityHeader: 'Quantité',
         priceHeader: 'Prix',
-        processing: 'Votre commande est en cours de traitement et sera livrée dans les plus brefs délais. Vous avez effectué cet achat sur socialoura.com.',
+        processing: 'Votre commande est en cours de traitement et sera livrée dans les plus brefs délais. Vous avez effectué cet achat sur socialiora.com.',
         support: 'Besoin de plus de followers ?',
         contactUs: 'Retourner sur le site',
-        footer: 'SocialOura - Boostez votre présence sur les réseaux sociaux',
+        footer: 'Socialiora - Boostez votre présence sur les réseaux sociaux',
       },
       en: {
-        subject: '✅ Order Confirmation - SocialOura',
+        subject: '✅ Order Confirmation - Socialiora',
         title: 'Order confirmed!',
         subtitle: 'Thank you for your purchase',
         orderDetails: 'Order Details',
@@ -95,13 +95,13 @@ export async function POST(request: NextRequest) {
         serviceHeader: 'Service',
         quantityHeader: 'Quantity',
         priceHeader: 'Price',
-        processing: 'Your order is being processed and will be delivered as soon as possible. You made this purchase on socialoura.com.',
+        processing: 'Your order is being processed and will be delivered as soon as possible. You made this purchase on socialiora.com.',
         support: 'Need more followers?',
         contactUs: 'Return to site',
-        footer: 'SocialOura - Boost your social media presence',
+        footer: 'Socialiora - Boost your social media presence',
       },
       de: {
-        subject: '✅ Bestellbestätigung - SocialOura',
+        subject: '✅ Bestellbestätigung - Socialiora',
         title: 'Bestellung bestätigt!',
         subtitle: 'Vielen Dank für Ihren Kauf',
         orderDetails: 'Bestelldetails',
@@ -112,13 +112,13 @@ export async function POST(request: NextRequest) {
         serviceHeader: 'Service',
         quantityHeader: 'Menge',
         priceHeader: 'Preis',
-        processing: 'Ihre Bestellung wird bearbeitet und so schnell wie möglich geliefert. Sie haben diesen Kauf auf socialoura.com getätigt.',
+        processing: 'Ihre Bestellung wird bearbeitet und so schnell wie möglich geliefert. Sie haben diesen Kauf auf socialiora.com getätigt.',
         support: 'Brauchen Sie mehr Follower?',
         contactUs: 'Zurück zur Website',
-        footer: 'SocialOura - Steigern Sie Ihre Präsenz in sozialen Medien',
+        footer: 'Socialiora - Steigern Sie Ihre Präsenz in sozialen Medien',
       },
       es: {
-        subject: '✅ Confirmación de pedido - SocialOura',
+        subject: '✅ Confirmación de pedido - Socialiora',
         title: '¡Pedido confirmado!',
         subtitle: 'Gracias por su compra',
         orderDetails: 'Detalles del pedido',
@@ -129,10 +129,10 @@ export async function POST(request: NextRequest) {
         serviceHeader: 'Servicio',
         quantityHeader: 'Cantidad',
         priceHeader: 'Precio',
-        processing: 'Su pedido está siendo procesado y será entregado lo antes posible. Realizó esta compra en socialoura.com.',
+        processing: 'Su pedido está siendo procesado y será entregado lo antes posible. Realizó esta compra en socialiora.com.',
         support: '¿Necesitas más seguidores?',
         contactUs: 'Volver al sitio',
-        footer: 'SocialOura - Impulsa tu presencia en redes sociales',
+        footer: 'Socialiora - Impulsa tu presencia en redes sociales',
       },
     };
 
@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
     `).join('');
 
     await resend.emails.send({
-      from: 'SocialOura <noreply@socialoura.com>',
+      from: 'Socialiora <noreply@socialiora.com>',
       to: [email],
       subject: t.subject,
       html: `
@@ -223,7 +223,7 @@ export async function POST(request: NextRequest) {
       <!-- Support -->
       <div style="text-align: center; margin-top: 32px;">
         <p style="margin: 0 0 12px; color: #6b7280; font-size: 14px;">${t.support}</p>
-        <a href="https://socialoura.com" style="display: inline-block; background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: white; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
+        <a href="https://socialiora.com" style="display: inline-block; background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); color: white; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px;">
           ${t.contactUs}
         </a>
       </div>

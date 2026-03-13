@@ -22,8 +22,8 @@ export default function SEOHead({
 }: SEOHeadProps) {
   const pathname = usePathname();
   
-  const defaultTitle = "Socialoura - Boost Your Social Media Growth";
-  const defaultDescription = "Grow your Instagram and TikTok followers with Socialoura. Safe, reliable, and effective social media growth service.";
+  const defaultTitle = "Socialiora — Amplify Your Digital Influence";
+  const defaultDescription = "Supercharge your Instagram & TikTok reach with Socialiora. Trusted, secure, and lightning-fast social media acceleration platform.";
   
   useEffect(() => {
     // Update document title
@@ -67,20 +67,20 @@ export default function SEOHead({
       link.rel = 'canonical';
       document.head.appendChild(link);
     }
-    link.href = canonical || `https://socialoura.com${pathname}`;
+    link.href = canonical || `https://socialiora.com${pathname}`;
     
     // Open Graph
     updatePropertyMeta('og:title', title || defaultTitle);
     updatePropertyMeta('og:description', description || defaultDescription);
     updatePropertyMeta('og:type', 'website');
-    updatePropertyMeta('og:url', canonical || `https://socialoura.com${pathname}`);
-    updatePropertyMeta('og:image', 'https://socialoura.com/img/og-image.jpg');
+    updatePropertyMeta('og:url', canonical || `https://socialiora.com${pathname}`);
+    updatePropertyMeta('og:image', 'https://socialiora.com/img/og-image.jpg');
     
     // Twitter Card
     updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', title || defaultTitle);
     updateMetaTag('twitter:description', description || defaultDescription);
-    updateMetaTag('twitter:image', 'https://socialoura.com/img/og-image.jpg');
+    updateMetaTag('twitter:image', 'https://socialiora.com/img/og-image.jpg');
   }, [title, description, keywords, index, follow, canonical, pathname]);
   
   // This component doesn't render anything visible
