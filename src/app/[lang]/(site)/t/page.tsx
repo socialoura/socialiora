@@ -253,92 +253,92 @@ export default function TikTokPage({ params }: PageProps) {
     },
     fr: {
       hero: {
-        title: 'AUDIENCE TIKTOK',
-        platform: 'AUTHENTIQUE',
-        subtitle: 'Développement de réseau piloté par l\'intelligence qui connecte des démographies engagées à votre présence TikTok — rapide, sécurisé et conforme aux plateformes.',
+        title: 'ACHETEZ DES FOLLOWERS',
+        platform: 'TIKTOK AVEC L\'IA',
+        subtitle: 'Obtenez de vrais followers TikTok grâce à notre technologie d\'IA qui cible des utilisateurs réellement intéressés par votre contenu — livraison rapide, sécurisée et 100% conforme.',
         badges: [
-          { text: 'Portée optimisée par algorithme' },
-          { text: 'Connexions authentiques uniquement' },
-          { text: 'Activation continue' },
+          { text: 'Ciblage IA intelligent' },
+          { text: 'Vrais comptes actifs' },
+          { text: 'Livraison en 24h' },
         ],
-        cta: 'ÉLARGIR MON RÉSEAU',
+        cta: 'ACHETER MES FOLLOWERS',
       },
       difference: {
-        title: 'Pourquoi les influenceurs choisissent Socialiora',
+        title: 'Pourquoi acheter des followers TikTok avec l\'IA',
         cards: [
           {
-            title: 'Segmentation intelligente',
-            description: 'Notre système évalue votre vertical, votre format de contenu et les patterns démographiques pour vous lier avec des audiences authentiquement investies dans votre contenu.',
+            title: 'Ciblage IA précis',
+            description: 'Notre intelligence artificielle analyse votre niche et votre contenu pour vous connecter avec de vrais utilisateurs TikTok intéressés par votre thématique. Pas de bots, que des comptes authentiques.',
             icon: 'Bot'
           },
           {
-            title: 'Vitesse d\'implémentation flexible',
-            description: 'Sélectionnez entre une amélioration d\'exposition rapide ou une expansion réseau à rythme organique. Notre système adaptatif maintient la sécurité du compte.',
+            title: 'Livraison progressive naturelle',
+            description: 'Les followers arrivent progressivement pour imiter une croissance organique. Notre système IA ajuste le rythme pour garantir la sécurité totale de votre compte.',
             icon: 'Clock'
           },
           {
-            title: 'Approche sécurité-first',
-            description: 'Nous ne demandons jamais d\'identifiants. Nos méthodologies d\'expansion sont 100% alignées avec les politiques TikTok — zéro risque pour votre compte.',
+            title: '100% Sécurisé et conforme',
+            description: 'Aucun mot de passe requis. Notre méthode d\'acquisition de followers est entièrement conforme aux règles TikTok. Votre compte reste protégé à 100%.',
             icon: 'Shield'
           },
         ],
       },
       howItWorks: {
-        title: 'Élargissez votre réseau en 3 étapes',
+        title: 'Achetez vos followers TikTok en 3 étapes',
         cards: [
           {
             number: '1',
-            title: 'ENTREZ VOTRE NOM D\'UTILISATEUR',
-            description: 'Tapez simplement votre pseudo TikTok — pas de mot de passe, pas de connexion requise. On a juste besoin de votre nom d\'utilisateur public.',
+            title: 'ENTREZ VOTRE PSEUDO TIKTOK',
+            description: 'Indiquez simplement votre nom d\'utilisateur TikTok. Aucun mot de passe nécessaire, aucune connexion requise. Juste votre pseudo public.',
             icon: 'Package'
           },
           {
             number: '2',
-            title: 'CHOISISSEZ VOTRE NIVEAU D\'EXPANSION',
-            description: 'Déterminez votre échelle de développement réseau. De 100 à 100K+ — des programmes adaptables pour chaque budget et objectif.',
+            title: 'CHOISISSEZ VOTRE PACK DE FOLLOWERS',
+            description: 'Sélectionnez le nombre de followers que vous souhaitez acheter. De 100 à 100K+ followers réels, ciblés par IA selon votre contenu.',
             icon: 'Megaphone'
           },
           {
             number: '3',
-            title: 'OBSERVEZ VOTRE RÉSEAU S\'AMPLIFIER',
-            description: 'Les connexions commencent à s\'activer en quelques minutes. Suivez votre expansion en temps réel et constatez l\'impact sur votre engagement.',
+            title: 'RECEVEZ VOS FOLLOWERS',
+            description: 'Les followers commencent à arriver en quelques minutes. Notre IA les livre progressivement pour une croissance naturelle et sécurisée.',
             icon: 'BarChart3'
           },
         ],
-        cta: 'COMMENCER',
+        cta: 'ACHETER MAINTENANT',
       },
       benefits: {
-        title: 'Libérez votre potentiel TikTok',
+        title: 'Pourquoi acheter des followers TikTok',
         items: [
-          'Réseau élargi = visibilité accrue sur la page Pour Toi',
-          'Une crédibilité sociale forte attire des connexions organiques',
-          'Les marques repèrent les comptes avec une forte présence',
-          'Percez l\'algorithme grâce à la dynamique',
-          'Processus sécurisé, confidentiel et entièrement chiffré',
+          'Plus de followers = plus de visibilité sur la page Pour Toi',
+          'La preuve sociale attire encore plus de followers organiques',
+          'Les marques collaborent avec les comptes à forte audience',
+          'Boostez l\'algorithme TikTok avec plus d\'abonnés',
+          'Achat 100% sécurisé, livraison garantie, followers réels',
         ],
       },
       pricing: {
-        title: 'Testez notre abonnement avec notre offre d\'essai',
+        title: 'Achat de followers TikTok avec technologie IA',
         plan: {
-          name: 'PREMIUM',
-          price: '39,90€',
-          period: 'par mois',
+          name: 'PACK FOLLOWERS',
+          price: 'À partir de 2,99€',
+          period: 'paiement unique',
           features: [
-            'Essai de 24h pour explorer toutes les fonctionnalités',
-            'Ciblage d\'audience propulsé par l\'IA',
-            'Optimisation intelligente de la livraison',
-            'Support prioritaire et monitoring',
-            'Tableau de bord d\'analytics de croissance',
+            'Followers réels ciblés par intelligence artificielle',
+            'Livraison progressive et naturelle (24-72h)',
+            'Aucun risque pour votre compte TikTok',
+            'Support client disponible 24/7',
+            'Garantie satisfait ou remboursé',
           ],
-          cta: 'S\'ABONNER MAINTENANT',
+          cta: 'ACHETER DES FOLLOWERS',
         },
       },
       finalCta: {
-        title: 'Rejoignez 10 000+ créateurs qui grandissent déjà grâce à l\'IA.',
-        cta: 'OBTENIR MES ABONNÉS',
+        title: 'Rejoignez 10 000+ créateurs qui ont acheté des followers avec notre IA.',
+        cta: 'ACHETER MES FOLLOWERS',
       },
       compliance: {
-        text: 'Conformité : Socialiora utilise des stratégies de croissance d\'audience propulsées par l\'IA, entièrement conformes aux conditions d\'utilisation de TikTok. Nous n\'utilisons jamais de bots, de faux comptes, ni aucune méthode pouvant mettre votre compte en danger.',
+        text: 'Transparence : Socialiora vous permet d\'acheter des followers TikTok réels via une technologie d\'IA qui cible des utilisateurs authentiques intéressés par votre contenu. Nous ne vendons jamais de bots ou faux comptes. Notre méthode d\'acquisition est conçue pour respecter les règles TikTok et garantir la sécurité de votre compte. Les followers que vous achetez sont de vrais utilisateurs actifs.',
       },
     },
     de: {
