@@ -162,7 +162,7 @@ export const upsellTranslations = {
       changeProfile: 'Changer de profil',
       selectServices: 'Configurez vos options',
       selectServicesDesc: 'Calibrez les paramètres pour composer votre formule personnalisée',
-      followers: 'Réseau',
+      followers: 'Followers',
       likes: 'Likes',
       views: 'Vues',
       storyViews: 'Vues de story',

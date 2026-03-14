@@ -103,7 +103,7 @@ export const tiktokUpsellTranslations = {
       changeProfile: 'Changer de profil',
       selectServices: 'Configurez vos options',
       selectServicesDesc: 'Calibrez les paramètres pour composer votre formule personnalisée',
-      followers: 'Réseau', likes: 'Likes', views: 'Vues', shares: 'Partages',
+      followers: 'Followers', likes: 'Likes', views: 'Vues', shares: 'Partages',
       selected: 'activés', bonusFree: 'suppléments inclus',
       orderTotal: 'Total de votre formule', continueOrder: 'Valider mon pack', mostPopular: 'Le plus populaire',
     },
