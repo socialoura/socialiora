@@ -136,8 +136,8 @@ export const upsellTranslations = {
     },
 
     search: {
-      title: 'AMPLIFIEZ VOTRE VISIBILITÉ',
-      subtitle: 'Saisissez votre identifiant Instagram public pour démarrer. Aucune authentification requise.',
+      title: 'ACHETEZ DES FOLLOWERS INSTAGRAM AVEC L\'IA',
+      subtitle: 'Obtenez de vrais followers Instagram grâce à notre technologie d\'IA qui cible des utilisateurs réellement intéressés par votre contenu — livraison rapide, sécurisée et 100% conforme.',
       publicNote: '* Assurez-vous que votre compte est en public.',
       placeholder: 'votre_pseudo',
       continue: 'Continuer',

@@ -48,55 +48,66 @@ function setCache(username: string, data: TiktokScraperResponse) {
 }
 
 // ─── RapidAPI fetch ───
-const RAPIDAPI_HOST = 'tiktok-scraper2.p.rapidapi.com';
+// Try tiktok-scraper7 instead of tiktok-scraper2
+const RAPIDAPI_HOST = 'tiktok-scraper7.p.rapidapi.com';
 const FETCH_TIMEOUT_MS = 6000; // Reduced from 10s to 6s for faster response
 
 async function fetchTiktokProfile(username: string): Promise<Response> {
   const apiKey = process.env.RAPIDAPI_KEY;
   if (!apiKey) throw new Error('RAPIDAPI_KEY not configured');
 
+  console.log('[scraper-tiktok] API Key présente:', apiKey ? `${apiKey.substring(0, 10)}...` : 'MANQUANTE');
+
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
+  const url = `https://${RAPIDAPI_HOST}/user/info?unique_id=${encodeURIComponent(username)}`;
+  console.log('[scraper-tiktok] Requête URL:', url);
+
   try {
-    const res = await fetch(
-      `https://${RAPIDAPI_HOST}/user/info?user_name=${encodeURIComponent(username)}`,
-      {
-        method: 'GET',
-        headers: {
-          'x-rapidapi-host': RAPIDAPI_HOST,
-          'x-rapidapi-key': apiKey,
-        },
-        signal: controller.signal,
-        cache: 'no-store',
-      }
-    );
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-rapidapi-host': RAPIDAPI_HOST,
+        'x-rapidapi-key': apiKey,
+      },
+      signal: controller.signal,
+      cache: 'no-store',
+    });
+    console.log('[scraper-tiktok] Status HTTP:', res.status);
+    console.log('[scraper-tiktok] Headers réponse:', Object.fromEntries(res.headers.entries()));
     return res;
   } finally {
     clearTimeout(timeout);
   }
 }
 
-async function fetchTiktokPosts(secUid: string, userId: string): Promise<Response> {
+async function fetchTiktokPosts(username: string): Promise<Response> {
   const apiKey = process.env.RAPIDAPI_KEY;
   if (!apiKey) throw new Error('RAPIDAPI_KEY not configured');
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
+  // Use tiktok-scraper7 for videos endpoint (same as profile)
+  const VIDEOS_HOST = 'tiktok-scraper7.p.rapidapi.com';
+
   try {
     const res = await fetch(
-      `https://${RAPIDAPI_HOST}/user/videos?sec_uid=${encodeURIComponent(secUid)}&user_id=${encodeURIComponent(userId)}`,
+      `https://${VIDEOS_HOST}/user/posts?unique_id=${encodeURIComponent(username)}&count=12`,
       {
         method: 'GET',
         headers: {
-          'x-rapidapi-host': RAPIDAPI_HOST,
+          'Content-Type': 'application/json',
+          'x-rapidapi-host': VIDEOS_HOST,
           'x-rapidapi-key': apiKey,
         },
         signal: controller.signal,
         cache: 'no-store',
       }
     );
+    console.log('[scraper-tiktok] Posts API status:', res.status);
     return res;
   } finally {
     clearTimeout(timeout);
@@ -106,12 +117,17 @@ async function fetchTiktokPosts(secUid: string, userId: string): Promise<Respons
 // ─── Map TikTok API response → TiktokScraperResponse ───
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapTiktokData(profileData: any, postsData: any, cleanUsername: string): TiktokScraperResponse {
-  // Robust parsing with fallback for old API structure
-  const userNode = profileData?.user ?? profileData?.userInfo?.user;
-  const statsNode = profileData?.stats ?? profileData?.userInfo?.stats;
+  // tiktok-scraper7 returns: { code: 0, msg: "success", data: { user: {...}, stats: {...} } }
+  const dataNode = profileData?.data || profileData;
+  const userNode = dataNode?.user;
+  const statsNode = dataNode?.stats;
+
+  console.log('[scraper-tiktok] Parsing - userNode présent:', !!userNode);
+  console.log('[scraper-tiktok] Parsing - statsNode présent:', !!statsNode);
 
   if (!userNode) {
-    throw new Error("Impossible de trouver les données de l'utilisateur");
+    console.error('[scraper-tiktok] Structure reçue:', Object.keys(profileData || {}));
+    throw new Error("Impossible de trouver les données de l'utilisateur dans la réponse. Structure reçue: " + JSON.stringify(Object.keys(profileData || {})));
   }
 
   const username = userNode?.uniqueId ?? cleanUsername;
@@ -125,18 +141,25 @@ function mapTiktokData(profileData: any, postsData: any, cleanUsername: string):
     `https://ui-avatars.com/api/?name=${encodeURIComponent(cleanUsername)}&background=random&size=200`;
 
   const followersCount = statsNode?.followerCount ?? 0;
+  
+  console.log('[scraper-tiktok] Parsed user:', username, 'followers:', followersCount);
 
-  // Posts/videos from tiktok-scraper2 structure
+  // Posts/videos from tiktok-scraper7 structure
+  // tiktok-scraper7 returns: { code: 0, msg: "success", data: { videos: [...] } }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const posts = (Array.isArray(postsData?.posts) ? postsData.posts : []).slice(0, 12).map((item: any) => {
-    // Extract video ID from link using .pop() (e.g., "https://www.tiktok.com/@tiktok/video/7367114895717829934")
-    const link = item?.link ?? '';
-    const id = link.split('/').pop() ?? String(Math.random());
-
-    const imageUrl = item?.image ?? '';
-    const caption = (item?.desc ?? '').slice(0, 100);
-    const likesCount = item?.digg ?? 0;
-    const commentsCount = item?.comment ?? 0;
+  const videosData = postsData?.data?.videos || postsData?.posts || [];
+  const postsArray = Array.isArray(videosData) ? videosData : [];
+  console.log('[scraper-tiktok] Found', postsArray.length, 'posts');
+  
+  const posts = postsArray.slice(0, 12).map((item: any) => {
+    // tiktok-scraper7 structure: { aweme_id, video_id, title, cover, ... }
+    const id = item?.aweme_id || item?.video_id || String(Math.random());
+    const link = `https://www.tiktok.com/@${cleanUsername}/video/${item?.video_id || id}`;
+    
+    const imageUrl = item?.cover || item?.ai_dynamic_cover || item?.image || '';
+    const caption = (item?.title || item?.desc || '').slice(0, 100);
+    const likesCount = item?.digg_count || item?.digg || 0;
+    const commentsCount = item?.comment_count || item?.comment || 0;
     const shortCode = link;
 
     return {
@@ -186,10 +209,11 @@ export async function GET(request: Request) {
         );
       }
       const profileData = await profileRes.json();
-      console.log('[scraper-tiktok] Profile response:', JSON.stringify(profileData).substring(0, 500));
+      console.log('[scraper-tiktok] Full profile response:', JSON.stringify(profileData, null, 2));
 
-      // Extract secUid and userId with robust fallback for old API structure
-      const userNode = profileData?.user ?? profileData?.userInfo?.user;
+      // Extract secUid and userId - tiktok-scraper7 uses data.user structure
+      const dataNode = profileData?.data || profileData;
+      const userNode = dataNode?.user;
       
       if (!userNode) {
         throw new Error("Impossible de trouver les données de l'utilisateur dans la réponse");
@@ -198,19 +222,28 @@ export async function GET(request: Request) {
       const userId = userNode?.id ?? '';
       const secUid = userNode?.secUid ?? '';
 
+      console.log('[scraper-tiktok] Extracted userId:', userId);
+      console.log('[scraper-tiktok] Extracted secUid:', secUid ? `${secUid.substring(0, 20)}...` : 'MISSING');
+
       // 3. Fetch posts (best effort - don't fail if posts unavailable)
       let postsData = {};
-      if (secUid && userId) {
+      if (userNode?.uniqueId) {
         try {
-          const postsRes = await fetchTiktokPosts(secUid, userId);
+          console.log('[scraper-tiktok] Fetching posts for user...');
+          const postsRes = await fetchTiktokPosts(userNode.uniqueId);
+          console.log('[scraper-tiktok] Posts API status:', postsRes.status);
+          
           if (postsRes.ok) {
             postsData = await postsRes.json();
-            console.log('[scraper-tiktok] Posts response:', JSON.stringify(postsData).substring(0, 500));
+            console.log('[scraper-tiktok] Posts response keys:', Object.keys(postsData));
+            console.log('[scraper-tiktok] Posts array length:', postsData?.posts?.length ?? 0);
+            console.log('[scraper-tiktok] Full posts response:', JSON.stringify(postsData).substring(0, 1000));
           } else {
-            console.warn(`[scraper-tiktok] Posts API ${postsRes.status}, continuing without posts`);
+            const errorText = await postsRes.text();
+            console.warn(`[scraper-tiktok] Posts API ${postsRes.status}:`, errorText.substring(0, 200));
           }
         } catch (postsErr) {
-          console.warn('[scraper-tiktok] Posts fetch failed, continuing without posts:', postsErr);
+          console.warn('[scraper-tiktok] Posts fetch failed:', postsErr);
         }
       } else {
         console.warn('[scraper-tiktok] Missing secUid or userId, skipping posts fetch');

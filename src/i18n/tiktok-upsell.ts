@@ -80,8 +80,8 @@ export const tiktokUpsellTranslations = {
       },
     },
     search: {
-      title: 'AMPLIFIEZ VOTRE TIKTOK',
-      subtitle: 'Saisissez votre identifiant TikTok public pour démarrer. Aucune authentification requise.',
+      title: 'ACHETEZ DES FOLLOWERS TIKTOK AVEC L\'IA',
+      subtitle: 'Obtenez de vrais followers TikTok grâce à notre technologie d\'IA qui cible des utilisateurs réellement intéressés par votre contenu — livraison rapide, sécurisée et 100% conforme.',
       publicNote: '* Assurez-vous que votre compte est en public.',
       placeholder: 'charlidamelio',
       continue: 'Continuer',
