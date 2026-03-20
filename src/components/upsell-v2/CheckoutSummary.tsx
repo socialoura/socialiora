@@ -7,7 +7,7 @@ import { PaymentElement, ExpressCheckoutElement, useElements, useStripe } from '
 import StripeProvider from '@/components/StripeProvider';
 import useUpsellStore from '@/store/useUpsellStore';
 import posthog from 'posthog-js';
-import { trackInsta2FunnelPurchase } from '@/lib/gtag';
+import { trackInsta2FunnelPurchase, trackNewAccountPurchase } from '@/lib/gtag';
 import { trackPurchase, getPurchaseSource } from '@/lib/posthog-tracking';
 import { proxyImageUrl } from '@/lib/image-proxy';
 import { type Language } from '@/i18n/config';
@@ -561,6 +561,13 @@ export default function CheckoutSummary({ lang }: CheckoutSummaryProps) {
 
                             // Google Ads conversion tracking for Instagram-2
                             trackInsta2FunnelPurchase({
+                              value: totalPrice,
+                              currency: pricingCurrency.toUpperCase(),
+                              transactionId: String(orderResult.orderId || paymentIntentIdRef.current || 'unknown'),
+                            });
+
+                            // Google Ads conversion tracking - New Account (AW-18013095662)
+                            trackNewAccountPurchase({
                               value: totalPrice,
                               currency: pricingCurrency.toUpperCase(),
                               transactionId: String(orderResult.orderId || paymentIntentIdRef.current || 'unknown'),

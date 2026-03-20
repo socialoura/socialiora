@@ -5,7 +5,7 @@ import { PaymentElement, ExpressCheckoutElement, useStripe, useElements } from '
 import { X, Loader2, CheckCircle, AlertCircle, Tag } from 'lucide-react';
 import StripeProvider from './StripeProvider';
 import { formatCentsToDisplay, type SupportedCurrency } from '@/lib/pricing';
-import { trackTiktokClassicPurchase } from '@/lib/gtag';
+import { trackTiktokClassicPurchase, trackNewAccountPurchase } from '@/lib/gtag';
 import { trackPurchase, getPurchaseSource } from '@/lib/posthog-tracking';
 
 interface PaymentModalProps {
@@ -222,6 +222,13 @@ function PaymentForm({
         
         // Google Ads Conversion Tracking - TikTok Classic Page
         trackTiktokClassicPurchase({
+          value: amount / 100,
+          currency: currency.toUpperCase(),
+          transactionId: paymentIntent.id,
+        });
+
+        // Google Ads conversion tracking - New Account (AW-18013095662)
+        trackNewAccountPurchase({
           value: amount / 100,
           currency: currency.toUpperCase(),
           transactionId: paymentIntent.id,
