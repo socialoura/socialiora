@@ -152,8 +152,10 @@ export async function POST(request: NextRequest) {
       </tr>
     `).join('');
 
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+    
     await resend.emails.send({
-      from: 'Socialiora <noreply@socialiora.com>',
+      from: `Socialiora <${fromEmail}>`,
       to: [email],
       subject: t.subject,
       html: `
