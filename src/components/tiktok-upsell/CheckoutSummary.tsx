@@ -164,7 +164,7 @@ function CheckoutPaymentForm({ amount, currency, email, acceptedTerms, lang, onS
           className="mt-0.5 h-5 w-5 text-cyan-500 focus:ring-cyan-500/50 border-gray-600 rounded bg-gray-900 shrink-0 cursor-not-allowed"
         />
         <span className="text-sm text-gray-300 leading-relaxed">
-          J'accepte les conditions générales de vente et la politique de confidentialité.
+          J&apos;accepte les conditions générales de vente et la politique de confidentialité.
         </span>
       </div>
 
