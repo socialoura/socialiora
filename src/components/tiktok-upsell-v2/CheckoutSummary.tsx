@@ -20,6 +20,7 @@ interface CheckoutPaymentFormProps {
   currency: string;
   email: string;
   acceptedTerms: boolean;
+  setAcceptedTerms: (value: boolean) => void;
   lang: string;
   onSuccess?: () => void;
   onPaymentIntentId?: (id: string) => void;
@@ -34,7 +35,7 @@ interface CheckoutPaymentFormProps {
   };
 }
 
-function CheckoutPaymentForm({ amount, currency, email, acceptedTerms, lang, onSuccess, onPaymentIntentId, onBeforePayment, i18n }: CheckoutPaymentFormProps) {
+function CheckoutPaymentForm({ amount, currency, email, acceptedTerms, setAcceptedTerms, lang, onSuccess, onPaymentIntentId, onBeforePayment, i18n }: CheckoutPaymentFormProps) {
   const stripe = useStripe();
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -160,8 +161,8 @@ function CheckoutPaymentForm({ amount, currency, email, acceptedTerms, lang, onS
         <input
           type="checkbox"
           checked={acceptedTerms}
-          readOnly
-          className="mt-0.5 h-5 w-5 text-cyan-500 focus:ring-cyan-500/50 border-gray-600 rounded bg-gray-900 shrink-0 cursor-not-allowed"
+          onChange={(e) => setAcceptedTerms(e.target.checked)}
+          className="mt-0.5 h-5 w-5 text-cyan-500 focus:ring-cyan-500/50 border-gray-600 rounded bg-gray-900 shrink-0 cursor-pointer"
         />
         <span className="text-sm text-gray-300 leading-relaxed">
           J&apos;accepte les conditions générales de vente et la politique de confidentialité.
@@ -445,6 +446,7 @@ export default function TiktokCheckoutSummary({ lang }: CheckoutSummaryProps) {
                         currency={pricingCurrency}
                         email={email}
                         acceptedTerms={acceptedTerms}
+                        setAcceptedTerms={setAcceptedTerms}
                         lang={lang}
                         i18n={{
                           paymentError: t.checkout.paymentError,
