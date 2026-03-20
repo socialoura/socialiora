@@ -4,7 +4,6 @@ import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Language } from '@/i18n/config';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Plus, Minus, Camera, Music, BarChart3, Calendar, MessageCircle, HeadphonesIcon, Instagram } from 'lucide-react';
 
 const ChatWidget = dynamic(() => import('@/components/ChatWidget'), { ssr: false });
