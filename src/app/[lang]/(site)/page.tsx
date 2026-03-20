@@ -361,17 +361,6 @@ export default function HomePage({ params }: PageProps) {
         {/* Grid Pattern Overlay */}
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]" />
         
-        {/* Banner Image */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
-          <Image 
-            src="/hero-visual.png" 
-            alt="Socialiora Banner" 
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-        
         <div className="relative mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:flex lg:items-center lg:gap-16">
           {/* Left Content */}
           <div className="flex-1 text-center lg:text-left">
@@ -480,13 +469,7 @@ export default function HomePage({ params }: PageProps) {
                       <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-6 bg-black rounded-full" />
                       
                       {/* Phone Screen Content */}
-                      <div className="pt-12 px-4 pb-4 h-full flex flex-col items-center justify-center relative">
-                        <Image 
-                          src="/hero-visual.png" 
-                          alt="Socialiora Banner" 
-                          fill
-                          className="object-contain rounded-2xl"
-                        />
+                      <div className="pt-12 px-4 pb-4 h-full flex flex-col items-center justify-center relative bg-gradient-to-br from-purple-900/20 to-pink-900/20">
                       </div>
                     </div>
                   </div>

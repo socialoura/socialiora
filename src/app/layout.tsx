@@ -18,21 +18,21 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Socialiora — Amplify Your Digital Influence",
-  description: "Supercharge your Instagram & TikTok reach with Socialiora. Trusted, secure, and lightning-fast social media acceleration platform.",
-  keywords: ["social media growth", "buy instagram followers", "tiktok promotion", "digital influence", "socialiora"],
+  title: "Socialiora — Amplifiez Votre Influence Digitale",
+  description: "Boostez votre portée Instagram & TikTok avec Socialiora. Plateforme d'accélération des réseaux sociaux fiable, sécurisée et ultra-rapide.",
+  keywords: ["croissance réseaux sociaux", "acheter followers instagram", "promotion tiktok", "influence digitale", "socialiora"],
   authors: [{ name: "Socialiora" }],
   openGraph: {
-    title: "Socialiora — Amplify Your Digital Influence",
-    description: "Supercharge your Instagram & TikTok reach with Socialiora. Trusted, secure, and lightning-fast social media acceleration platform.",
+    title: "Socialiora — Amplifiez Votre Influence Digitale",
+    description: "Boostez votre portée Instagram & TikTok avec Socialiora. Plateforme d'accélération des réseaux sociaux fiable, sécurisée et ultra-rapide.",
     url: "https://socialiora.com",
     siteName: "Socialiora",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Socialiora — Amplify Your Digital Influence",
-    description: "Supercharge your Instagram & TikTok reach with Socialiora.",
+    title: "Socialiora — Amplifiez Votre Influence Digitale",
+    description: "Boostez votre portée Instagram & TikTok avec Socialiora.",
   },
   robots: {
     index: false,

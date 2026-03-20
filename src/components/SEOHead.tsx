@@ -22,8 +22,8 @@ export default function SEOHead({
 }: SEOHeadProps) {
   const pathname = usePathname();
   
-  const defaultTitle = "Socialiora — Amplify Your Digital Influence";
-  const defaultDescription = "Supercharge your Instagram & TikTok reach with Socialiora. Trusted, secure, and lightning-fast social media acceleration platform.";
+  const defaultTitle = "Socialiora — Amplifiez Votre Influence Digitale";
+  const defaultDescription = "Boostez votre portée Instagram & TikTok avec Socialiora. Plateforme d'accélération des réseaux sociaux fiable, sécurisée et ultra-rapide.";
   
   useEffect(() => {
     // Update document title

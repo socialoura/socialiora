@@ -85,7 +85,7 @@ export default function HeroSection({ lang }: HeroSectionProps) {
   const selectedPlatformData = platforms.find(p => p.id === selectedPlatform);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-bl from-gray-100 via-white to-violet-50">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
       {/* Floating Emojis Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 text-6xl opacity-20 blur-sm animate-float">🚀</div>
@@ -94,10 +94,6 @@ export default function HeroSection({ lang }: HeroSectionProps) {
         <div className="absolute top-1/3 right-1/4 text-5xl opacity-20 blur-sm animate-float-delayed">⭐</div>
         <div className="absolute bottom-20 right-10 text-6xl opacity-20 blur-sm animate-float">💎</div>
       </div>
-
-      {/* Gradient Orbs */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-purple-300/30 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-pink-300/30 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 py-24 lg:px-10">
         <div className="text-center">
