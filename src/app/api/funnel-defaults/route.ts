@@ -6,9 +6,9 @@ initDatabase().catch(console.error);
 
 // Default tier indices (0 = no selection, 1+ = tier index)
 const DEFAULT_FUNNEL_DEFAULTS = {
-  followers: 1,
-  likes: 1,
-  views: 0,
+  followers: 5,
+  likes: 2,
+  views: 2,
   'story-views': 0,
 };
 
