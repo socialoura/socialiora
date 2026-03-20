@@ -151,6 +151,7 @@ function mapTiktokData(profileData: any, postsData: any, cleanUsername: string):
   const postsArray = Array.isArray(videosData) ? videosData : [];
   console.log('[scraper-tiktok] Found', postsArray.length, 'posts');
   
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const posts = postsArray.slice(0, 12).map((item: any) => {
     // tiktok-scraper7 structure: { aweme_id, video_id, title, cover, ... }
     const id = item?.aweme_id || item?.video_id || String(Math.random());
