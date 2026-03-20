@@ -322,8 +322,10 @@ export async function sendOrderConfirmationEmail({
       return { success: false, error: 'Email service not configured' };
     }
 
+    const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+    
     const { data, error } = await resend.emails.send({
-      from: 'Socialiora <noreply@socialiora.com>',
+      from: `Socialiora <${fromEmail}>`,
       to: [to],
       subject,
       html: htmlContent,

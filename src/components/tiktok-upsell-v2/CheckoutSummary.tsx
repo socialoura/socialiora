@@ -155,6 +155,19 @@ function CheckoutPaymentForm({ amount, currency, email, acceptedTerms, lang, onS
         </div>
       )}
 
+      {/* Terms acceptance */}
+      <div className="flex items-start gap-3 p-4 rounded-xl bg-gray-800/30 border border-gray-700/50">
+        <input
+          type="checkbox"
+          checked={acceptedTerms}
+          readOnly
+          className="mt-0.5 h-5 w-5 text-cyan-500 focus:ring-cyan-500/50 border-gray-600 rounded bg-gray-900 shrink-0 cursor-not-allowed"
+        />
+        <span className="text-sm text-gray-300 leading-relaxed">
+          J'accepte les conditions générales de vente et la politique de confidentialité.
+        </span>
+      </div>
+
       <button
         type="submit"
         disabled={!stripe || !elements || isProcessing || !elementsReady || !acceptedTerms || !email || !email.includes('@')}
