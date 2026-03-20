@@ -237,7 +237,8 @@ export async function GET(request: Request) {
           if (postsRes.ok) {
             postsData = await postsRes.json();
             console.log('[scraper-tiktok] Posts response keys:', Object.keys(postsData));
-            console.log('[scraper-tiktok] Posts array length:', postsData?.posts?.length ?? 0);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            console.log('[scraper-tiktok] Posts array length:', (postsData as any)?.posts?.length ?? 0);
             console.log('[scraper-tiktok] Full posts response:', JSON.stringify(postsData).substring(0, 1000));
           } else {
             const errorText = await postsRes.text();
