@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { type Language } from '@/i18n/config';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 const platformContent = {
   en: {
@@ -79,101 +80,229 @@ export default function SelectPlatformPage() {
     }
   };
 
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
   return (
-    <div className="relative isolate min-h-screen bg-gradient-to-br from-purple-900 via-gray-900 to-cyan-900 font-sans">
-      {/* Background Effects */}
+    <div className="relative isolate h-screen bg-black font-sans overflow-hidden">
+      {/* Enhanced Background Effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-600/20 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-600/10 to-cyan-600/10 rounded-full blur-3xl" />
+        {/* Gradient Mesh */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-pink-900/20 to-cyan-900/30" />
+        
+        {/* Animated Orbs */}
+        <motion.div
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute top-0 left-0 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 100, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+          className="absolute bottom-0 right-0 w-[800px] h-[800px] bg-cyan-600/20 rounded-full blur-3xl"
+        />
+        
+        {/* Mouse Follower */}
+        <div
+          className="absolute w-[600px] h-[600px] rounded-full blur-3xl opacity-50"
+          style={{
+            background: `radial-gradient(circle, rgba(168, 85, 247, 0.3) 0%, rgba(6, 182, 212, 0.2) 50%, transparent 70%)`,
+            left: mousePosition.x - 300,
+            top: mousePosition.y - 300,
+            transition: 'all 0.3s ease-out'
+          }}
+        />
+        
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-12">
+      <div className="relative z-10 h-screen flex flex-col items-center justify-center px-4">
         
-        {/* Header */}
+        {/* Header - Title Only */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 sm:mb-16"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-center mb-8 sm:mb-12"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white mb-4 sm:mb-6 tracking-tight px-4">
-            {content.title}
-          </h1>
-          <p className="text-base sm:text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto px-4 hidden sm:block">
-            {content.subtitle}
-          </p>
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative inline-block"
+          >
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 tracking-tight px-4">
+              {content.title}
+            </h1>
+            <motion.div
+              className="absolute -inset-4 bg-gradient-to-r from-purple-600/20 to-cyan-600/20 rounded-3xl blur-3xl -z-10"
+              animate={{
+                opacity: [0.5, 1, 0.5],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.div>
         </motion.div>
 
-        {/* Platform Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-6xl w-full px-4">
+        {/* Platform Cards - Optimized for Mobile */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 w-full max-w-6xl px-4">
           
           {/* TikTok Card */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, x: -100, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             onClick={() => handlePlatformSelect('tiktok')}
             className="group relative cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <div className="relative bg-gradient-to-br from-cyan-600/20 to-gray-600/20 backdrop-blur-lg border border-cyan-500/30 rounded-3xl p-8 sm:p-12 hover:border-cyan-400/50 transition-all duration-300 hover:scale-[1.02]">
+            <div className="relative bg-black/40 backdrop-blur-2xl border border-cyan-500/30 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 transition-all duration-500 hover:border-cyan-400/60">
               
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-600/10 to-gray-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              {/* Animated Border */}
+              <motion.div
+                className="absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] bg-gradient-to-r from-cyan-500/20 via-pink-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                animate={{
+                  background: [
+                    "linear-gradient(to right, rgba(6, 182, 212, 0.2), rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2))",
+                    "linear-gradient(to right, rgba(168, 85, 247, 0.2), rgba(6, 182, 212, 0.2), rgba(236, 72, 153, 0.2))",
+                    "linear-gradient(to right, rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2), rgba(6, 182, 212, 0.2))",
+                    "linear-gradient(to right, rgba(6, 182, 212, 0.2), rgba(236, 72, 153, 0.2), rgba(168, 85, 247, 0.2))"
+                  ]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
               
               {/* Content */}
               <div className="relative text-center">
                 {/* TikTok Logo */}
-                <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform cursor-pointer animate-pulse">
+                <motion.div
+                  className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto mb-4 sm:mb-6 flex items-center justify-center relative"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-pink-500 rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity" />
                   <Image
                     src="/tiktok.webp"
                     alt="TikTok"
                     width={128}
                     height={128}
-                    className="w-full h-full object-contain drop-shadow-2xl"
+                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
                   />
-                </div>
+                </motion.div>
+                
+                {/* Platform Name */}
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                  className="text-xl sm:text-2xl lg:text-3xl font-bold text-white"
+                >
+                  TikTok
+                </motion.h3>
               </div>
             </div>
           </motion.div>
 
           {/* Instagram Card */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0, x: 100, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
             onClick={() => handlePlatformSelect('instagram')}
             className="group relative cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
           >
-            <div className="relative bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-lg border border-purple-500/30 rounded-3xl p-8 sm:p-12 hover:border-purple-400/50 transition-all duration-300 hover:scale-[1.02]">
+            <div className="relative bg-black/40 backdrop-blur-2xl border border-purple-500/30 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 lg:p-12 transition-all duration-500 hover:border-purple-400/60">
               
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-600/10 to-pink-600/10 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+              {/* Animated Border */}
+              <motion.div
+                className="absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                animate={{
+                  background: [
+                    "linear-gradient(to right, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2), rgba(251, 146, 60, 0.2))",
+                    "linear-gradient(to right, rgba(251, 146, 60, 0.2), rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2))",
+                    "linear-gradient(to right, rgba(236, 72, 153, 0.2), rgba(251, 146, 60, 0.2), rgba(168, 85, 247, 0.2))",
+                    "linear-gradient(to right, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2), rgba(251, 146, 60, 0.2))"
+                  ]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
               
               {/* Content */}
               <div className="relative text-center">
                 {/* Instagram Logo */}
-                <div className="w-24 h-24 sm:w-32 sm:h-32 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform cursor-pointer animate-pulse">
+                <motion.div
+                  className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 mx-auto mb-4 sm:mb-6 flex items-center justify-center relative"
+                  whileHover={{ rotate: -360, scale: 1.1 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity" />
                   <Image
                     src="/instagram.webp"
                     alt="Instagram"
                     width={128}
                     height={128}
-                    className="w-full h-full object-contain drop-shadow-2xl"
+                    className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
                   />
-                </div>
+                </motion.div>
+                
+                {/* Platform Name */}
+                <motion.h3
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.7 }}
+                  className="text-xl sm:text-2xl lg:text-3xl font-bold text-white"
+                >
+                  Instagram
+                </motion.h3>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Trustpilot Badge */}
+        {/* Trustpilot Badge - Optimized */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="mt-6 text-center"
         >
           <div className="inline-flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-3 py-2" aria-label="Trustpilot rating 4.8 out of 5">
             <span className="text-sm font-black text-white">4.8</span>

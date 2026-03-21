@@ -139,10 +139,10 @@ export default function TiktokUpsellPage() {
 const marketingContent = {
   en: {
     difference: {
-      title: 'Why buy TikTok followers with AI',
+      title: 'Why buy TikTok followers',
       cards: [
-        { title: 'Precise AI targeting', description: 'Our artificial intelligence analyzes your niche and content to connect you with real TikTok users interested in your topics. No bots, only authentic accounts.', icon: 'Bot' as const },
-        { title: 'Natural progressive delivery', description: 'Followers arrive gradually to mimic organic growth. Our AI system adjusts the pace to guarantee the total security of your account.', icon: 'Clock' as const },
+        { title: 'Real followers only', description: 'We connect you with real TikTok users interested in your content. No bots, only authentic accounts that will genuinely engage with your profile.', icon: 'Bot' as const },
+        { title: 'Natural progressive delivery', description: 'Followers arrive gradually to mimic organic growth. Our system adjusts the pace to ensure complete account safety.', icon: 'Clock' as const },
         { title: '100% Secure and compliant', description: 'No password required. Our follower acquisition method is fully compliant with TikTok rules. Your account stays 100% protected.', icon: 'Shield' as const },
       ],
     },
@@ -150,8 +150,8 @@ const marketingContent = {
       title: 'Buy your TikTok followers in 3 steps',
       cards: [
         { number: '1', title: 'ENTER YOUR TIKTOK USERNAME', description: 'Simply enter your TikTok username. No password needed, no login required. Just your public username.', icon: 'Package' as const },
-        { number: '2', title: 'CHOOSE YOUR FOLLOWER PACK', description: 'Select the number of followers you want to buy. From 100 to 100K+ real followers, AI-targeted based on your content.', icon: 'Megaphone' as const },
-        { number: '3', title: 'RECEIVE YOUR FOLLOWERS', description: 'Followers start arriving within minutes. Our AI delivers them progressively for natural and secure growth.', icon: 'BarChart3' as const },
+        { number: '2', title: 'CHOOSE YOUR FOLLOWER PACK', description: 'Select the number of followers you want to buy. From 100 to 100K+ real followers, targeted based on your content.', icon: 'Megaphone' as const },
+        { number: '3', title: 'RECEIVE YOUR FOLLOWERS', description: 'Followers start arriving within minutes. Our system delivers them progressively for natural and secure growth.', icon: 'BarChart3' as const },
       ],
       cta: 'BUY NOW',
     },
@@ -166,15 +166,15 @@ const marketingContent = {
       ],
     },
     compliance: {
-      text: 'Transparency: Socialiora allows you to buy real TikTok followers via AI technology that targets authentic users interested in your content. We never sell bots or fake accounts. Our acquisition method is designed to comply with TikTok rules and guarantee the security of your account. The followers you buy are real active users.',
+      text: 'Transparency: Socialiora allows you to buy real TikTok followers via a system that targets authentic users interested in your content. We never sell bots or fake accounts. Our acquisition method is designed to comply with TikTok rules and guarantee the security of your account. The followers you buy are real active users.',
     },
   },
   fr: {
     difference: {
-      title: 'Pourquoi acheter des followers TikTok avec l\'IA',
+      title: 'Pourquoi acheter des followers TikTok',
       cards: [
-        { title: 'Ciblage IA précis', description: 'Notre intelligence artificielle analyse votre niche et votre contenu pour vous connecter avec de vrais utilisateurs TikTok intéressés par votre thématique. Pas de bots, que des comptes authentiques.', icon: 'Bot' as const },
-        { title: 'Livraison progressive naturelle', description: 'Les followers arrivent progressivement pour imiter une croissance organique. Notre système IA ajuste le rythme pour garantir la sécurité totale de votre compte.', icon: 'Clock' as const },
+        { title: 'Vrais followers uniquement', description: 'Nous vous connectons avec de vrais utilisateurs TikTok intéressés par votre contenu. Pas de bots, uniquement des comptes authentiques qui interagiront réellement avec votre profil.', icon: 'Bot' as const },
+        { title: 'Livraison progressive naturelle', description: 'Les followers arrivent progressivement pour imiter une croissance organique. Notre système ajuste le rythme pour garantir la sécurité totale de votre compte.', icon: 'Clock' as const },
         { title: '100% Sécurisé et conforme', description: 'Aucun mot de passe requis. Notre méthode d\'acquisition de followers est entièrement conforme aux règles TikTok. Votre compte reste protégé à 100%.', icon: 'Shield' as const },
       ],
     },
@@ -182,8 +182,8 @@ const marketingContent = {
       title: 'Achetez vos followers TikTok en 3 étapes',
       cards: [
         { number: '1', title: 'ENTREZ VOTRE PSEUDO TIKTOK', description: 'Indiquez simplement votre nom d\'utilisateur TikTok. Aucun mot de passe nécessaire, aucune connexion requise. Juste votre pseudo public.', icon: 'Package' as const },
-        { number: '2', title: 'CHOISISSEZ VOTRE PACK DE FOLLOWERS', description: 'Sélectionnez le nombre de followers que vous souhaitez acheter. De 100 à 100K+ followers réels, ciblés par IA selon votre contenu.', icon: 'Megaphone' as const },
-        { number: '3', title: 'RECEVEZ VOS FOLLOWERS', description: 'Les followers commencent à arriver en quelques minutes. Notre IA les livre progressivement pour une croissance naturelle et sécurisée.', icon: 'BarChart3' as const },
+        { number: '2', title: 'CHOISISSEZ VOTRE PACK DE FOLLOWERS', description: 'Sélectionnez le nombre de followers que vous souhaitez acheter. De 100 à 100K+ followers réels, adaptés à votre contenu.', icon: 'Megaphone' as const },
+        { number: '3', title: 'RECEVEZ VOS FOLLOWERS', description: 'Les followers commencent à arriver en quelques minutes. Notre système les livre progressivement pour une croissance naturelle et sécurisée.', icon: 'BarChart3' as const },
       ],
       cta: 'ACHETER MAINTENANT',
     },
@@ -198,15 +198,15 @@ const marketingContent = {
       ],
     },
     compliance: {
-      text: 'Transparence : Socialiora vous permet d\'acheter des followers TikTok réels via une technologie d\'IA qui cible des utilisateurs authentiques intéressés par votre contenu. Nous ne vendons jamais de bots ou faux comptes. Notre méthode d\'acquisition est conçue pour respecter les règles TikTok et garantir la sécurité de votre compte. Les followers que vous achetez sont de vrais utilisateurs actifs.',
+      text: 'Transparence : Socialiora vous permet d\'acheter des followers TikTok réels via un système qui cible des utilisateurs authentiques intéressés par votre contenu. Nous ne vendons jamais de bots ou faux comptes. Notre méthode d\'acquisition est conçue pour respecter les règles TikTok et garantir la sécurité de votre compte.',
     },
   },
   de: {
     difference: {
-      title: 'Warum TikTok-Follower mit KI kaufen',
+      title: 'Warum TikTok-Follower kaufen',
       cards: [
-        { title: 'Präzises KI-Targeting', description: 'Unsere künstliche Intelligenz analysiert Ihre Nische und Ihren Content, um Sie mit echten TikTok-Nutzern zu verbinden, die an Ihren Themen interessiert sind. Keine Bots, nur authentische Konten.', icon: 'Bot' as const },
-        { title: 'Natürliche progressive Lieferung', description: 'Follower kommen schrittweise an, um organisches Wachstum zu imitieren. Unser KI-System passt das Tempo an, um die totale Sicherheit Ihres Kontos zu garantieren.', icon: 'Clock' as const },
+        { title: 'Echte Follower nur', description: 'Wir verbinden Sie mit echten TikTok-Nutzern, die an Ihrem Inhalt interessiert sind. Keine Bots, nur authentische Konten, die sich wirklich mit Ihrem Profil engagieren.', icon: 'Bot' as const },
+        { title: 'Natürliche progressive Lieferung', description: 'Follower kommen schrittweise an, um organisches Wachstum zu imitieren. Unser System passt das Tempo an, um die totale Sicherheit Ihres Kontos zu garantieren.', icon: 'Clock' as const },
         { title: '100% Sicher und konform', description: 'Kein Passwort erforderlich. Unsere Methode zur Follower-Akquise ist vollständig konform mit den TikTok-Regeln. Ihr Konto bleibt zu 100% geschützt.', icon: 'Shield' as const },
       ],
     },
@@ -214,8 +214,8 @@ const marketingContent = {
       title: 'Kaufen Sie Ihre TikTok-Follower in 3 Schritten',
       cards: [
         { number: '1', title: 'GEBEN SIE IHREN TIKTOK-NAMEN EIN', description: 'Geben Sie einfach Ihren TikTok-Benutzernamen ein. Kein Passwort nötig, keine Anmeldung erforderlich. Nur Ihr öffentlicher Benutzername.', icon: 'Package' as const },
-        { number: '2', title: 'WÄHLEN SIE IHR FOLLOWER-PAKET', description: 'Wählen Sie die Anzahl der Follower, die Sie kaufen möchten. Von 100 bis 100K+ echte Follower, KI-gesteuert nach Ihrem Content.', icon: 'Megaphone' as const },
-        { number: '3', title: 'ERHALTEN SIE IHRE FOLLOWER', description: 'Follower beginnen innerhalb von Minuten anzukommen. Unsere KI liefert sie progressiv für natürliches und sicheres Wachstum.', icon: 'BarChart3' as const },
+        { number: '2', title: 'WÄHLEN SIE IHR FOLLOWER-PAKET', description: 'Wählen Sie die Anzahl der Follower, die Sie kaufen möchten. Von 100 bis 100K+ echte Follower, zielgerichtet nach Ihrem Content.', icon: 'Megaphone' as const },
+        { number: '3', title: 'ERHALTEN SIE IHRE FOLLOWER', description: 'Follower beginnen innerhalb von Minuten anzukommen. Unser System liefert sie progressiv für natürliches und sicheres Wachstum.', icon: 'BarChart3' as const },
       ],
       cta: 'JETZT KAUFEN',
     },
@@ -230,15 +230,15 @@ const marketingContent = {
       ],
     },
     compliance: {
-      text: 'Transparenz: Socialiora ermöglicht es Ihnen, echte TikTok-Follower über eine KI-Technologie zu kaufen, die authentische Nutzer anspricht, die an Ihren Inhalten interessiert sind. Wir verkaufen niemals Bots oder Fake-Accounts. Unsere Akquisemethode ist darauf ausgelegt, die TikTok-Regeln zu respektieren und die Sicherheit Ihres Kontos zu garantieren.',
+      text: 'Transparenz: Socialiora ermöglicht es Ihnen, echte TikTok-Follower über ein System zu kaufen, das authentische Nutzer anspricht, die an Ihren Inhalten interessiert sind. Wir verkaufen niemals Bots oder Fake-Accounts. Unsere Akquisemethode ist darauf ausgelegt, die TikTok-Regeln zu respektieren und die Sicherheit Ihres Kontos zu garantieren.',
     },
   },
   es: {
     difference: {
-      title: 'Por qué comprar seguidores de TikTok con IA',
+      title: '¿Por qué comprar seguidores de TikTok?',
       cards: [
-        { title: 'Segmentación IA precisa', description: 'Nuestra inteligencia artificial analiza tu nicho y contenido para conectarte con usuarios reales de TikTok interesados en tu temática. Sin bots, solo cuentas auténticas.', icon: 'Bot' as const },
-        { title: 'Entrega progresiva natural', description: 'Los seguidores llegan progresivamente para imitar un crecimiento orgánico. Nuestro sistema IA ajusta el ritmo para garantizar la seguridad total de tu cuenta.', icon: 'Clock' as const },
+        { title: 'Solo seguidores reales', description: 'Te conectamos con usuarios de TikTok reales interesados en tu contenido. Sin bots, solo cuentas auténticas que interactuarán genuinamente con tu perfil.', icon: 'Bot' as const },
+        { title: 'Entrega progresiva natural', description: 'Los seguidores llegan gradualmente para imitar un crecimiento orgánico. Nuestro sistema ajusta el ritmo para garantizar la seguridad total de tu cuenta.', icon: 'Clock' as const },
         { title: '100% Seguro y conforme', description: 'No se requiere contraseña. Nuestro método de adquisición de seguidores es totalmente conforme con las reglas de TikTok. Tu cuenta permanece protegida al 100%.', icon: 'Shield' as const },
       ],
     },
