@@ -14,8 +14,8 @@ export const tiktokUpsellTranslations = {
       },
     },
     search: {
-      title: 'BOOST YOUR TIKTOK',
-      subtitle: 'Enter your public TikTok username to get started. No password required.',
+      title: 'BOOST YOUR TIKTOK GROWTH',
+      subtitle: 'Connect with real TikTok users interested in your content through our AI technology — fast, secure and 100% compliant strategy.',
       publicNote: '* Make sure your account is set to public.',
       placeholder: 'charlidamelio',
       continue: 'Continue',
@@ -80,8 +80,8 @@ export const tiktokUpsellTranslations = {
       },
     },
     search: {
-      title: 'ACHETEZ DES FOLLOWERS TIKTOK AVEC L\'IA',
-      subtitle: 'Obtenez de vrais followers TikTok grâce à notre technologie d\'IA qui cible des utilisateurs réellement intéressés par votre contenu — livraison rapide, sécurisée et 100% conforme.',
+      title: 'BOOSTEZ VOTRE CROISSANCE TIKTOK AVEC L\'IA',
+      subtitle: 'Développez votre audience TikTok grâce à notre technologie d\'IA qui connecte avec des utilisateurs réellement intéressés par votre contenu — stratégie rapide, sécurisée et 100% conforme.',
       publicNote: '* Assurez-vous que votre compte est en public.',
       placeholder: 'charlidamelio',
       continue: 'Continuer',
@@ -146,8 +146,8 @@ export const tiktokUpsellTranslations = {
       },
     },
     search: {
-      title: 'BOOSTEN SIE IHR TIKTOK',
-      subtitle: 'Geben Sie Ihren öffentlichen TikTok-Benutzernamen ein. Kein Passwort erforderlich.',
+      title: 'BOOSTEN SIE IHR TIKTOK-WACHSTUM',
+      subtitle: 'Verbinden Sie sich mit echten TikTok-Nutzern, die an Ihrem Inhalt interessiert sind, durch unsere KI-Technologie — schnelle, sichere und 100% konforme Strategie.',
       publicNote: '* Stellen Sie sicher, dass Ihr Konto öffentlich ist.',
       placeholder: 'charlidamelio', continue: 'Weiter', searching: 'Suche...',
       secure: '100% Sicher', noPassword: 'Kein Passwort nötig',
@@ -204,8 +204,8 @@ export const tiktokUpsellTranslations = {
       },
     },
     search: {
-      title: 'IMPULSA TU TIKTOK',
-      subtitle: 'Introduce tu nombre de usuario público de TikTok para comenzar. No se requiere contraseña.',
+      title: 'POTENCIA TU CRECIMIENTO TIKTOK',
+      subtitle: 'Conecta con usuarios reales de TikTok interesados en tu contenido a través de nuestra tecnología IA — estrategia rápida, segura y 100% conforme.',
       publicNote: '* Asegúrate de que tu cuenta sea pública.',
       placeholder: 'charlidamelio', continue: 'Continuar', searching: 'Buscando...',
       secure: '100% Seguro', noPassword: 'Sin contraseña',
